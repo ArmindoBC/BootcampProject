@@ -18,11 +18,30 @@ class BaseController {
 
         return collection.findOne({_id: DatabaseService.BuildObjectId(id)})
             .then((doc) => {
+
+
                 return this.BuildGetItemMessage(doc);
+
             });
 
     }
+    BaseGetItemsAutocompleteHandler(collectionName, string) {
+        var collection = DatabaseService.GetCollection(collectionName);
 
+        //build regex to search the substring in the collection names
+        var regexValue = "^"+ string ;
+        var searchRegex = new RegExp(regexValue, 'i');
+
+        //construct the object to search the substring
+        var query =  {name: searchRegex };
+
+        return collection.find(query).toArray()
+            .then((doc) => {
+                console.log(doc);
+                return this.BuildGetAutocompleteMessage(doc);
+            });
+
+    }
     BaseGetHandler(collectionName, query = {}) {
         var collection = DatabaseService.GetCollection(collectionName);
 
@@ -152,6 +171,16 @@ class BaseController {
             message = this.ParseDocumentByClientDictionary(doc);
         }
         return message;
+    }
+
+    BuildGetAutocompleteMessage(doc) {
+
+        LogClient.Log({
+            level: 'DEBUG',
+            category: "information",
+            message: "All items received successfully"
+        });
+        return this.ParseDocumentByClientDictionary(doc);
     }
 
     BuildGetAllItemsMessage(doc) {
