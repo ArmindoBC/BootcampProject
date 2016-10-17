@@ -6,16 +6,14 @@
 
 class RoutesService {
 
-    constructor() {
-    }
+    constructor() {}
 
     BuildRoutes() {
         console.log("Building Routes...");
         this.AllRoutes = [];
 
         //concat routes needed to build our backend service
-        this.ConcatRoutes(RoutesService.BuildUserRoutes());
-        this.ConcatRoutes(RoutesService.BuildProjectRoutes());
+        this.ConcatRoutes(RoutesService.BuildContactRoutes());
 
         console.log("Routes Build!");
 
@@ -28,30 +26,19 @@ class RoutesService {
     }
 
     //it gathers all the user api routes
-    static BuildUserRoutes() {
-        console.log("User Routes...");
-        var User = require('../controllers/UserController.js');
-        var UserRoutes = [];
-        UserRoutes.push(User.Get());
-        UserRoutes.push(User.GetItem());
-        UserRoutes.push(User.Post());
-        UserRoutes.push(User.Patch());
-        UserRoutes.push(User.Delete());
 
-        return UserRoutes;
-    }
+    static BuildContactRoutes() {
+        console.log("ContactRoutes...");
+        var Contact = require('../controllers/ContactController.js');
+        var ContactRoutes = [];
+        ContactRoutes.push(Contact.Get());
+        ContactRoutes.push(Contact.GetItem());
+        ContactRoutes.push(Contact.Post());
+        ContactRoutes.push(Contact.Patch());
+        ContactRoutes.push(Contact.Delete());
+        ContactRoutes.push(Contact.Put());
 
-    static BuildProjectRoutes() {
-        console.log("Project Routes...");
-        var Project = require('../controllers/ProjectController.js');
-        var ProjectRoutes = [];
-        ProjectRoutes.push(Project.Get());
-        ProjectRoutes.push(Project.GetItem());
-        ProjectRoutes.push(Project.Post());
-        ProjectRoutes.push(Project.Patch());
-        ProjectRoutes.push(Project.Delete());
-
-        return ProjectRoutes;
+        return ContactRoutes;
     }
 }
 module.exports = new RoutesService();
