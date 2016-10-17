@@ -1,7 +1,7 @@
 {
   "HttpServerPort": 9003,
   "HttpsServerPort": 9013,
-  "DatabaseURL": "mongodb://localhost:27017/web-academy",
+  "DatabaseURL": "mongodb://localhost:27017/contact-database",
   "httpMode": true,
   "httpsMode": true,
   "httpsModeKeyPath": "./cert/key.pem",

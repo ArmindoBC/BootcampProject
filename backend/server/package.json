@@ -25,6 +25,7 @@
     "inert": "3.2.0",
     "inject-then": "2.0.7",
     "joi": "7.0.1",
+    "joi-phone": "0.0.1",
     "lab": "8.0.0",
     "minimist": "1.2.0",
     "numeral": "1.5.3",
