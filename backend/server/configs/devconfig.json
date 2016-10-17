@@ -4,8 +4,6 @@
   "DatabaseURL": "mongodb://localhost:27017/web-academy",
   "httpMode": true,
   "httpsMode": true,
-  "httpsModeKeyPath": "./cert/key.pem",
-  "httpsModeCertPath": "./cert/cert.pem",
   "i18n": {
     "locales": [
       "en",

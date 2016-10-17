@@ -15,7 +15,6 @@ class RoutesService {
 
         //concat routes needed to build our backend service
         this.ConcatRoutes(RoutesService.BuildUserRoutes());
-        this.ConcatRoutes(RoutesService.BuildPersonRoutes());
         this.ConcatRoutes(RoutesService.BuildProjectRoutes());
 
         console.log("Routes Build!");
@@ -42,19 +41,6 @@ class RoutesService {
         return UserRoutes;
     }
 
-    static BuildPersonRoutes() {
-        console.log("Person Routes...");
-        var Person = require('../controllers/PersonController.js');
-        var PersonRoutes = [];
-        PersonRoutes.push(Person.Get());
-        PersonRoutes.push(Person.GetItem());
-        PersonRoutes.push(Person.Post());
-        PersonRoutes.push(Person.Patch());
-        PersonRoutes.push(Person.Delete());
-
-        return PersonRoutes;
-    }
-    
     static BuildProjectRoutes() {
         console.log("Project Routes...");
         var Project = require('../controllers/ProjectController.js');
