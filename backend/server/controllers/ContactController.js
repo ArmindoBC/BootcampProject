@@ -53,6 +53,40 @@ class ContactController extends BaseController {
             }
         };
     }
+    /**
+     * return the contact by the contact id
+     */
+    GetItemAutocomplete() {
+        return {
+            method: 'GET',
+            path: '/contact/autocomplete/{string}',
+            config: {
+                description: 'Get contact by some sub string of the name',
+                notes: 'Returns the contacts which match the name of the substring passed',
+                tags: ['api'],
+                /*pre: [{
+                    method: BaseController.Authorize(['general'])
+                }],*/
+                handler: (request, reply) => {
+                    return this.BaseGetItemsAutocompleteHandler(this.GetCollectionName(), request.params.string)
+                        .then((item) => {
+                            reply(item);
+                        })
+                        .catch((err) => {
+                            reply(Boom.wrap(err, 400));
+                        })
+                },
+                validate: {
+                    params: {
+                        string: joi.string().required().description("Filte contact by substring of the name "),
+                    },
+                    /*headers: joi.object({
+                        'authorization': joi.string().required()
+                    }).unknown()*/
+                }
+            }
+        };
+    }
 
     /**
      * Returns the Contacts meeting the provided parameters. In case there are no search parameters, all Contacts will be returned

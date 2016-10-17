@@ -33,6 +33,7 @@ class RoutesService {
         var ContactRoutes = [];
         ContactRoutes.push(Contact.Get());
         ContactRoutes.push(Contact.GetItem());
+        ContactRoutes.push(Contact.GetItemAutocomplete());
         ContactRoutes.push(Contact.Post());
         ContactRoutes.push(Contact.Patch());
         ContactRoutes.push(Contact.Delete());
