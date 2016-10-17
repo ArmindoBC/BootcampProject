@@ -5,4 +5,4 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 #packages
-node_modules
+node_modules/
