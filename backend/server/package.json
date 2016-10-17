@@ -1,7 +1,7 @@
 {
-  "name": "InsuranceBackend",
+  "name": "ContactsManagerBackend",
   "version": "1.0.0",
-  "description": "This is the insurance Back-end Application Programming Interface, documented by Swagger",
+  "description": "This is the Contacts Manager Back-end Application Programming Interface, documented by Swagger",
   "main": "app.js",
   "scripts": {
     "test": "echo 'Not test found'"
