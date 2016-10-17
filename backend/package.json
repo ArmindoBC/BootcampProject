@@ -1,0 +1,19 @@
+{
+  "name": "bootcampproject",
+  "version": "1.0.0",
+  "description": "web academy prototype",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArmindoBC/BootcampProject.git"
+  },
+  "author": "Armindo, Diogo, Joao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArmindoBC/BootcampProject/issues"
+  },
+  "homepage": "https://github.com/ArmindoBC/BootcampProject#readme"
+}
