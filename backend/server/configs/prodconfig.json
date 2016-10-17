@@ -1,0 +1,19 @@
+{
+  "HttpServerPort": 9003,
+  "HttpsServerPort": 9013,
+  "DatabaseURL": "mongodb://localhost:27017/web-academy",
+  "httpMode": true,
+  "httpsMode": true,
+  "httpsModeKeyPath": "./cert/key.pem",
+  "httpsModeCertPath": "./cert/cert.pem",
+  "i18n": {
+    "locales": [
+      "en",
+      "pt"
+    ],
+    "directory": "locales"
+  },
+  "salt": "fa0.ab660ca9b91e967bee0bef977da789d1e93f9de095a30e9e",
+  "secret": "deloitte digital pt",
+  "PasswordValidationHash": "3ff73af716fd4ca4a1b461da0d953880de23052b7159f985a524d86167f9e4ee"
+}
