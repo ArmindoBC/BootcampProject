@@ -38,20 +38,7 @@ class ServerService {
             this.httpServer.connection(httpServerOptions);
         }
 
-        if (ConfigurationService.IsHttpsEnabled()) {
-            console.log('Initializing Server (HTTPS)...');
-            var fs = require('fs');
-            var httpsServerOptions = {
-                port: ConfigurationService.GetHttpsServerPort(),
-                tls: {
-                    key: fs.readFileSync(ConfigurationService.GetHttpsKeyPath()),
-                    cert: fs.readFileSync(ConfigurationService.GetHttpsCertPath())
-                }
-            };
 
-            this.httpsServer = new Hapi.Server();
-            this.httpsServer.connection(httpsServerOptions);
-        }
 
         //Register Good
         console.log('Registering Good...');
@@ -81,14 +68,7 @@ class ServerService {
                 }
             })
         }
-        if (ConfigurationService.IsHttpsEnabled()) {
-            this.httpsServer.register(goodOps, GoodErrorFunction);
-            this.httpsServer.register(require('inject-then'), (err)=> {
-                if (err){
-                    throw err
-                }
-            })
-        }
+
         console.log("Good Ok");
         console.log("Server Initialized!");
     }
@@ -130,17 +110,6 @@ class ServerService {
             });
         }
 
-        if (ConfigurationService.IsHttpsEnabled()) {
-            this.httpsServer.register(Inert, (err) => {
-                if (err) {
-                    throw err;
-                }
-
-                this.httpsServer.route(GetIndexRoute);
-                this.httpsServer.route(GetParameterRoute);
-            });
-        }
-
         console.log("Inert ok");
         console.log("StaticPagesServer Initialized!");
     }
@@ -169,9 +138,6 @@ class ServerService {
             this.httpServer.register(HapiSwaggerOps, InitSwaggerError);
         }
 
-        if (ConfigurationService.IsHttpsEnabled()) {
-            this.httpsServer.register(HapiSwaggerOps, InitSwaggerError);
-        }
     }
 
 
@@ -211,9 +177,7 @@ class ServerService {
         if (ConfigurationService.IsHttpEnabled()) {
             this.httpServer.route(routes);
         }
-        if (ConfigurationService.IsHttpsEnabled()) {
-            this.httpsServer.route(routes);
-        }
+
     }
 
     /**
@@ -245,9 +209,7 @@ class ServerService {
         if (ConfigurationService.IsHttpEnabled()) {
             this.httpServer.register(MongoDBOps, MongoDBErrorFunction);
         }
-        if (ConfigurationService.IsHttpsEnabled()) {
-            this.httpsServer.register(MongoDBOps, MongoDBErrorFunction);
-        }
+
 
         console.log("Database Connection Initialized!");
     }
@@ -261,12 +223,6 @@ class ServerService {
             });
         }
 
-        if (ConfigurationService.IsHttpsEnabled()) {
-            console.log("Starting HTTPS Server...");
-            this.httpsServer.start(() => {
-                console.log("HTTPS Server running at: ", this.httpServer.info.uri);
-            });
-        }
     }
 
     GetDatabaseConnection() {

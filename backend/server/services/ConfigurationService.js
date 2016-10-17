@@ -31,9 +31,6 @@ class ConfigurationService {
         return this.CurrentConfigs.HttpServerPort;
     }
 
-    GetHttpsServerPort() {
-        return this.CurrentConfigs.HttpsServerPort;
-    }
 
     GetDatabaseURL() {
         return this.CurrentConfigs.DatabaseURL;
@@ -43,17 +40,6 @@ class ConfigurationService {
         return this.CurrentConfigs.httpMode;
     }
 
-    IsHttpsEnabled(){
-        return this.CurrentConfigs.httpsMode;
-    }
-
-    GetHttpsKeyPath(){
-        return this.CurrentConfigs.httpsModeKeyPath;
-    }
-
-    GetHttpsCertPath(){
-        return this.CurrentConfigs.httpsModeCertPath;
-    }
     GetDefaultUserGroups(){
         return this.CurrentConfigs.defaultUsersGroups;
     }
