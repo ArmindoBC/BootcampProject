@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo 'Not test found'"
   },
-  "author": "Deloitte Digital",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArmindoBC/BootcampProject.git"
+  },
+  "author": "Armindo Diogo João",
   "license": "ProprietarySoftware ",
   "dependencies": {
     "amqplib": "0.4.0",
