@@ -60,7 +60,7 @@
     background-color: #4fe0f2;
 }
 .contacts-container {
-    top: 120px;
+    top: 60px;
     position: absolute;
     bottom: 0;
     width: 419px;
@@ -82,7 +82,6 @@
     outline: 1px solid slategrey;
 }
 .search-div {
-    border-left: solid 6.4px #101632;
     top: 60px;
     padding-left: 20px;
     height: 60px;

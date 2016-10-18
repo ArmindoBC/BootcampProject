@@ -16,10 +16,10 @@ app.controller('HeaderController', ['$scope', '$location', 'ContactsService', fu
     //Start Function
     $scope.Start = function() {
         //load Persons
-        /*  $scope.IsLoading = true;
+      $scope.IsLoading = true;
           setTimeout(function() {
               ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);
-          }, 1000);*/
+          }, 1000);
 
     };
     $scope.Start();
