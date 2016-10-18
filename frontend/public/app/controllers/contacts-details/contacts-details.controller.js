@@ -1,2 +1,2 @@
-app.controller('HomeController', ['$scope', function($scope) {
+app.controller('ContactsDetailsController', ['$scope', function($scope) {
 }]);

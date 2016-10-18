@@ -1,30 +1,29 @@
-
 app.controller('HomeController', ['$scope', 'ContactsService', function($scope, ContactsService) {
 
-    $scope.IsLoading = false;
-    $scope.text = "welcome to home controller!!";
-
-    $scope.OnCompleteGetAll = function() {
-        $scope.ContactsList = ContactsService.AllItems;
         $scope.IsLoading = false;
-    }
+        $scope.text = "welcome to home controller!!";
 
-    $scope.OnErrorGetAll = function(errorCode) {
-        console.log(errorCode);
-        $scope.IsLoading = false;
-    }
+        $scope.OnCompleteGetAll = function() {
+            $scope.ContactsList = ContactsService.AllItems;
+            $scope.IsLoading = false;
+        }
 
-    //Start Function
-    $scope.Start = function() {
-        //load Persons
-      /*  $scope.IsLoading = true;
-        setTimeout(function() {
-            ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);
-        }, 1000);*/
+        $scope.OnErrorGetAll = function(errorCode) {
+            console.log(errorCode);
+            $scope.IsLoading = false;
+        }
 
-    console.log($scope.text);
+        //Start Function
+        $scope.Start = function() {
+            //load Persons
+            /*  $scope.IsLoading = true;
+              setTimeout(function() {
+                  ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);
+              }, 1000);*/
 
-    };
-    $scope.Start();
+            console.log($scope.text);
 
-}]);
+        };
+        $scope.Start();
+
+    }]);
