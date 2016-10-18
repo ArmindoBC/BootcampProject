@@ -1,8 +1,7 @@
 
-app.controller('HomeController', ['$scope', 'ContactsService', function($scope, ContactsService) {
+app.controller('HeaderController', ['$scope', 'ContactsService', function($scope, ContactsService) {
 
     $scope.IsLoading = false;
-    $scope.text = "welcome to home controller!!";
 
     $scope.OnCompleteGetAll = function() {
         $scope.ContactsList = ContactsService.AllItems;
@@ -21,8 +20,6 @@ app.controller('HomeController', ['$scope', 'ContactsService', function($scope, 
         setTimeout(function() {
             ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);
         }, 1000);*/
-
-    console.log($scope.text);
 
     };
     $scope.Start();

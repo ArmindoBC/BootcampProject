@@ -9,6 +9,8 @@
 
     <!--App Stylesheets-->
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/header.controller.css">
+
 
     <!--Vendor Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
@@ -17,6 +19,7 @@
     <!--App Scripts-->
     <script src="app/app.module.js"></script>
     <script src="app/controllers/home/home.controller.js"></script>
+    <script src="app/controllers/header/header.controller.js"></script>
     <script src="app/controllers/contacts-list/contacts-list.controller.js"></script>
     <script src="app/controllers/contacts-details/contacts-details.controller.js"></script>
     <script src="app/models/contact/contact.model.js"></script>
@@ -27,9 +30,13 @@
 </head>
 
 <body>
-
+    <div ng-controller="HeaderController">
+        <div>
+        </div>
+    </div>
     <div ng-view class="divNgView">
-        <!--Navigation Result-->
+
+
     </div>
 
 </body>
