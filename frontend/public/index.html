@@ -39,17 +39,12 @@
                     SMART
                     <span class="header-title-blue"> CONTACTS</span>
                     <!-- all the icon that are necessary to our application
-
-
                     <i class="material-icons">search</i>
                     <i class="material-icons">save</i>
                     <i class="material-icons">date_range</i>
                     <i class="material-icons">camera_alt</i>
                     <i class="material-icons">arrow_back</i>
-
                      end -->
-
-
                 </div>
             </div>
             <div class="header-icons-container">
@@ -67,26 +62,29 @@
             </div>
         </div>
 
-        <div class="contacts-container">
-
-            <div class="search-div">
-                <div class="icon-search">
-                    <i class="material-icons  google-icon-search">search</i>
-                </div>
-                <div class="search-input">
-                    <input type="text" class="input-label" placeholder="Search by name"/>
-               </div>
+        <div class="search-div">
+            <div class="icon-search">
+                <i class="material-icons  google-icon-search">search</i>
             </div>
+            <div class="search-input">
+                <input type="text" class="input-label" placeholder="Search by name" />
+            </div>
+        </div>
 
-            <contact-card> </contact-card>
-
-
+        <div class="contacts-container">
+            <div class="showbox" >
+                <div class="loader">
+                    <svg class="circular" viewBox="25 25 50 50">
+                        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                    </svg>
+                </div>
+            </div>
+            <contact-card ng-if="!IsLoading" namecontact="contact.name" phonenumber="contact.phoneNumber" ng-repeat="contact in ContactsList"> </contact-card>
+        </div>
     </div>
     <div ng-view class="divNgView">
 
-
     </div>
-
 </body>
 
 </html>
