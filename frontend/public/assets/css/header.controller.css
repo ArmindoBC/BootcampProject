@@ -60,7 +60,7 @@
     background-color: #4fe0f2;
 }
 .contacts-container {
-    top: 60px;
+    top: 120px;
     position: absolute;
     bottom: 0;
     width: 419px;
@@ -81,15 +81,15 @@
     background-color: darkgrey;
     outline: 1px solid slategrey;
 }
-
 .search-div {
-  margin-left: 20px;
-  height: 60px;
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  border-bottom: 3px solid black;
+    border-left: solid 6.4px #101632;
+    top: 60px;
+    padding-left: 20px;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 .search-div .search-input {
     padding-top: 15px;
@@ -99,7 +99,7 @@
     align-items: center;
 }
 .search-div .search-input .input-label {
-    height:24px;
+    height: 24px;
     outline: none;
     border: none;
     font-family: OpenSans-Regular;
@@ -109,11 +109,10 @@
     font-stretch: normal;
     line-height: 1.33;
     text-align: left;
-    color:  #898888;
+    color: #898888;
 }
-
-.search-div .search-input .input-label::-webkit-input-placeholder  {
-  height: 24px;
+.search-div .search-input .input-label::-webkit-input-placeholder {
+    height: 24px;
     font-family: OpenSans-Regular;
     font-size: 18px;
     font-weight: normal;
@@ -124,7 +123,7 @@
     color: rgba(203, 203, 203, 0.87);
 }
 .search-div .search-input .input-label:focus {
-  height: 24px;
+    height: 24px;
     font-family: OpenSans-Regular;
     font-size: 18px;
     font-weight: normal;
@@ -132,10 +131,10 @@
     font-stretch: normal;
     line-height: 1.33;
     text-align: left;
-    color:  #898888;
+    color: #898888;
 }
 .search-div .search-input .input-label:focus {
-  height: 24px;
+    height: 24px;
     font-family: OpenSans-Regular;
     font-size: 18px;
     font-weight: normal;
@@ -143,10 +142,10 @@
     font-stretch: normal;
     line-height: 1.33;
     text-align: left;
-    color:  #898888;
+    color: #898888;
 }
-.search-div .search-input .input-label:{
-  height: 24px;
+.search-div .search-input .input-label: {
+    height: 24px;
     font-family: OpenSans-Regular;
     font-size: 18px;
     font-weight: normal;
@@ -154,18 +153,92 @@
     font-stretch: normal;
     line-height: 1.33;
     text-align: left;
-    color:  #898888;
+    color: #898888;
 }
-
 .google-icon-search {
     color: #898888;
-    font-size: 30px;
+    font-size: 40px;
+}
+.icon-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
 }
 
-.icon-search{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 30px;
-  width: 30px;
+$green: #008744;
+$blue: #0057e7;
+$red: #d62d20;
+$yellow: #ffa700;
+$white: #eee;
+
+
+.loader {
+  position: relative;
+  margin: 0 auto;
+  width: $width;
+  &:before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+}
+
+.circular {
+  animation: rotate 2s linear infinite;
+  height: 100%;
+  transform-origin: center center;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.path {
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+  stroke-linecap: round;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
+  }
+}
+
+@keyframes color {
+  100%,
+  0% {
+    stroke: $red;
+  }
+  40% {
+    stroke: $blue;
+  }
+  66% {
+    stroke: $green;
+  }
+  80%,
+  90% {
+    stroke: $yellow;
+  }
 }

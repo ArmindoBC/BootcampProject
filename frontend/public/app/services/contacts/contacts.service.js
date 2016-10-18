@@ -79,15 +79,6 @@ app.service('ContactsService', ['UtilsService', '$http', function(UtilsService, 
         });
     }
 
-    this.GetElementIndexById = function(id) {
-        console.log(this.AllItems);
-        var List = this.AllItems;
-        for (var i = 0; i < List.length; i++) {
-            if (List[i].id == id) {
-                return i;
-            }
-        }
-        return null;
-    }
+
 
 }]);
