@@ -6,11 +6,12 @@
     <title>Contacts Manager - Deloitte Digital</title>
 
     <!--Vendor Stylesheets-->
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--App Stylesheets-->
     <link rel="stylesheet" href="assets/css/main.css"/>
     <link rel="stylesheet" href="assets/css/header.controller.css"/>
     <link rel="stylesheet" href="app/directives/contact-map/contact-map.directive.css"/>
+    <link rel="stylesheet" href="assets/css/contact-card.directive.css">
 
     <!--Vendor Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -27,16 +28,61 @@
     <script src="app/models/contact/contact.model.js"></script>
     <script src="app/services/contacts/contacts.service.js"></script>
     <script src="app/services/utils/utils.service.js"></script>
-    <script src="assets/resources/ng-map.min.js"></script>
     <script src="app/directives/contact-map/contact-map.directive.js"></script>
-    <!--<script src="app/directives/contacts-card/contacts-card.directive.js"></script>
-    <script src="app/directives/contacts-form/contacts-form.directive.js"></script>-->
+    <!--<script src="app/directives/contact-form/contacts-form.directive.js"></script>-->
+    <script src="app/directives/contact-card/contact-card.directive.js"></script>
 </head>
 
 <body>
     <div ng-controller="HeaderController">
-        <div>
+        <div class="header-container">
+            <div class="header-title-container">
+                <div class="header-title">
+                    SMART
+                    <span class="header-title-blue"> CONTACTS</span>
+                    <!-- all the icon that are necessary to our application
+
+
+                    <i class="material-icons">search</i>
+                    <i class="material-icons">save</i>
+                    <i class="material-icons">date_range</i>
+                    <i class="material-icons">camera_alt</i>
+                    <i class="material-icons">arrow_back</i>
+
+                     end -->
+
+
+                </div>
+            </div>
+            <div class="header-icons-container">
+                <div class="icon active">
+                    <i class="material-icons google-icon-header">delete</i>
+                </div>
+
+                <div class="icon active">
+                    <i class="material-icons  google-icon-header">mode_edit</i>
+                </div>
+                <div class="icon">
+                    <i class="material-icons  google-icon-header">add</i>
+                </div>
+
+            </div>
         </div>
+
+        <div class="contacts-container">
+
+            <div class="search-div">
+                <div class="icon-search">
+                    <i class="material-icons  google-icon-search">search</i>
+                </div>
+                <div class="search-input">
+                    <input type="text" class="input-label" placeholder="Search by name"/>
+               </div>
+            </div>
+
+            <contact-card> </contact-card>
+
+
     </div>
     <div ng-view class="divNgView">
 

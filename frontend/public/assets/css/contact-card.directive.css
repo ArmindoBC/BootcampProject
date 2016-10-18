@@ -1,0 +1,20 @@
+.contact-card-div {
+    width: 412px;
+    height: 72px;
+    background-color: red;
+    width: 100%;
+}
+.contact-card-items {
+    display: flex;
+    height: 72px;
+    padding-left: 16px;
+    justify-content: flex-start;;
+    align-items: center;
+}
+.contact-pic {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.38);
+    border-radius: 50%;
+}
+.contact-content {}
