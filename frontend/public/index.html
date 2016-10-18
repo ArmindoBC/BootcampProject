@@ -1,1 +1,37 @@
-<h1>Hello, ContactsManager is running</h1
+<!doctype html>
+<html ng-app="contactsManager">
+
+<head>
+    <base href="/">
+    <title>Contacts Manager - Deloitte Digital</title>
+
+    <!--Vendor Stylesheets-->
+
+    <!--App Stylesheets-->
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <!--Vendor Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+    <!--App Scripts-->
+    <script src="app/app.module.js"></script>
+    <script src="app/controllers/home/home.controller.js"></script>
+    <script src="app/controllers/contacts-list/contacts-list.controller.js"></script>
+    <script src="app/controllers/contacts-details/contacts-details.controller.js"></script>
+    <script src="app/models/contact/contact.model.js"></script>
+    <script src="app/services/contacts/contacts.service.js"></script>
+    <script src="app/services/utils/utils.service.js"></script>
+    <!--<script src="app/directives/contacts-card/contacts-card.directive.js"></script>
+    <script src="app/directives/contacts-form/contacts-form.directive.js"></script>-->
+</head>
+
+<body>
+
+    <div ng-view class="divNgView">
+        <!--Navigation Result-->
+    </div>
+
+</body>
+
+</html>
