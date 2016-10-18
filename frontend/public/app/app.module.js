@@ -16,6 +16,10 @@ app.config(function($routeProvider, $locationProvider) {
             controller: "ContactsDetailsController",
             templateUrl: "app/controllers/contacts-details/contacts-details.controller.html"
         })
+        .when("/contacts/edit/:id?", {
+            controller: "ContactsEditController",
+            templateUrl: "app/controllers/contacts-details/contacts-details.controller.html"
+        })
         .otherwise({
             redirectTo: "/"
         });

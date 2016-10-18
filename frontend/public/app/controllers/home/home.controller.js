@@ -21,8 +21,6 @@ app.controller('HomeController', ['$scope', 'ContactsService', function($scope, 
                   ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);
               }, 1000);*/
 
-            console.log($scope.text);
-
         };
         $scope.Start();
 

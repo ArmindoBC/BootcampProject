@@ -8,10 +8,12 @@
     <!--Vendor Stylesheets-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--App Stylesheets-->
-    <link rel="stylesheet" href="assets/css/main.css"/>
-    <link rel="stylesheet" href="assets/css/header.controller.css"/>
-    <link rel="stylesheet" href="app/directives/contact-map/contact-map.directive.css"/>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/header.controller.css" />
+    <link rel="stylesheet" href="app/directives/contact-map/contact-map.directive.css" />
     <link rel="stylesheet" href="assets/css/contact-card.directive.css">
+    <link rel="stylesheet" href="assets/css/contact-form.directive.css">
+    <link rel="stylesheet" href="assets/css/input-box.directive.css">
 
     <!--Vendor Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -29,8 +31,9 @@
     <script src="app/services/contacts/contacts.service.js"></script>
     <script src="app/services/utils/utils.service.js"></script>
     <script src="app/directives/contact-map/contact-map.directive.js"></script>
-    <!--<script src="app/directives/contact-form/contacts-form.directive.js"></script>-->
+    <script src="app/directives/contact-form/contact-form.directive.js"></script>
     <script src="app/directives/contact-card/contact-card.directive.js"></script>
+    <!-- <script src="app/directives/contact-form/input-box.directive.js"></script> -->
 </head>
 
 <body>
@@ -60,6 +63,7 @@
                 </div>
 
                 <div class="icon active">
+                    <!--ng-click="location.path("/contacts/edit")"-->
                     <i class="material-icons  google-icon-header">mode_edit</i>
                 </div>
                 <div class="icon">
@@ -76,13 +80,13 @@
                     <i class="material-icons  google-icon-search">search</i>
                 </div>
                 <div class="search-input">
-                    <input type="text" class="input-label" placeholder="Search by name"/>
-               </div>
+                    <input type="text" class="input-label" placeholder="Search by name" />
+                </div>
             </div>
 
             <contact-card> </contact-card>
 
-
+        </div>
     </div>
     <div ng-view class="divNgView">
 

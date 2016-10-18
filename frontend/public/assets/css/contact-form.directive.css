@@ -1,15 +1,15 @@
-.header-container {
+.form-header-container {
     padding-top: 54px;
     padding-left: 122px;
     padding-bottom: 39px;
     border-bottom: solid 5px #4fe0f2;
 }
 
-.header-container>* {
+.form-header-container>* {
     display: block;
 }
 
-.header-container .header {
+.form-header-container .header {
     font-size: 36px;
     font-weight: normal;
     font-style: normal;
@@ -35,7 +35,6 @@
 }
 
 .input-container .input>* {
-
     /*border: 1px solid black; (delt)*/
 }
 

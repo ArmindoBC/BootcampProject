@@ -1,6 +1,6 @@
+app.controller('HeaderController', ['$scope', '$location', 'ContactsService', function($scope, $location, ContactsService) {
 
-app.controller('HeaderController', ['$scope', 'ContactsService', function($scope, ContactsService) {
-
+    $scope.location = $location;
     $scope.IsLoading = false;
 
     $scope.OnCompleteGetAll = function() {
@@ -16,10 +16,10 @@ app.controller('HeaderController', ['$scope', 'ContactsService', function($scope
     //Start Function
     $scope.Start = function() {
         //load Persons
-      /*  $scope.IsLoading = true;
-        setTimeout(function() {
-            ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);
-        }, 1000);*/
+        /*  $scope.IsLoading = true;
+          setTimeout(function() {
+              ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);
+          }, 1000);*/
 
     };
     $scope.Start();
