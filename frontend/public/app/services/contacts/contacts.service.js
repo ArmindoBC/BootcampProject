@@ -65,21 +65,19 @@ app.service('ContactsService', ['UtilsService', '$http', function(UtilsService, 
     }
 
     this.GetById = function(id, onComplete, onError) {
-      var path = "/" + id;
-
-      $http({
-          method: 'GET',
-          url: 'http://localhost:9003/contact' + path
-      }).then(function successCallback(response) {
-          // this callback will be called asynchronously
-          // when the response is available
-          onComplete(response.data);
-      }, function errorCallback(response) {
-          // called asynchronously if an error occurs
-          // or server returns response with an error status.
-          onError(response);
-      });
-  }
+        $http({
+            method: 'GET',
+            url: 'http://localhost:9003/contact/' + id
+        }).then(function successCallback(response) {
+            // this callback will be called asynchronously
+            // when the response is available
+            onComplete(response.data);
+        }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            onError(response);
+        });
+    }
 
     this.GetElementIndexById = function(id) {
         console.log(this.AllItems);
