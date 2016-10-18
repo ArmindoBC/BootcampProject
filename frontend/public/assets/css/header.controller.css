@@ -60,7 +60,7 @@
     background-color: #4fe0f2;
 }
 .contacts-container {
-    top: 60px;
+    top: 120px;
     position: absolute;
     bottom: 0;
     width: 419px;
@@ -82,6 +82,7 @@
     outline: 1px solid slategrey;
 }
 .search-div {
+    border-left: solid 6.4px #101632;
     top: 60px;
     padding-left: 20px;
     height: 60px;
@@ -165,13 +166,29 @@
     height: 30px;
     width: 30px;
 }
-
 $green: #008744;
 $blue: #0057e7;
 $red: #d62d20;
 $yellow: #ffa700;
 $white: #eee;
 
+// scaling... any units
+$width: 100px;
+
+body {
+  background-color: $white;
+}
+
+// demo-specific
+.showbox {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 5%;
+}
+// end demo-specific
 
 .loader {
   position: relative;
