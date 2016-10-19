@@ -37,6 +37,8 @@
     align-items: center;
 }
 .icon {
+    cursor: pointer;
+    cursor: hand;
     width: 60px;
     height: 60px;
     display: flex;
@@ -86,7 +88,7 @@
     top: 60px;
     padding-left: 20px;
     height: 60px;
-    width:399px;
+    width: 399px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -167,95 +169,63 @@
     height: 30px;
     width: 30px;
 }
-$green: #008744;
-$blue: #0057e7;
-$red: #d62d20;
-$yellow: #ffa700;
-$white: #eee;
 
-// scaling... any units
-$width: 100px;
-
-body {
-  background-color: $white;
-}
-
-// demo-specific
-.showbox {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 5%;
-}
-// end demo-specific
+/*Spinner css */
 
 .loader {
-  position: relative;
-  margin: 0 auto;
-  width: $width;
-  &:before {
-    content: '';
-    display: block;
-    padding-top: 100%;
-  }
+    position: relative;
+    margin: 0 auto;
+    width: 50px;
+    &:before {
+        content: '';
+        display: block;
+        padding-top: 100%;
+    }
 }
-
 .circular {
-  animation: rotate 2s linear infinite;
-  height: 100%;
-  transform-origin: center center;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
+    animation: rotate 2s linear infinite;
+    height: 100%;
+    transform-origin: center center;
+    margin: auto;
 }
-
 .path {
-  stroke-dasharray: 1, 200;
-  stroke-dashoffset: 0;
-  animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
-  stroke-linecap: round;
-}
-
-@keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes dash {
-  0% {
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -35px;
-  }
-  100% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -124px;
-  }
+    animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+    stroke-linecap: round;
+}
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+    }
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+    }
+}
+@keyframes color {
+    100%, 0% {
+        stroke: #222a4d;
+    }
+    40% {
+        stroke: #222a4d;
+    }
+    66% {
+        stroke: #222a4d;
+    }
+    80%, 90% {
+        stroke: #222a4d;
+    }
 }
 
-@keyframes color {
-  100%,
-  0% {
-    stroke: $red;
-  }
-  40% {
-    stroke: $blue;
-  }
-  66% {
-    stroke: $green;
-  }
-  80%,
-  90% {
-    stroke: $yellow;
-  }
-}
+/*End spinner css magic*/

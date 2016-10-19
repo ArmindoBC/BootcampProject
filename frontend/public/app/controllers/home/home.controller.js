@@ -1,9 +1,11 @@
-app.controller('HomeController', ['$scope', '$routeParams', 'ContactsService', function($scope, $routeParams, ContactsService) {
+app.controller('HomeController', ['$scope', '$routeParams', 'ContactsService', 'ActiveContactService', function($scope, $routeParams, ContactsService, ActiveContactService) {
 
     $scope.InEditMode = false;
     $scope.InDetailsMode = false;
     $scope.IsLoading = false;
     $scope.text = "welcome to home controller!!";
+
+    $scope.ActiveContact = ActiveContactService.ActiveContact;
 
     $scope.OnCompleteGetAll = function() {
         $scope.ContactsList = ContactsService.AllItems;
@@ -28,13 +30,6 @@ app.controller('HomeController', ['$scope', '$routeParams', 'ContactsService', f
             $scope.InDetailsMode = false;
             $scope.model = new Contact();
         }
-        //load Persons
-        /*  $scope.IsLoading = true;
-          setTimeout(function() {
-              ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);
-          }, 1000);*/
-
-    };
-    $scope.Start();
-
+        $scope.Start();
+    }
 }]);
