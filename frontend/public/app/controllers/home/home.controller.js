@@ -1,8 +1,12 @@
-app.controller('HomeController', ['$scope', 'ContactsService', "ActiveContactService", function($scope, ContactsService, ActiveContactService) {
+app.controller('HomeController', ['$scope', '$routeParams', 'ContactsService', 'ActiveContactService', function($scope, $routeParams, ContactsService, ActiveContactService) {
 
+    $scope.InEditMode = false;
+    $scope.InDetailsMode = false;
     $scope.IsLoading = false;
+    $scope.text = "welcome to home controller!!";
 
     $scope.ActiveContactService = ActiveContactService;
+
 
     $scope.OnCompleteGetAll = function() {
         $scope.ContactsList = ContactsService.AllItems;
@@ -13,19 +17,19 @@ app.controller('HomeController', ['$scope', 'ContactsService', "ActiveContactSer
         console.log(errorCode);
         $scope.IsLoading = false;
     }
-
-    //refresh service when clicking the user
-
-
     //Start Function
     $scope.Start = function() {
-        //load Persons
-        /*  $scope.IsLoading = true;
-          setTimeout(function() {
-              ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);
-          }, 1000);*/
-
-    };
-    $scope.Start();
-
+        if ($routeParams.id != null) {
+            //Create mode
+            $scope.InEditMode = true;
+            $scope.InDetailsMode = true;
+            //$scope.model = ContactsService.GetById($routeParams.id);
+        } else {
+            //Edit mode
+            $scope.InEditMode = false;
+            $scope.InDetailsMode = false;
+            $scope.model = new Contact();
+        }
+        $scope.Start();
+    }
 }]);

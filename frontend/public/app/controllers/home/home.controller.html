@@ -1,11 +1,16 @@
 <!--<h1>Hello</h1>
 <contactForm> </contactForm>-->
 <!--<contact-map contactid="'contact.id'"></<contact-map>-->
-<h1>
-  {{ActiveContact.id}}
-</h1>
-    <div class="insideNgView">
-        <contact-form> </contact-form>
-        <contact-map contactid="'58053eccae1ddb6f585ed56e'"></<contact-map>
-    </div>
-  </div>
+<!--<contact-map contactid="'58074e10aa2b4f17789d8169'"></<contact-map>-->
+
+<div class="insideNgView" ng-if="InDetailsMode">
+    <!--<h2> edit or create the contact</h2>-->
+    <contact-form contactid="'58074e10aa2b4f17789d8169'"></contact-edit>
+    <contact-upload contactid="'58074e10aa2b4f17789d8169'"></<contact-upload>
+    <contact-map contactid="'58074e10aa2b4f17789d8169'"></<contact-map>
+</div>
+
+<div class="insideNgView" ng-if="!InDetailsMode">
+    <!--<h2> details the contact</h2>-->
+    <contact-details contactid="'58074e10aa2b4f17789d8169'"></contact-edit>
+</div>
