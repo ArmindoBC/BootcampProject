@@ -2,7 +2,7 @@ app.service('ActiveContactService', ['ContactsService', function(ContactsService
 
     this.ActiveContact;
     var thisService = this;
-
+    
     this.changeActiveContact = function(contactId, onComplete, onError) {
         ContactsService.GetById(contactId,
             function(response) {

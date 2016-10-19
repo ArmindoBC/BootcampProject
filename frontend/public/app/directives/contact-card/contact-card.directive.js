@@ -10,6 +10,10 @@ app.directive('contactCard', ["ContactsService", "ActiveContactService", functio
         templateUrl: 'app/directives/contact-card/contact-card.directive.html',
         link: function($scope, element, attrs) {
             //init card
+            $scope.start =  function(){
+            
+            }
+            $scope.start();
             $scope.showUser = function(contactId) {
 
                 document.getElementById(ActiveContactService.ActiveContact.id).className = "contact-card-div-no-active";
