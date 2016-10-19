@@ -1,15 +1,10 @@
-input-box .input-icon {
-
-}
-
-input-box input {
+input-text-area textarea {
   padding-top: 9px;
   /* Symmetric to top (10px -> 9px) (delt) */
   padding-bottom: 9px;
   padding-left: 21px;
   /* Symmetric to left (delt)*/
   padding-right: 21px;
-  width: 399px;
   font-size: 18px;
   font-weight: normal;
   font-style: normal;
