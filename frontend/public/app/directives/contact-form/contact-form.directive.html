@@ -3,7 +3,7 @@
         <div class="contact-image">
         </div>
         <div class="header">
-            André Silva
+            {{ContactsService.Model.name}}
         </div>
     </div>
     <div class="input-container">
@@ -11,36 +11,54 @@
             <div class="input-label">
                 Name
             </div>
-            <input class="input-box" placeholder="{{model.name}}">
+            <input class="input-box" ng-model="ContactsService.Model.name" ng-if="modeEdit">
+            </input>
+            <input class="input-box" ng-model="ContactsService.Model.name" placeholder="{{ContactsService.ModelCreate.name}}" ng-if="modeEdit">
             </input>
         </div>
         <div class="input">
             <div class="input-label">
-                Phone Number / {{input-label-text}}
+                Phone Number
             </div>
-            <input class="input-box" placeholder="{{model.phonenumber}}">
+            <input class="input-box" ng-model="ContactsService.Model.phonenumber" ng-if="modeEdit">
+            </input>
+            <input class="input-box" ng-model="ContactsService.Model.phonenumber" placeholder="{{ContactsService.ModelCreate.phonenumber}}" ng-if="modeEdit">
             </input>
         </div>
         <div class="input">
             <div class="input-label">
-                Email / {{input-label-text}}
+                Email
             </div>
-            <input class="input-box" placeholder="{{model.email}}">
+            <input class="input-box" ng-model="ContactsService.Model.email" ng-if="modeEdit">
+            </input>
+            <input class="input-box"  ng-model="ContactsService.Model.email" placeholder="{{ContactsService.ModelCreate.email}}" ng-if="modeEdit">
             </input>
         </div>
         <div class="input">
             <div class="input-label">
-                Address / {{input-label-text}}
+                Birthday
             </div>
-            <input class="input-box" placeholder="{{model.address}}">
+            <input class="input-box" ng-model="ContactsService.Model.birthday" ng-if="modeEdit">
+            </input>
+            <input class="input-box" ng-model="ContactsService.Model.birthday" placeholder="{{ContactsService.ModelCreate.birthday}}"  ng-if="modeEdit">
             </input>
         </div>
         <div class="input">
             <div class="input-label">
-                Birthdate / {{input-label-text}}
+                Address
             </div>
-            <input class="input-box" placeholder="{{model.birthdate}}">
+            <input class="input-box" ng-model="ContactsService.Model.address" ng-if="modeEdit">
+            </input>
+            <input class="input-box" ng-model="ContactsService.Model.address" placeholder="{{ContactsService.ModelCreate.address}}"  ng-if="modeEdit">
             </input>
         </div>
+        <div class="input">
+            <div class="input-label">
+                Photo
+            </div>
+            <input class="input-box" ng-model="model.name" placeholder="{{ContactsService.ModelCreate.photo}}"  ng-if="modeEdit">
+            </input>
+        </div>
+
     </div>
 </div>

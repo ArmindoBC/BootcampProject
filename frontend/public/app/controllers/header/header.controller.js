@@ -8,7 +8,7 @@ app.controller('HeaderController', ['$scope', '$location', 'ContactsService', "A
 
         $scope.ContactsList = ContactsService.AllItems;
         //update active user on active service
-        ActiveContactService.ActiveContact =  ContactsService.AllItems[0];
+        ActiveContactService.ActiveContact.value =  ContactsService.AllItems[0];
         //load first active user on header controller scope
         $scope.ActiveContact =  ActiveContactService.ActiveContact;
         //stop loading animation

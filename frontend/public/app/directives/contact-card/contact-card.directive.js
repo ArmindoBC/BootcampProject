@@ -10,7 +10,9 @@ app.directive('contactCard', ["ContactsService","ActiveContactService", function
     link: function($scope, element, attrs) {
       //init card
       $scope.showUser = function(contactId){
-        ActiveContactService.changeActiveContact(contactId);
+        ActiveContactService.changeActiveContact(contactId, function(){
+
+        });
 
       }
     }

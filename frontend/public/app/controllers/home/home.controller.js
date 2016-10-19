@@ -16,7 +16,6 @@ app.controller('HomeController', ['$scope', '$routeParams', 'ContactsService', '
         console.log(errorCode);
         $scope.IsLoading = false;
     }
-
     //Start Function
     $scope.Start = function() {
         if ($routeParams.id != null) {
