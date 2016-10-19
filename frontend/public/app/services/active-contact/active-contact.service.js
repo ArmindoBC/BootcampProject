@@ -7,7 +7,7 @@ app.service('ActiveContactService', ['ContactsService', function(ContactsService
          function(onSuccess)
       {
         this.ActiveContact =  onSuccess;
-        
+          console.log(this.ActiveContact);
       },
        function(onError){
         console.log(onError);

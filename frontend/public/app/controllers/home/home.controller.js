@@ -2,13 +2,7 @@ app.controller('HomeController', ['$scope', 'ContactsService', "ActiveContactSer
 
     $scope.IsLoading = false;
 
-    $scope.ActiveContact = ActiveContactService.ActiveContact;
-
-    $scope.$watch(ActiveContactService.ActiveContact, function(newActiveContact) {
-
-          alert("entreiiieieiei");
-          $scope.ActiveContact = newActiveContact;
-    });
+    $scope.ActiveContactService = ActiveContactService;
 
     $scope.OnCompleteGetAll = function() {
         $scope.ContactsList = ContactsService.AllItems;
