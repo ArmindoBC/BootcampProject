@@ -30,5 +30,6 @@ app.controller('HomeController', ['$scope', '$routeParams', 'ContactsService', '
             $scope.model = new Contact();
         }
         $scope.Start();
+        $scope.InDetailsMode = false;
     }
 }]);

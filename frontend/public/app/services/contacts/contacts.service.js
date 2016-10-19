@@ -4,8 +4,9 @@ app.service('ContactsService', ['UtilsService', '$http', function(UtilsService,$
     this.AllItems;
     this.Model;
     this.ModelCreate = {
+      header: "Your Name",
       name: "Insert your name",
-      phonenumber: "Insert your mobile with national code",
+      phonenumber: "Insert your mobile (+)",
       email: "Insert your email",
       birthday: "Select your birthday",
       address: "Insert your address",
