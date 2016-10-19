@@ -40,7 +40,9 @@ app.directive('contactMap', ["ContactsService", function(ContactsService) {
             //init card
             ContactsService.GetById($scope.contactid, function(model) {
                 $scope.model = model;
-                initMap(model.address, $(element).find('.map')[0]);
+                console.log($scope.model.address);
+                if($scope.model.address!="")
+                    initMap(model.address, $(element).find('.map')[0]);
             }, function(error) {
                 console.log(error);
             });
