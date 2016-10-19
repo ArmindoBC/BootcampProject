@@ -7,13 +7,14 @@
 
     <!--Vendor Stylesheets-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!--App Stylesheets-->
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="assets/css/header.controller.css" />
     <link rel="stylesheet" href="app/directives/contact-map/contact-map.directive.css" />
     <link rel="stylesheet" href="assets/css/contact-card.directive.css">
     <link rel="stylesheet" href="assets/css/contact-form.directive.css">
-    <link rel="stylesheet" href="assets/css/input-box.directive.css">
+    <!--<link rel="stylesheet" href="assets/css/input-box.directive.css">-->
 
     <!--Vendor Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -44,17 +45,12 @@
                     SMART
                     <span class="header-title-blue"> CONTACTS</span>
                     <!-- all the icon that are necessary to our application
-
-
                     <i class="material-icons">search</i>
                     <i class="material-icons">save</i>
                     <i class="material-icons">date_range</i>
                     <i class="material-icons">camera_alt</i>
                     <i class="material-icons">arrow_back</i>
-
                      end -->
-
-
                 </div>
             </div>
             <div class="header-icons-container">
@@ -72,27 +68,20 @@
 
             </div>
         </div>
-
-
-
-            <div class="search-div">
-                <div class="icon-search">
-                    <i class="material-icons  google-icon-search">search</i>
-                </div>
-                <div class="search-input">
-                    <input type="text" class="input-label" placeholder="Search by name" />
-                </div>
+        <div class="search-div">
+            <div class="icon-search">
+                <i class="material-icons  google-icon-search">search</i>
             </div>
+            <div class="search-input">
+                <input type="text" class="input-label" placeholder="Search by name" />
+            </div>
+        </div>
         <div class="contacts-container">
             <contact-card namecontact=" contact.name" phonenumber="contact.phoneNumber" ng-repeat="contact in ContactsList"> </contact-card>
-
         </div>
     </div>
     <div ng-view class="divNgView">
 
     </div>
-
-
 </body>
-
 </html>

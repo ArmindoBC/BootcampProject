@@ -1,59 +1,74 @@
-html,
-body {
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-    min-height: 100%;
-    font-family: 'OpenSans-Regular';
-}
+    html, body {
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        min-height: 100%;
+        font-family: 'OpenSans-Regular';
+    }
 
-//OpenSans bold
-@font-face {
-    font-family: 'OpenSans-Bold';
-    src: url('../fonts/Open_Sans_Web/OpenSans-Bold.eot');
-    src: url('../fonts/Open_Sans_Web/OpenSans-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/Open_Sans_Web/OpenSans-Bold.ttf') format('truetype');
-    font-weight: 300;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'OpenSans-Regular';
-    src: url('../fonts/Open_Sans_Web/OpenSans-Regular.eot');
-    src: url('../fonts/Open_Sans_Web/OpenSans-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/Open_Sans_Web/OpenSans-Regular.ttf') format('truetype');
-    font-weight: 300;
-    font-style: normal;
-}
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+    //OpenSans bold
+    @font-face {
+        font-family: 'OpenSans-Bold';
+        src: url('../fonts/Open_Sans_Web/OpenSans-Bold.eot');
+        src: url('../fonts/Open_Sans_Web/OpenSans-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/Open_Sans_Web/OpenSans-Bold.ttf') format('truetype');
+        font-weight: 300;
+        font-style: normal;
+    }
 
-}
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
+    @font-face {
+        font-family: 'OpenSans-Regular';
+        src: url('../fonts/Open_Sans_Web/OpenSans-Regular.eot');
+        src: url('../fonts/Open_Sans_Web/OpenSans-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/Open_Sans_Web/OpenSans-Regular.ttf') format('truetype');
+        font-weight: 300;
+        font-style: normal;
+    }
 
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
+    @font-face {
+        font-family: 'Material Icons';
+        font-style: normal;
+        font-weight: 400;
+        src: url(https://example.com/MaterialIcons-Regular.eot);
+        /* For IE6-8 */
+    }
 
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
+    .material-icons {
+        font-family: 'Material Icons';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;
+        /* Preferred icon size */
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+        /* Support for all WebKit browsers. */
+        -webkit-font-smoothing: antialiased;
+        /* Support for Safari and Chrome. */
+        text-rendering: optimizeLegibility;
+        /* Support for Firefox. */
+        -moz-osx-font-smoothing: grayscale;
+        /* Support for IE. */
+        font-feature-settings: 'liga';
+    }
 
-  /* Support for IE. */
-  font-feature-settings: 'liga';
-}
+    .divNgView {
+        display: block;
+        border: solid 1px red;
+        height: 100%;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -35px;
+        /*background-color: #f8f9fa;*/
+    }
 
-.divNgView {
-  display: block;
-}
+    .insideNgView {
+        display: block;
+        border: solid 1px blue;
+        width: 813px;
+        height: 775.px;
+        margin-left: 524px;
+    }

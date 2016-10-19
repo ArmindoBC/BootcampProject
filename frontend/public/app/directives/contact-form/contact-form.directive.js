@@ -1,4 +1,5 @@
-app.directive("contactForm", [function() {
+app.directive('contactForm', ["ContactsService", function(ContactsService) {
+
     return {
         restrict: 'E', //E = element, A = attribute, C = class, M = comment
         scope: {
@@ -6,6 +7,7 @@ app.directive("contactForm", [function() {
         },
         templateUrl: 'app/directives/contact-form/contact-form.directive.html',
         link: function($scope, element, attrs) {
+            console.log("teste contact form");
             // $scope.onComplete = function (complete, data) {
             //   if(complete) {
             //     // loading details into local memory
