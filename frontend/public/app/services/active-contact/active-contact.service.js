@@ -7,7 +7,7 @@ app.service('ActiveContactService', ['ContactsService', function(ContactsService
         ContactsService.GetById(contactId,
             function(response) {
                 thisService.ActiveContact = response;
-                onComplete();
+                onComplete;
             },
             function(onError) {
                 console.log(onError);

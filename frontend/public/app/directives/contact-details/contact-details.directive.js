@@ -33,9 +33,9 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", func
         },
         templateUrl: 'app/directives/contact-details/contact-details.directive.html',
         link: function(scope, element, attrs) {
-            console.log(scope.contact.address);
             //init card
             initMap(scope.contact.address, $(element).find('.map')[0]);
+            scope.$applyAsync();
 
         }
     };
