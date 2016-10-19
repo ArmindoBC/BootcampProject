@@ -31,6 +31,7 @@
     <script src="app/models/contact/contact.model.js"></script>
     <script src="app/services/contacts/contacts.service.js"></script>
     <script src="app/services/utils/utils.service.js"></script>
+    <script src="app/services/active-contact/active-contact.service.js"></script>
     <script src="app/directives/contact-map/contact-map.directive.js"></script>
     <script src="app/directives/contact-form/contact-form.directive.js"></script>
     <script src="app/directives/contact-card/contact-card.directive.js"></script>
@@ -79,7 +80,14 @@
                     </div>
                 </div>
                 <div class="contacts-container">
-                    <contact-card namecontact="contact.name" phonenumber="contact.phoneNumber" ng-repeat="contact in ContactsList"> </contact-card>
+                    <div class="showbox" ng-if="IsLoading">
+                        <div class="loader">
+                            <svg class="circular" viewBox="25 25 50 50">
+                                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                            </svg>
+                        </div>
+                    </div>
+                    <contact-card  ng-if="!IsLoading" contactid="contact.id" namecontact="contact.name" phonenumber="contact.phoneNumber" ng-repeat="contact in ContactsList"> </contact-card>
                 </div>
             </div>
 
