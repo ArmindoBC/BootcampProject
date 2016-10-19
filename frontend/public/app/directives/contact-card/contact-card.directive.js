@@ -4,7 +4,8 @@ app.directive('contactCard', ["ContactsService", "ActiveContactService", functio
         scope: {
             namecontact: "=",
             phonenumber: "=",
-            contactid: "="
+            contactid: "=",
+            contactObject : "="
         },
         templateUrl: 'app/directives/contact-card/contact-card.directive.html',
         link: function($scope, element, attrs) {
