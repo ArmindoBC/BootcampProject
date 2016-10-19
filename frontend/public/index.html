@@ -68,20 +68,29 @@
 
             </div>
         </div>
-        <div class="search-div">
-            <div class="icon-search">
-                <i class="material-icons  google-icon-search">search</i>
+        <div class="main-container">
+            <div class="sub-container">
+                <div class="search-div">
+                    <div class="icon-search">
+                        <i class="material-icons  google-icon-search">search</i>
+                    </div>
+                    <div class="search-input">
+                        <input type="text" class="input-label" placeholder="Search by name" />
+                    </div>
+                </div>
+                <div class="contacts-container">
+                    <contact-card namecontact="contact.name" phonenumber="contact.phoneNumber" ng-repeat="contact in ContactsList"> </contact-card>
+                </div>
             </div>
-            <div class="search-input">
-                <input type="text" class="input-label" placeholder="Search by name" />
-            </div>
-        </div>
-        <div class="contacts-container">
-            <contact-card namecontact="contact.name" phonenumber="contact.phoneNumber" ng-repeat="contact in ContactsList"> </contact-card>
-        </div>
-    </div>
-    <div ng-view class="divNgView">
 
+            <div class="sub-container-2">
+
+                <div ng-view class="divNgView">
+
+                </div>
+            </div>
+        </div>
     </div>
 </body>
+
 </html>
