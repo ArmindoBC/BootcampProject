@@ -9,6 +9,13 @@ app.controller('HeaderController', ['$scope', '$location', 'ContactsService', "A
         $scope.ContactsList = ContactsService.AllItems;
         //update active user on active service
         ActiveContactService.ActiveContact =  ContactsService.AllItems[0];
+
+        setTimeout(function(){
+           if(ActiveContactService.ActiveContact.id != null &&
+             document.getElementById(ActiveContactService.ActiveContact.id)!=null)
+          {document.getElementById(ActiveContactService.ActiveContact.id).className = "contact-card-div-active";}
+        },100);
+
         //load first active user on header controller scope
         $scope.ActiveContact =  ActiveContactService.ActiveContact;
         //stop loading animation

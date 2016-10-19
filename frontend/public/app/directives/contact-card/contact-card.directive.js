@@ -10,6 +10,10 @@ app.directive('contactCard', ["ContactsService", "ActiveContactService", functio
         templateUrl: 'app/directives/contact-card/contact-card.directive.html',
         link: function($scope, element, attrs) {
             //init card
+            $scope.start =  function(){
+            
+            }
+            $scope.start();
             $scope.showUser = function(contactId) {
 
                 //get the last active contact element and set disable mode
