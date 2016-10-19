@@ -3,7 +3,7 @@
         <div class="contact-image">
         </div>
         <div class="header">
-            {{model.name}}
+            {{model.name | firstCharacterUppercase}}
         </div>
     </div>
     <div class="input-container">
@@ -12,7 +12,7 @@
                 Name
             </div>
             <div class="label-contact-details">
-                {{model.name}}
+                {{model.name | firstCharacterUppercase}}
             </div>
         </div>
         <div class="input">
