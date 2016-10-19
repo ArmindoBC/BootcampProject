@@ -1,11 +1,11 @@
-//TO DO
-app.filter('firstCharacterUpperCase', function() {
-	return function(input) {
-		var nameParts = input.split(" ");
-		var newName = "";
-		for (var i = 0; i < nameParts.length - 1; i++) {
-			newName += nameParts[i] + " ";
-		}
-		return newName + nameParts[nameParts.length - 1].toUpperCase();
-	};
-});
+app.filter('showFirstLastName', function() {
+    return function(input, scope) {
+        if (input != null) {
+            var stringArr = input.split(" ");
+            var result = "";
+            result = input.split(" ")[0] + ' ' + input.split(" ")[stringArr.length-1];
+
+            return result;
+        }
+    }
+})
