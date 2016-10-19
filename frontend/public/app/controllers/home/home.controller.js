@@ -5,8 +5,7 @@ app.controller('HomeController', ['$scope', '$routeParams', 'ContactsService', '
     $scope.IsLoading = false;
     $scope.text = "welcome to home controller!!";
 
-    $scope.ActiveContactService = ActiveContactService;
-
+    $scope.ActiveContact = ActiveContactService.ActiveContact;
 
     $scope.OnCompleteGetAll = function() {
         $scope.ContactsList = ContactsService.AllItems;
