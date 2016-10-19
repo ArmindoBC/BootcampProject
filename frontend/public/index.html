@@ -7,12 +7,14 @@
 
     <!--Vendor Stylesheets-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/animate.css">
 
     <!--App Stylesheets-->
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="assets/css/header.controller.css" />
     <link rel="stylesheet" href="app/directives/contact-map/contact-map.directive.css" />
     <link rel="stylesheet" href="app/directives/contact-upload/contact-upload.directive.css" />
+    <link rel="stylesheet" href="app/directives/contact-details/contact-map.directive.css" />
     <link rel="stylesheet" href="assets/css/contact-card.directive.css">
     <link rel="stylesheet" href="assets/css/contact-form.directive.css">
     <!--<link rel="stylesheet" href="assets/css/input-box.directive.css">-->
@@ -41,6 +43,7 @@
     <script src="app/filters/get-contact-age/get-contact-age.filter.js"></script>
     <script src="app/filters/first-character-uppercase/first-character-uppercase.filter.js"></script>
     <script src="app/filters/show-first-last-name/show-first-last-name.filter.js"></script>
+    <script src="app/filters/choose-primary-contact/choose-primary-contact.filter.js"></script>
     <!-- <script src="app/directives/contact-form/input-box.directive.js"></script> -->
 </head>
 
@@ -93,13 +96,13 @@
                             </svg>
                         </div>
                     </div>
-                    <contact-card  ng-if="!IsLoading" contactid="contact.id" namecontact="contact.name" phonenumber="contact.phoneNumber" ng-repeat="contact in ContactsList"> </contact-card>
+                    <contact-card ng-if="!IsLoading" contactObject="contact" contactid="contact.id" namecontact="contact.name" phonenumber="contact.phonenumber" ng-repeat="contact in ContactsList"> </contact-card>
                 </div>
             </div>
 
             <div class="sub-container-2">
 
-                <div ng-view class="divNgView">
+                <div ng-view class="divNgView animated">
 
                 </div>
             </div>

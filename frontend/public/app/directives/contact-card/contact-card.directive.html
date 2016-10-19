@@ -3,14 +3,13 @@
     <div class="contact-card-items">
         <div class="contact-pic">
         </div>
-
         <div class="contact-content">
             <div class="contact-name">
                 {{namecontact | firstCharacterUppercase | showFirstLastName}}
             </div>
 
             <div class="contact-detail">
-                {{phonenumber}}
+                {{contactObject | choosePrimaryContact}}
             </div>
         </div>
     </div>

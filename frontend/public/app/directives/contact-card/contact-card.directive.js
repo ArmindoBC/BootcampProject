@@ -10,8 +10,12 @@ app.directive('contactCard', ["ContactsService","ActiveContactService", function
     link: function($scope, element, attrs) {
       //init card
       $scope.showUser = function(contactId){
+        ActiveContactService.ActiveContact = null;
         ActiveContactService.changeActiveContact(contactId, function(){
-
+          //Completed
+          //Loading is hidden when ActiveContact is different than null and that it's already done
+        }, function(error) {
+          console.log(error);
         });
 
       }
