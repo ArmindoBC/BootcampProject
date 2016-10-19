@@ -23,39 +23,39 @@ class ContactController extends BaseController {
      * return the contact by the contact id
      */
     GetItem() {
-        return {
-            method: 'GET',
-            path: '/contact/{id}',
-            config: {
-                description: 'Get contact',
-                notes: 'Returns the contact which matches the id received',
-                tags: ['api'],
-                /*pre: [{
-                    method: BaseController.Authorize(['general'])
-                }],*/
-                handler: (request, reply) => {
-                    return this.BaseGetItemHandler(this.GetCollectionName(), request.params.id)
-                        .then((item) => {
-                            reply(item);
-                        })
-                        .catch((err) => {
-                            reply(Boom.wrap(err, 400));
-                        })
-                },
-                validate: {
-                    params: {
-                        id: joi.string().hex().required().description("Filter contact by id "),
+            return {
+                method: 'GET',
+                path: '/contact/{id}',
+                config: {
+                    description: 'Get contact',
+                    notes: 'Returns the contact which matches the id received',
+                    tags: ['api'],
+                    /*pre: [{
+                        method: BaseController.Authorize(['general'])
+                    }],*/
+                    handler: (request, reply) => {
+                        return this.BaseGetItemHandler(this.GetCollectionName(), request.params.id)
+                            .then((item) => {
+                                reply(item);
+                            })
+                            .catch((err) => {
+                                reply(Boom.wrap(err, 400));
+                            })
                     },
-                    /*headers: joi.object({
-                        'authorization': joi.string().required()
-                    }).unknown()*/
+                    validate: {
+                        params: {
+                            id: joi.string().hex().required().description("Filter contact by id "),
+                        },
+                        /*headers: joi.object({
+                            'authorization': joi.string().required()
+                        }).unknown()*/
+                    }
                 }
-            }
-        };
-    }
-    /**
-     * return the contact by the contact id
-     */
+            };
+        }
+        /**
+         * return the contact by the contact id
+         */
     GetItemAutocomplete() {
         return {
             method: 'GET',
@@ -103,6 +103,9 @@ class ContactController extends BaseController {
                     method: BaseController.Authorize(['general'])
                 }],*/
                 handler: (request, reply) => {
+                    if (request.query.name != null) {
+                        request.query.name = request.query.name.toLowerCase();
+                    }
                     return this.BaseGetHandler(this.GetCollectionName(), request.query)
                         .then((item) => {
                             reply(item);
@@ -114,6 +117,7 @@ class ContactController extends BaseController {
                 validate: {
                     query: {
                         id: joi.string().hex().description("Filter contact by id (same as use path/{id})"),
+                        name: joi.string().description("Filter by contact's name"),
                         email: joi.string().email().description("Filter contact by email"),
                         phonenumber: joi.phone.e164().description("Filter by contact's phone number"),
                         address: joi.string().description("Filter by the contact's address"),
@@ -142,6 +146,9 @@ class ContactController extends BaseController {
                     method: BaseController.Authorize(['general'])
                 }],*/
                 handler: (request, reply) => {
+                    if (request.payload.name != null) {
+                        request.payload.name = request.payload.name.toLowerCase();
+                    }
                     return this.BasePostHandler(this.GetCollectionName(), request.payload)
                         .then((item) => {
                             reply(item);
@@ -153,7 +160,7 @@ class ContactController extends BaseController {
                 },
                 validate: {
                     payload: {
-                        name: joi.string().required().description("Name of the contact person"),
+                        name: joi.string().lowercase().required().description("Name of the contact person"),
                         phonenumber: joi.phone.e164().optional().description("The contact's phone number"),
                         email: joi.string().email().optional().description("The contact's email"),
                         address: joi.string().optional().description("The contact's address"),
@@ -182,6 +189,9 @@ class ContactController extends BaseController {
                         method: BaseController.Authorize(['general'])
                     }],*/
                     handler: (request, reply) => {
+                        if (request.payload.name != null) {
+                            request.payload.name = request.payload.name.toLowerCase();
+                        }
                         return this.BasePatchHandler(this.GetCollectionName(), request.params.id, request.payload)
                             .then((item) => {
                                 reply(item);
@@ -195,7 +205,7 @@ class ContactController extends BaseController {
                             id: joi.string().hex().required().description("Filter contact by id "),
                         },
                         payload: {
-                            name: joi.string().optional().description("Name of the contact person"),
+                            name: joi.string().lowercase().optional().description("Name of the contact person"),
                             phonenumber: joi.phone.e164().optional().description("The contact's phone number"),
                             email: joi.string().email().optional().description("The contact's email"),
                             address: joi.string().optional().description("The contact's address"),
@@ -223,6 +233,9 @@ class ContactController extends BaseController {
                         method: BaseController.Authorize(['general'])
                     }],*/
                     handler: (request, reply) => {
+                        if (request.payload.name != null) {
+                            request.payload.name = request.payload.name.toLowerCase();
+                        }
                         return this.BasePutHandler(this.GetCollectionName(), request.params.id, request.payload)
                             .then((item) => {
                                 reply(item);
@@ -236,7 +249,7 @@ class ContactController extends BaseController {
                             id: joi.string().hex().required().description("Filter contact by id "),
                         },
                         payload: {
-                            name: joi.string().optional().description("Name of the contact person"),
+                            name: joi.string().lowercase().optional().description("Name of the contact person"),
                             phonenumber: joi.phone.e164().optional().description("The contact's phone number"),
                             email: joi.string().email().optional().description("The contact's email"),
                             address: joi.string().optional().description("The contact's address"),

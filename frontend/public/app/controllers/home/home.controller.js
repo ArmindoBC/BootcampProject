@@ -5,8 +5,9 @@ app.controller('HomeController', ['$scope', '$routeParams', 'ContactsService', '
     $scope.IsLoading = false;
     $scope.text = "welcome to home controller!!";
 
-    $scope.ActiveContact = ActiveContactService.ActiveContact;
+    $scope.ActiveContactService = ActiveContactService;
 
+    //console.log(ActiveContactService.ActiveContact);
     $scope.OnCompleteGetAll = function() {
         $scope.ContactsList = ContactsService.AllItems;
         $scope.IsLoading = false;
@@ -30,5 +31,6 @@ app.controller('HomeController', ['$scope', '$routeParams', 'ContactsService', '
             $scope.model = new Contact();
         }
         $scope.Start();
+        $scope.InDetailsMode = false;
     }
 }]);
