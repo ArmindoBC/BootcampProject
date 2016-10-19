@@ -115,7 +115,7 @@ class ContactController extends BaseController {
                     query: {
                         id: joi.string().hex().description("Filter contact by id (same as use path/{id})"),
                         email: joi.string().email().description("Filter contact by email"),
-                        phoneNumber: joi.phone.e164().description("Filter by contact's phone number"),
+                        phonenumber: joi.phone.e164().description("Filter by contact's phone number"),
                         address: joi.string().description("Filter by the contact's address"),
                         birthday: joi.date().iso().max('now').description("Filter by the contact's birthday")
                     },
@@ -153,11 +153,11 @@ class ContactController extends BaseController {
                 },
                 validate: {
                     payload: {
-                        name: joi.string().allow('').required().description("Name of the contact person"),
-                        phoneNumber: joi.phone.e164().optional().allow('').description("The contact's phone number"),
-                        email: joi.string().email().optional().allow('').description("The contact's email"),
-                        address: joi.string().optional().allow('').description("The contact's address"),
-                        birthday: joi.date().iso().optional().allow('').max('now').description("The contact's birthday")
+                        name: joi.string().required().description("Name of the contact person"),
+                        phonenumber: joi.phone.e164().optional().description("The contact's phone number"),
+                        email: joi.string().email().optional().description("The contact's email"),
+                        address: joi.string().optional().description("The contact's address"),
+                        birthday: joi.date().iso().optional().max('now').description("The contact's birthday")
                     },
                     /*headers: joi.object({
                         'authorization': joi.string().required()
@@ -196,7 +196,7 @@ class ContactController extends BaseController {
                         },
                         payload: {
                             name: joi.string().optional().description("Name of the contact person"),
-                            phoneNumber: joi.phone.e164().optional().description("The contact's phone number"),
+                            phonenumber: joi.phone.e164().optional().description("The contact's phone number"),
                             email: joi.string().email().optional().description("The contact's email"),
                             address: joi.string().optional().description("The contact's address"),
                             birthday: joi.date().iso().max('now').optional().description("The contact's birthday")
@@ -236,11 +236,11 @@ class ContactController extends BaseController {
                             id: joi.string().hex().required().description("Filter contact by id "),
                         },
                         payload: {
-                            name: joi.string().optional().allow('').description("Name of the contact person"),
-                            phoneNumber: joi.phone.e164().optional().allow('').description("The contact's phone number"),
-                            email: joi.string().email().optional().allow('').description("The contact's email"),
-                            address: joi.string().optional().allow('').description("The contact's address"),
-                            birthday: joi.date().iso().max('now').optional().allow('').description("The contact's birthday")
+                            name: joi.string().optional().description("Name of the contact person"),
+                            phonenumber: joi.phone.e164().optional().description("The contact's phone number"),
+                            email: joi.string().email().optional().description("The contact's email"),
+                            address: joi.string().optional().description("The contact's address"),
+                            birthday: joi.date().iso().max('now').optional().description("The contact's birthday")
                         },
                         /*headers: joi.object({
                             'authorization': joi.string().required()
