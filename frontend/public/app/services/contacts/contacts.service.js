@@ -2,6 +2,15 @@ app.service('ContactsService', ['UtilsService', '$http', function(UtilsService, 
 
     this.CollectionName = "contacts";
     this.AllItems;
+    this.Model;
+    this.ModelCreate = {
+      name: "Insert your name",
+      phonenumber: "Insert your mobile with national code",
+      email: "Insert your email",
+      birthday: "Select your birthday",
+      address: "Insert your address",
+      photo: "Select your photo path"
+    }
 
     this.GetAll = function(onComplete, onError) {
         //Request to the Server
