@@ -1,4 +1,4 @@
-app.service('ContactsService', ['UtilsService', '$http', function(UtilsService, $http) {
+app.service('ContactsService', ['UtilsService', '$http', function(UtilsService,$http) {
 
     this.CollectionName = "contacts";
     this.AllItems;

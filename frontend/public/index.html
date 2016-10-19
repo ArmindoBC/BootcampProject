@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="assets/css/header.controller.css" />
     <link rel="stylesheet" href="app/directives/contact-map/contact-map.directive.css" />
+    <link rel="stylesheet" href="app/directives/contact-upload/contact-upload.directive.css" />
     <link rel="stylesheet" href="assets/css/contact-card.directive.css">
     <link rel="stylesheet" href="assets/css/contact-form.directive.css">
     <!--<link rel="stylesheet" href="assets/css/input-box.directive.css">-->
@@ -31,9 +32,13 @@
     <script src="app/models/contact/contact.model.js"></script>
     <script src="app/services/contacts/contacts.service.js"></script>
     <script src="app/services/utils/utils.service.js"></script>
+    <script src="app/services/active-contact/active-contact.service.js"></script>
     <script src="app/directives/contact-map/contact-map.directive.js"></script>
     <script src="app/directives/contact-form/contact-form.directive.js"></script>
     <script src="app/directives/contact-card/contact-card.directive.js"></script>
+    <script src="app/directives/contact-upload/contact-upload.directive.js"></script>
+    <script src="app/directives/contact-details/contact-details.directive.js"></script>
+    <script src="app/filters/get-contact-age/get-contact-age.filter.js"></script>
     <!-- <script src="app/directives/contact-form/input-box.directive.js"></script> -->
 </head>
 
@@ -68,20 +73,36 @@
 
             </div>
         </div>
-        <div class="search-div">
-            <div class="icon-search">
-                <i class="material-icons  google-icon-search">search</i>
+        <div class="main-container">
+            <div class="sub-container">
+                <div class="search-div">
+                    <div class="icon-search">
+                        <i class="material-icons  google-icon-search">search</i>
+                    </div>
+                    <div class="search-input">
+                        <input type="text" class="input-label" placeholder="Search by name" />
+                    </div>
+                </div>
+                <div class="contacts-container">
+                    <div class="showbox" ng-if="IsLoading">
+                        <div class="loader">
+                            <svg class="circular" viewBox="25 25 50 50">
+                                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                            </svg>
+                        </div>
+                    </div>
+                    <contact-card  ng-if="!IsLoading" contactid="contact.id" namecontact="contact.name" phonenumber="contact.phoneNumber" ng-repeat="contact in ContactsList"> </contact-card>
+                </div>
             </div>
-            <div class="search-input">
-                <input type="text" class="input-label" placeholder="Search by name" />
-            </div>
-        </div>
-        <div class="contacts-container">
-            <contact-card namecontact="contact.name" phonenumber="contact.phoneNumber" ng-repeat="contact in ContactsList"> </contact-card>
-        </div>
-    </div>
-    <div ng-view class="divNgView">
 
+            <div class="sub-container-2">
+
+                <div ng-view class="divNgView">
+
+                </div>
+            </div>
+        </div>
     </div>
 </body>
+
 </html>

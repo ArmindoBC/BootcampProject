@@ -1,0 +1,52 @@
+<div class="contact-form-container">
+    <div class="form-header-container">
+        <div class="contact-image">
+        </div>
+        <div class="header">
+            {{model.name}}
+        </div>
+    </div>
+    <div class="input-container">
+        <div class="input">
+            <div class="input-label">
+                Name
+            </div>
+            <div class="label-contact-details">
+                {{model.name}}
+            </div>
+        </div>
+        <div class="input">
+            <div class="input-label">
+                Phone Number
+            </div>
+            <div class="label-contact-details">
+                {{model.phonenumber}}
+            </div>
+        </div>
+        <div class="input">
+            <div class="input-label">
+                Email
+            </div>
+            <div class="label-contact-details">
+                {{model.email}}
+            </div>
+        </div>
+        <div class="input">
+            <div class="input-label">
+                Birthdate
+            </div>
+            <div class="label-contact-details">
+                {{model.birthday | date:'MM/dd/yyyy' }} ({{model.birthday | getContactAge}} years)
+            </div>
+        </div>
+        <div class="input">
+            <div class="input-label">
+                Address
+            </div>
+            <div class="label-contact-details">
+                {{model.address}}
+            </div>
+        </div>
+    </div>
+</div>
+<contact-map contactid="'58074e10aa2b4f17789d8169'"></<contact-map>
