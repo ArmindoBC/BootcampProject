@@ -5,14 +5,12 @@ app.directive('contactMap', ["ContactsService", function(ContactsService) {
         var result;
         var map;
         var maker;
-        console.log(element);
         geocoder.geocode({
             'address': addressMap
         }, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 var loc = results[0].geometry.location;
                 result = new google.maps.LatLng(loc.lat(), loc.lng());
-                console.log(result);
                 map = new google.maps.Map(element, {
                     center: result,
                     zoom: 16
@@ -40,7 +38,6 @@ app.directive('contactMap', ["ContactsService", function(ContactsService) {
             //init card
             ContactsService.GetById($scope.contactid, function(model) {
                 $scope.model = model;
-                console.log($scope.model.address);
                 if($scope.model.address!="")
                     initMap(model.address, $(element).find('.map')[0]);
             }, function(error) {
