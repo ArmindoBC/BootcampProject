@@ -15,8 +15,14 @@ app.directive('contactCard', ["ContactsService", "ActiveContactService", functio
                 //get the last active contact element and set disable mode
                document.getElementById(ActiveContactService.ActiveContact.id).className = "contact-card-div-no-active";
                console.log(ActiveContactService.ActiveContact.id);
-               ActiveContactService.changeActiveContact(contactId);
-               document.getElementById(contactId).className = "contact-card-div-active";
+               ActiveContactService.changeActiveContact(contactId,
+               function(response){
+                 document.getElementById(contactId).className = "contact-card-div-active";
+
+               },
+             function(response){
+               console.log(response);
+             });
 
             }
         }
