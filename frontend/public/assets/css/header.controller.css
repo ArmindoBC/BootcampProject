@@ -86,10 +86,11 @@
     top: 60px;
     padding-left: 20px;
     height: 60px;
-    width:419px;
+    width:399px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    background-color: #FFF;
 }
 .search-div .search-input {
     padding-top: 15px;
