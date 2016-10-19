@@ -39,7 +39,7 @@
                 Birthdate
             </div>
             <div class="label-contact-details">
-                {{contact.birthday | date:'MM/dd/yyyy' }} ({{contact.birthday | getContactAge}} years)
+                {{contact.birthday | date:'MM/dd/yyyy' }} {{contact.birthday | getContactAge}}
             </div>
         </div>
         <div class="input">
