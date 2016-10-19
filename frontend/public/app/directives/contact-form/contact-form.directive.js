@@ -8,6 +8,7 @@ app.directive('contactForm', ["ContactsService", function(ContactsService) {
         templateUrl: 'app/directives/contact-form/contact-form.directive.html',
         link: function($scope, element, attrs) {
             console.log("teste contact form");
+            
             // $scope.onComplete = function (complete, data) {
             //   if(complete) {
             //     // loading details into local memory
