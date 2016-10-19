@@ -5,6 +5,7 @@
         min-height: 100%;
         font-family: 'OpenSans-Regular';
     }
+
     //OpenSans bold
     @font-face {
         font-family: 'OpenSans-Bold';
@@ -13,6 +14,7 @@
         font-weight: 300;
         font-style: normal;
     }
+
     @font-face {
         font-family: 'OpenSans-Regular';
         src: url('../fonts/Open_Sans_Web/OpenSans-Regular.eot');
@@ -20,6 +22,7 @@
         font-weight: 300;
         font-style: normal;
     }
+
     @font-face {
         font-family: 'Material Icons';
         font-style: normal;
@@ -27,6 +30,7 @@
         src: url(https://example.com/MaterialIcons-Regular.eot);
         /* For IE6-8 */
     }
+
     .material-icons {
         font-family: 'Material Icons';
         font-weight: normal;
@@ -49,21 +53,22 @@
         /* Support for IE. */
         font-feature-settings: 'liga';
     }
+
     .divNgView {
-        position: absolute;
-        top: 60px;
-        left: 425px;
-        bottom:0;
-        right:0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #f8f9fa;
+        display: block;
+        border: solid 1px red;
+        height: 100%;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -35px;
+        /*background-color: #f8f9fa;*/
     }
+
     .insideNgView {
-        width:100%;
+        display: block;
+        border: solid 1px blue;
         width: 813px;
         height: 775.px;
-        background-color: #FFF;
-        border: 2px solid red;
-}
+        margin-left: 524px;
+    }
