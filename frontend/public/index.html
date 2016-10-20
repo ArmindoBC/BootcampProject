@@ -59,6 +59,41 @@
 
 <body>
     <div ng-controller="HeaderController">
+
+        <div class="main-container">
+            <div class="sub-container">
+                <div class="search-div">
+                    <div class="icon-search">
+                        <i class="material-icons  google-icon-search">search</i>
+                    </div>
+                    <div class="search-input">
+                        <input type="text" class="input-label" placeholder="Search by name" ng-change="inputSearch()" ng-model="inputText" />
+                    </div>
+                    <div class="icon-search delete-text" ng-click="deleteText()" ng-if="allowDelete">
+                        <i class="material-icons google-icon-search">clear</i>
+
+                    </div>
+                </div>
+
+            <div class="contacts-container">
+                <div class="showbox" ng-if="IsLoading">
+                    <div class="loader">
+                        <svg class="circular" viewBox="25 25 50 50">
+                                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                            </svg>
+                    </div>
+                </div>
+                <div class="no-data-found-text" ng-if="noData">No contacts found</div>
+                <contact-card ng-if="!IsLoading && !noData" contact-object="contact" contactid="contact.id" namecontact="contact.name" phonenumber="contact.phonenumber" ng-repeat="contact in ContactsList"> </contact-card>
+            </div>
+        </div>
+
+
+        <div class="sub-container-2">
+            <div ng-view class="divNgView">
+
+            </div>
+        </div>
         <div class="header-container">
             <div class="header-title-container">
                 <div ng-if "" class="icon notactive">
@@ -102,40 +137,6 @@
                 <div class="icon" ng-click="" >
                     <i class="material-icons  google-icon-header">add</i>
                 </div>
-
-            </div>
-        </div>
-        <div class="main-container">
-            <div class="sub-container">
-                <div class="search-div">
-                    <div class="icon-search">
-                        <i class="material-icons  google-icon-search">search</i>
-                    </div>
-                    <div class="search-input">
-                        <input type="text" class="input-label" placeholder="Search by name" ng-change="inputSearch()" ng-model="inputText" />
-                    </div>
-                    <div class="icon-search delete-text" ng-click="deleteText()" ng-if="allowDelete">
-                        <i class="material-icons google-icon-search">clear</i>
-
-                    </div>
-                </div>
-
-            <div class="contacts-container">
-                <div class="showbox" ng-if="IsLoading">
-                    <div class="loader">
-                        <svg class="circular" viewBox="25 25 50 50">
-                                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
-                            </svg>
-                    </div>
-                </div>
-                <div class="no-data-found-text" ng-if="noData">No contacts found</div>
-                <contact-card ng-if="!IsLoading && !noData" contact-object="contact" contactid="contact.id" namecontact="contact.name" phonenumber="contact.phonenumber" ng-repeat="contact in ContactsList"> </contact-card>
-            </div>
-        </div>
-
-
-        <div class="sub-container-2">
-            <div ng-view class="divNgView">
 
             </div>
         </div>
