@@ -14,7 +14,6 @@ app.filter('getContactAge', function() {
         return 0;
     }
     return function(birthdate) {
-        console.log(parseInt(birthdate));
         if (!isNaN(birthdate)){
             var age = calculateAge(birthdate);
             if (age == 0)

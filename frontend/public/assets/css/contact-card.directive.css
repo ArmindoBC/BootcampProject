@@ -16,9 +16,13 @@
     }
     .contact-card-div-active {
         background-color: #f2f2f2 !important;
+        cursor: pointer;
+        cursor: hand;
     }
     .contact-card-div-no-active {
-      background-color: #FFF  !important;;
+      background-color: #FFF  !important;
+      cursor: pointer;
+      cursor: hand;
     }
     .contact-card-items {
         display: flex;
