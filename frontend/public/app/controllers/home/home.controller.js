@@ -1,36 +1,22 @@
 app.controller('HomeController', ['$scope', '$routeParams', 'ContactsService', 'ActiveContactService', function($scope, $routeParams, ContactsService, ActiveContactService) {
 
-    $scope.InEditMode = false;
-    $scope.InDetailsMode = false;
-    $scope.IsLoading = false;
-    $scope.text = "welcome to home controller!!";
+    //Start Function:---------------------------
+    $scope.Start = function() {
+        $scope.ActiveContactService = ActiveContactService;
+        $scope.IsLoading = false;
+    }
+    $scope.Start();
 
-    $scope.ActiveContactService = ActiveContactService;
+    //GetContactLists Async Functions: ---------
 
-    //console.log(ActiveContactService.ActiveContact);
+    //OnComplete callback
     $scope.OnCompleteGetAll = function() {
         $scope.ContactsList = ContactsService.AllItems;
         $scope.IsLoading = false;
     }
-
+    //OnError callback
     $scope.OnErrorGetAll = function(errorCode) {
         console.log(errorCode);
         $scope.IsLoading = false;
-    }
-    //Start Function
-    $scope.Start = function() {
-        if ($routeParams.id != null) {
-            //Create mode
-            $scope.InEditMode = true;
-            $scope.InDetailsMode = true;
-            //$scope.model = ContactsService.GetById($routeParams.id);
-        } else {
-            //Edit mode
-            $scope.InEditMode = false;
-            $scope.InDetailsMode = false;
-            $scope.model = new Contact();
-        }
-        $scope.Start();
-        $scope.InDetailsMode = false;
     }
 }]);

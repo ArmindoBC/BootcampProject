@@ -8,9 +8,13 @@ app.config(function($routeProvider, $locationProvider) {
             controller: "HomeController",
             templateUrl: "app/controllers/home/home.controller.html"
         })
-        .when("/contacts", {
-            controller: "ContactsListController",
-            templateUrl: "app/controllers/contacts-list/contacts-list.controller.html"
+        .when("/details/:id?", {
+            controller: "ContactShowController",
+            templateUrl: "app/controllers/contact-show/contact-show.controller.html"
+        })
+        .when("/edit/:id?", {
+            controller: "ContactEditCreateController",
+            templateUrl: "app/controllers/contact-edit-create/contact-edit-create.controller.html"
         })
         .otherwise({
             redirectTo: "/"
