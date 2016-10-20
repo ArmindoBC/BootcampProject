@@ -68,7 +68,7 @@
     .insideNgView {
         width: 100%;
         width: 813px;
-        height: 777.5px;
+        height: 100%;
         background-color: #FFF;
         border: 2px solid red;
     }
@@ -95,4 +95,33 @@
         left: 0;
         bottom: 0;
         right: 0;
+    }
+    .notactive{
+        display: none;
+    }
+    /*media queries*/
+
+    @media only screen and (max-width: 376px) {
+        /* STYLES GO HERE */
+        .sub-container-2 {
+            display: none;
+        }
+        .contacts-container {
+            width: 100%;
+        }
+        .active {
+            display: none;
+        }
+        .insideNgView {
+            width: 340px;
+            height: 735px;
+            border-radius: 2px;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+        }
+        .input-container{
+            padding-left: 17px;
+        }
+        .notactive{
+            display: block;
+        }
     }

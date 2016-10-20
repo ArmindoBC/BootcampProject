@@ -10,21 +10,36 @@ app.directive('contactCard', ["ContactsService", "ActiveContactService", functio
         templateUrl: 'app/directives/contact-card/contact-card.directive.html',
         link: function($scope, element, attrs) {
             //init card
-            $scope.start =  function(){
-            
+            $scope.start = function() {
+
             }
             $scope.start();
             $scope.showUser = function(contactId) {
 
                 document.getElementById(ActiveContactService.ActiveContact.id).className = "contact-card-div-no-active";
 
+
+
+                if ($(".sub-container-2").css("display") == "none") {
+                    // your code here
+                    $(".sub-container").css("display", "none");
+                    $(".sub-container-2").css("display", "block");
+                }
+
+
+                /*$(window).resize(function(){
+                    console.log($scope);
+                    $(".sub-container").css("display", "block");
+
+                });*/
                 ActiveContactService.ActiveContact = null;
-                ActiveContactService.changeActiveContact(contactId, function(){
-                  //Completed
-                   document.getElementById(contactId).className = "contact-card-div-active";
-                  //Loading is hidden when ActiveContact is different than null and that it's already done
+                ActiveContactService.changeActiveContact(contactId, function() {
+                    //Completed
+                    document.getElementById(contactId).className = "contact-card-div-active";
+
+                    //Loading is hidden when ActiveContact is different than null and that it's already done
                 }, function(error) {
-                  console.log(error);
+                    console.log(error);
                 });
 
                 //get the last active contact element and set disable mode
