@@ -1,4 +1,4 @@
-var app = angular.module('contactsManager', ["ngRoute","ngAnimate", "ngSanitize", "ui.bootstrap"]);
+var app = angular.module('contactsManager', ["ngRoute", "ngSanitize", "ui.bootstrap"]);
 
 //Configure routes
 app.config(function($routeProvider, $locationProvider) {

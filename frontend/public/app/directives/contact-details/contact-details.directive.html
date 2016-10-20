@@ -3,8 +3,10 @@
 
 
         <div class="header">
-          <div class="circle-image">
-          </div>
+
+              <div class="circle-image">
+              </div>
+
             <div>
                 {{contact.name | firstCharacterUppercase}}
             </div>
@@ -35,7 +37,7 @@
                 {{contact.email}}
             </div>
         </div>
-        <div ng-if="contact.Birthdate!=null" class="input">
+        <div ng-if="contact.birthday!=null" class="input">
             <div class="input-label">
                 Birthdate
             </div>
