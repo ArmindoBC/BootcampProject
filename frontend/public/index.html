@@ -80,15 +80,25 @@
                 </div>
             </div>
             <div class="header-icons-container">
-                <div class="icon active">
+                <div class="icon active" ng-click="" ng-if="mode=='show'">
                     <i class="material-icons google-icon-header">delete</i>
                 </div>
 
-                <div class="icon active">
+                <div class="icon active" ng-click="setEditMode()" ng-if="mode=='show'">
                     <!--ng-click="location.path("/contacts/edit")"-->
                     <i class="material-icons  google-icon-header">mode_edit</i>
                 </div>
-                <div class="icon">
+
+                <div class="icon active" ng-click="setShowMode()"ng-if="mode=='edit'|| mode=='create'"">
+                    <div class="google-clear-div">
+                    <i class="material-icons google-icon-header">clear</i>
+                  </div>
+                </div>
+                <div class="icon active" ng-click="" ng-if="mode=='edit'||mode=='create'">
+                    <!--ng-click="location.path("/contacts/edit")"-->
+                    <i class="material-icons  google-icon-header">save</i>
+                </div>
+                <div class="icon" ng-click="" >
                     <i class="material-icons  google-icon-header">add</i>
                 </div>
 

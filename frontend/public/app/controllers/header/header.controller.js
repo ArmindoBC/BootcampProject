@@ -2,12 +2,28 @@ app.controller('HeaderController', ['$scope', '$location', 'ContactsService', "A
 
     $scope.location = $location;
     $scope.IsLoading = false;
+    $scope.mode = ActiveContactService.Mode;
 
+    $scope.setEditMode = function() {
+
+        $scope.mode = "edit";
+        ActiveContactService.setEditMode();
+    }
+    $scope.setCreatetMode = function() {
+
+        $scope.mode = "create";
+        ActiveContactService.setCreateMode();
+    }
+
+    $scope.setShowMode = function() {
+        $scope.mode = "show";
+        ActiveContactService.setShowMode();
+    }
 
     $scope.OnCompleteGetAll = function() {
 
         //update active user on active service
-        if (ContactsService.AllItems.length !=0) {
+        if (ContactsService.AllItems.length != 0) {
             $scope.noData = false;
             $scope.ContactsList = ContactsService.AllItems;
 
@@ -30,17 +46,17 @@ app.controller('HeaderController', ['$scope', '$location', 'ContactsService', "A
     }
 
     $scope.inputSearch = function() {
-        $scope.allowDelete =true;
+        $scope.allowDelete = true;
         var textToSearch = $scope.inputText;
-        $scope.IsLoading =  true;
-        
+        $scope.IsLoading = true;
+
         if (textToSearch != "") {
             setTimeout(function() {
                 ContactsService.GetAutocomplete(textToSearch, $scope.OnCompleteGetAll, $scope.OnErrorGetAll);
             }, 100);
         } else {
-          $scope.allowDelete = false;
-          $scope.IsLoading =  true;
+            $scope.allowDelete = false;
+            $scope.IsLoading = true;
 
             setTimeout(function() {
                 ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);
@@ -49,15 +65,15 @@ app.controller('HeaderController', ['$scope', '$location', 'ContactsService', "A
         }
 
     }
-    $scope.deleteText =  function(){
-      $scope.noData = false;
-      $scope.inputText = "";
-      $scope.allowDelete =false;
-      $scope.IsLoading = true;
-      setTimeout(function() {
-          ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);
+    $scope.deleteText = function() {
+        $scope.noData = false;
+        $scope.inputText = "";
+        $scope.allowDelete = false;
+        $scope.IsLoading = true;
+        setTimeout(function() {
+            ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);
 
-      }, 1000);
+        }, 1000);
     }
     $scope.OnErrorGetAll = function(errorCode) {
         console.log(errorCode);
@@ -67,7 +83,7 @@ app.controller('HeaderController', ['$scope', '$location', 'ContactsService', "A
     //Start Function
     $scope.Start = function() {
         //load Persons
-        $scope.allowDelete =false;
+        $scope.allowDelete = false;
         $scope.IsLoading = true;
         setTimeout(function() {
             ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);
