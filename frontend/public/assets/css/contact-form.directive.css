@@ -73,11 +73,13 @@ form-icons {
 }
 
 .input-container input-text-area div{
+}
+
+.input-container input-text-area textarea{
+  margin-top: 10px;
+  margin-bottom: 10px;
   resize: none;
-  height: 96px;
   col: 3;
-  margin-top: 20px;
-  margin-bottom: 20px;
   padding-top: 9px;
   /*Symmetric to top (10px -> 9px) (delt) */
   padding-bottom: 9px;
