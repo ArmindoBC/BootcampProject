@@ -1,14 +1,21 @@
+form-icons {
+    width: 43px;
+    height: 43px;
+    border-radius: 2px;
+    background-color: #222a4d;
+    box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+    border: solid 1px #979797;
+    color: white;
+}
 .form-header-container {
     padding-top: 54px;
     padding-left: 122px;
     padding-bottom: 39px;
     border-bottom: solid 5px #4fe0f2;
 }
-
 .form-header-container>* {
     display: block;
 }
-
 .form-header-container .header>* {
     font-size: 36px;
     font-weight: normal;
@@ -17,26 +24,21 @@
     letter-spacing: 0.4px;
     color: #0c1128;
 }
-
 .input-container {
     padding-top: 32px;
     padding-left: 122px;
     padding-right: 38px;
 }
-
 .input-container .input {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 43px;
     box-sizing: border-box;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
-
 .input-container .input>* {
     /*border: 1px solid black; (delt)*/
 }
-
 .input-container .input .input-label {
     font-size: 20px;
     font-weight: 600;
@@ -44,14 +46,17 @@
     font-stretch: normal;
     color: #24263f;
 }
-
-.input-container .input .input-box {
+.input-container input-box input, .input-container .input-photo {
+    outline: none;
+    height: 43px;
     padding-top: 9px;
-     /*Symmetric to top (10px -> 9px) (delt) */
+    /*Symmetric to top (10px -> 9px) (delt) */
     padding-bottom: 9px;
     padding-left: 21px;
     /* Symmetric to left (delt)*/
     padding-right: 21px;
+    width: 399px;
+    font-family: 'OpenSans-Regular';
     font-size: 18px;
     font-weight: normal;
     font-style: normal;
@@ -62,8 +67,94 @@
     background-color: #ffffff;
     box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.5);
     border: solid 1px #979797;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+}
+.input-group .input-date {
+    height: 43px;
+    padding-top: 9px;
+    /*Symmetric to top (10px -> 9px) (delt) */
+    padding-bottom: 9px;
+    padding-left: 21px;
+    /* Symmetric to left (delt)*/
+    padding-right: 21px;
+    width: 358px;
+    font-family: 'OpenSans-Regular';
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: 0.2px;
+    color: #717171;
+    /*border-radius: 2px;*/
+    background-color: #ffffff;
+    box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+    border: solid 1px #979797;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+}
+.input-group {
+    display: flex;
+}
+.icon-button {
+    width: 43px;
+    height: 43px;
+    border-radius: 2px;
+    background-color: #222a4d;
+    box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+    border: solid 1px #979797;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.icon-input
+{   font-family: "Material Icons";
+    color: #FFF;
+    font-style: normal;
+    font-size: 24px;
+}
+.input-container .input-text-area {
+    resize: none;
+    height: 96px;
+    col: 3;
+    padding-top: 9px;
+    /*Symmetric to top (10px -> 9px) (delt) */
+    padding-bottom: 9px;
+    padding-left: 21px;
+    /* Symmetric to left (delt)*/
+    padding-right: 21px;
+    width: 399px;
+    font-family: 'OpenSans-Regular';
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: 0.2px;
+    color: rgba(113, 113, 113, 0.6);
+    outline: none;
+    /*border-radius: 2px;*/
+    background-color: #ffffff;
+    box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+    border: solid 1px #979797;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+}
+.input-container .input-address {
+    align-items: flex-start;
+}
+.input-container .input-text-area:focus {
+    color: #717171;
+}
 .label-contact-details {
     width: 378.4px;
     height: 24px;

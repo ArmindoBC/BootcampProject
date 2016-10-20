@@ -32,11 +32,15 @@ app.controller('HeaderController', ['$scope', '$location', 'ContactsService', "A
     $scope.inputSearch = function() {
         $scope.allowDelete =true;
         var textToSearch = $scope.inputText;
+        $scope.IsLoading =  true;
+        
         if (textToSearch != "") {
             setTimeout(function() {
                 ContactsService.GetAutocomplete(textToSearch, $scope.OnCompleteGetAll, $scope.OnErrorGetAll);
             }, 100);
         } else {
+          $scope.allowDelete = false;
+          $scope.IsLoading =  true;
 
             setTimeout(function() {
                 ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);

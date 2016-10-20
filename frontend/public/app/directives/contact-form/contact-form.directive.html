@@ -1,8 +1,8 @@
 <div class="contact-form-container">
-    <input type="submit" value="Save" ng-click="Save()"> </input>
-    <input type="submit" value="Discard" ng-click="Save()"> </input>
+    <!-- <input type="submit" value="Save" ng-click="Save()"> </input>
+    <input type="submit" value="Discard" ng-click="Save()"> </input> -->
     <div class="form-header-container">
-        <div class="contact-image">
+        <div class="circle-image">
         </div>
         <div class="header">
             <div ng-if="ContactsService.Model.name == null ||  ContactsService.Model.name.trim() == ''">
@@ -14,43 +14,60 @@
         </div>
     </div>
     <div class="input-container">
-        <div class="input">
-            <div class="input-label">
-                Name
+        <form name="form-input">
+            <div class="input">
+                <div class="input-label">
+                    Name
+                </div>
+                <input-box variable="ContactsService.Model.name" holder="ContactsService.ModelCreate.name" mode-edit="modeEdit" input-required="true"> </input-box>
             </div>
-            <input-box variable="ContactsService.Model.name" holder="ContactsService.ModelCreate.name" mode-edit="modeEdit"> </input-box>
-        </div>
-        <div class="input">
-            <div class="input-label">
-                Phone Number
+            <div class="input">
+                <div class="input-label">
+                    Phone Number
+                </div>
+                <input-box variable="ContactsService.Model.phonenumber" holder="ContactsService.ModelCreate.phonenumber" mode-edit="modeEdit" input-required="false"> </input-box>
             </div>
-            <input-box variable="ContactsService.Model.phonenumber" holder="ContactsService.ModelCreate.phonenumber" mode-edit="modeEdit"> </input-box>
-        </div>
-        <div class="input">
-            <div class="input-label">
-                Email
+            <div class="input">
+                <div class="input-label">
+                    Email
+                </div>
+                <input-box variable="ContactsService.Model.email" holder="ContactsService.ModelCreate.email" mode-edit="modeEdit" input-type="'mail'" input-required="false"></input-box>
             </div>
-            <input-box variable="ContactsService.Model.email" holder="ContactsService.ModelCreate.email" mode-edit="modeEdit"> </input-box>
-        </div>
-        <div class="input">
-            <div class="input-label">
-                Birthday
-            </div>
-            <input-box variable="ContactsService.Model.birthday" holder="ContactsService.ModelCreate.birthday" mode-edit="modeEdit"> </input-box>
-        </div>
-        <div class="input">
-            <div class="input-label">
-                Address
-            </div>
-            <input-box variable="ContactsService.Model.address" holder="ContactsService.ModelCreate.address" mode-edit="modeEdit"> </input-text-area>
-        </div>
-        <div class="input" ng-if="!modeEdit">
-            <div class="input-label">
-                Photo
-            </div>
-            <input class="input-box" ng-model="photoPath" placeholder="{{ContactsService.ModelCreate.photo}}">
-            </input>
-        </div>
+            <div class="input">
+                <div class="input-label">
+                    Birthday
+                </div>
+                <div class="input-group">
+                    <input class="input-date" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                    <span class="input-group-btn">
+                    <button type="button" class="btn btn-default icon-button" ng-click="open1()">
+                      <i class="material-icon icon-input">date_range</i>
+                      </button>
+                  </span>
+                </div>
 
+            </div>
+            <div class="input input-address">
+                <div class="input-label">
+                    Address
+                </div>
+                <textarea class="input-text-area" ng-model="ContactsService.Model.address" placeholder="{{ ContactsService.ModelCreate.address}}" type="text">
+                </textarea>
+            </div>
+            <div class="input" ng-if="!modeEdit">
+                <div class="input-label">
+                    Photo
+                </div>
+                <div class="input-group">
+                    <input class="input-date" placeholder="{{ContactsService.ModelCreate.photo}}" />
+                    <span class="input-group-btn">
+                    <button type="button" class="btn btn-default icon-button" ng-click="open1()">
+                      <i class="material-icon icon-input">camera_alt</i>
+                      </button>
+                  </span>
+                </div>
+                </input>
+            </div>
+        </form>
     </div>
 </div>
