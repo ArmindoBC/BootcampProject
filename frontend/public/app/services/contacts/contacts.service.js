@@ -3,6 +3,7 @@ app.service('ContactsService', ['UtilsService', '$http', function(UtilsService, 
     this.CollectionName = "contacts";
     this.AllItems;
     this.Model;
+    
     this.ModelCreate = {
       header: "Your Name",
       name: "Insert your name",
