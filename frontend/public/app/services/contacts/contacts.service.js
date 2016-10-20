@@ -2,7 +2,9 @@ app.service('ContactsService', ['UtilsService', '$http', function(UtilsService, 
 
     this.CollectionName = "contacts";
     this.AllItems;
-    this.Model;
+    this.Model = new Contact();
+    var thisService =  this;
+
 
     this.ModelCreate = {
         header: "Your Name",
@@ -33,23 +35,23 @@ app.service('ContactsService', ['UtilsService', '$http', function(UtilsService, 
         });
     }
 
-    this.SaveItem = function(item, onComplete, onError) {
-        var path = "";
-        //Check if already Exists
-        if (item.id != null) {
-            path += "/" + item.id;
-        }
+    this.SaveItem = function(id,onComplete, onError) {
+        var modelToSend = thisService.Model;
+        delete modelToSend.id;
+        console.log(id);
         $http({
-            method: 'POST',
-            url: 'http://localhost:9003/contact' + path,
-            data: item
+            method: 'PATCH',
+            url: 'http://localhost:9003/contact/' + id,
+            data: modelToSend
         }).then(function successCallback(response) {
             // this callback will be called asynchronously
             // when the response is available
+
             onComplete();
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
+            console.log(response);
             onError(response);
         });
     }
@@ -107,6 +109,21 @@ app.service('ContactsService', ['UtilsService', '$http', function(UtilsService, 
             onError(response);
         });
     }
+
+this.onFileSelect = function($files) {
+        // //$files: an array of files selected, each file has name, size, and type.
+        // console.log($files);
+        //     var $file = $files[0];
+        //     Upload.upload({
+        //         url: 'http://localhost:9003/contact',
+        //         file: $file,
+        //         progress: function(e) {}
+        //     }).then(function(data, status, headers, config) {
+        //         // file is uploaded successfully
+        //         console.log(data);
+        //     });
+    }
+
 
 
 

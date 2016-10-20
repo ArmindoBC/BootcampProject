@@ -1,4 +1,4 @@
-app.directive('contactForm', ["ContactsService", function(ContactsService) {
+app.directive('contactForm', ["ContactsService","$routeParams", function(ContactsService,$routeParams) {
     return {
         restrict: 'E', //E = element, A = attribute, C = class, M = comment
         scope: {
@@ -13,10 +13,13 @@ app.directive('contactForm', ["ContactsService", function(ContactsService) {
             // Pointing ContactsService to scope
             $scope.ContactsService = ContactsService;
 
+
             // Initializing model according to contact id
-            if ($scope.contactid != null) {
-                ContactsService.GetById($scope.contactid, function(model) {
+            if ($routeParams.id != null) {
+                ContactsService.GetById($routeParams.id, function(model) {
                     ContactsService.Model = model;
+                    $scope.ContactsService = ContactsService;
+
                     console.log(ContactsService.Model);
                 }, function(error) {
                     // console.log(error);
@@ -137,8 +140,7 @@ app.directive('contactForm', ["ContactsService", function(ContactsService) {
             $scope.Save = function() {
                 //Update Item
                 $scope.IsLoading = true;
-                ContactsService.SaveItem($scope.ContactsService.Model, $scope.SaveOnComplete, $scope.SaveOnError);
-
+                // ContactsService.SaveItem($scope.ContactsService.Model, $scope.SaveOnComplete, $scope.SaveOnError);
                 //Redirect to list
                 // $location.path("/persons");
             }

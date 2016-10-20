@@ -6,8 +6,9 @@ app.controller('ContactShowController', ['$scope', '$routeParams', 'ActiveContac
     $scope.Start = function() {
         ActiveContactService.mode = "show";
         if ($routeParams != null) {
-            console.log($routeParams);
+
             $scope.routeParams = $routeParams;
+            
         } else {
         }
     }
