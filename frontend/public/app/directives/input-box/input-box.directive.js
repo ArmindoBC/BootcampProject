@@ -4,12 +4,14 @@ app.directive('inputBox', ["ContactsService", function(ContactsService) {
         scope: {
             variable: "=",
             holder: "=",
-            modeEdit: "="
+            modeEdit: "=",
+            inputType: "=",
+            inputRequired: "="
         },
         templateUrl: 'app/directives/input-box/input-box.directive.html',
-        link: function(scope, element, attrs) {
-            console.log(scope.variable);
-            console.log(scope.holder);
+        link: function($scope, element, attrs) {
+            console.log($scope.variable);
+            console.log($scope.holder);
         }
     };
 }]);
