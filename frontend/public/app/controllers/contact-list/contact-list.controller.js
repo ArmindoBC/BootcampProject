@@ -1,4 +1,4 @@
-app.controller('ContactsListController', ['$scope', 'ContactsService', function($scope, ContactsService) {
+app.controller('ContactListController', ['$scope', 'ContactsService', function($scope, ContactsService) {
 
     $scope.IsLoading = false;
 

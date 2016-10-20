@@ -8,17 +8,13 @@ app.config(function($routeProvider, $locationProvider) {
             controller: "HomeController",
             templateUrl: "app/controllers/home/home.controller.html"
         })
-        .when("/contacts", {
-            controller: "ContactsListController",
-            templateUrl: "app/controllers/contacts-list/contacts-list.controller.html"
+        .when("/details/:id?", {
+            controller: "ContactDetailsController",
+            templateUrl: "app/controllers/contact-details/contact-details.controller.html"
         })
-        .when("/contacts/details/:id?", {
-            controller: "ContactsDetailsController",
-            templateUrl: "app/controllers/contacts-details/contacts-details.controller.html"
-        })
-        .when("/contacts/edit/:id?", {
-            controller: "ContactsEditController",
-            templateUrl: "app/controllers/contacts-details/contacts-details.controller.html"
+        .when("/edit/:id?", {
+            controller: "ContactEditCreateController",
+            templateUrl: "app/controllers/contact-edit-create/contact-edit-create.controller.html"
         })
         .otherwise({
             redirectTo: "/"
