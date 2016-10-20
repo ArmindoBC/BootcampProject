@@ -1,4 +1,4 @@
-app.service('ContactsService', ['UtilsService', '$http', '$Upload', function(UtilsService, $http, Upload) {
+app.service('ContactsService', ['UtilsService', '$http', function(UtilsService, $http) {
 
     this.CollectionName = "contacts";
     this.AllItems;
@@ -107,21 +107,6 @@ app.service('ContactsService', ['UtilsService', '$http', '$Upload', function(Uti
             onError(response);
         });
     }
-
-    $scope.onFileSelect = function($files) {
-        //$files: an array of files selected, each file has name, size, and type.
-        console.log($files);
-            var $file = $files[0];
-            Upload.upload({
-                url: 'http://localhost:9003/contact',
-                file: $file,
-                progress: function(e) {}
-            }).then(function(data, status, headers, config) {
-                // file is uploaded successfully
-                console.log(data);
-            });
-    }
-
 
 
 

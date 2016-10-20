@@ -34,13 +34,13 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", func
         templateUrl: 'app/directives/contact-details/contact-details.directive.html',
         link: function(scope, element, attrs) {
             //init card
-            console.log($(element).find('.circle-image')[0].style);
+            //console.log($(element).find('.circle-image')[0].style);
             if (scope.contact.picture != undefined) {
                 $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/" + scope.contact.picture + ")";
             } else {
                 $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
             }
-            console.log($(element).find('.circle-image')[0].style);
+            //console.log($(element).find('.circle-image')[0].style);
             if (scope.contact.address != undefined) {
                 initMap(scope.contact.address, $(element).find('.map')[0]);
             } else {

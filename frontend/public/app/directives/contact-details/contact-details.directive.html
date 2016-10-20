@@ -17,7 +17,7 @@
                 {{contact.name | firstCharacterUppercase}}
             </div>
         </div>
-        <div class="input">
+        <div ng-if="contact.phonenumber!=null" class="input">
             <div class="input-label">
                 Phone Number
             </div>

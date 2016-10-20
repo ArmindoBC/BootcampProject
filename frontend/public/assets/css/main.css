@@ -125,6 +125,9 @@
         color: #ffffff;
         display: none;
     }
+    .imgTeste{
+      width:100%;
+    }
     /*media queries*/
 
     @media screen and (max-width: 375px) {

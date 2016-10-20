@@ -16,4 +16,5 @@
     top: -10px;
     left: -181px;
     object-fit: cover;
+    centerAndFill();
 }

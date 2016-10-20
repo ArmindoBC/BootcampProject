@@ -1,4 +1,4 @@
-app.directive('contactCard', [ "ContactsService", "ActiveContactService", function(ContactsService, ActiveContactService) {
+app.directive('contactCard', ["ContactsService", "ActiveContactService", function(ContactsService, ActiveContactService) {
     return {
         restrict: 'E', //E = element, A = attribute, C = class, M = comment
         scope: {
@@ -14,6 +14,15 @@ app.directive('contactCard', [ "ContactsService", "ActiveContactService", functi
 
             }
             $scope.start();
+
+            console.log($scope.contactObject);
+            console.log($(element).find('.imgTeste')[0].style);
+
+            if ($scope.contactObject.picture != undefined) {
+                $(element).find('.imgTeste')[0].style.src = "url(./assets/photos/" + $scope.contactObject.picture + ")";
+            } else {
+                $(element).find('.imgTeste')[0].style.src = "url(./assets/photos/avatar5.png)";
+            }
             //Controller Functions: --------------------------------------------
 
             //Function for ng-click in contact-card. Redirecting contact-details to new user
@@ -31,6 +40,7 @@ app.directive('contactCard', [ "ContactsService", "ActiveContactService", functi
                     $(".sub-container").css("display", "block");
 
                 });*/
+
                 ActiveContactService.ActiveContact = null;
                 ActiveContactService.changeActiveContact(contactId, function() {
                     //Completed
