@@ -14,43 +14,44 @@
         </div>
     </div>
     <div class="input-container">
-        <div class="input">
-            <div class="input-label">
-                Name
+        <form name="form-input">
+            <div class="input">
+                <div class="input-label">
+                    Name
+                </div>
+                <input-box variable="ContactsService.Model.name" holder="ContactsService.ModelCreate.name" mode-edit="modeEdit" input-required="true"> </input-box>
             </div>
-            <input-box variable="ContactsService.Model.name" holder="ContactsService.ModelCreate.name" mode-edit="modeEdit"> </input-box>
-        </div>
-        <div class="input">
-            <div class="input-label">
-                Phone Number
+            <div class="input">
+                <div class="input-label">
+                    Phone Number
+                </div>
+                <input-box variable="ContactsService.Model.phonenumber" holder="ContactsService.ModelCreate.phonenumber" mode-edit="modeEdit" input-required="false"> </input-box>
             </div>
-            <input-box variable="ContactsService.Model.phonenumber" holder="ContactsService.ModelCreate.phonenumber" mode-edit="modeEdit"> </input-box>
-        </div>
-        <div class="input">
-            <div class="input-label">
-                Email
+            <div class="input">
+                <div class="input-label">
+                    Email
+                </div>
+                <input-box variable="ContactsService.Model.email" holder="ContactsService.ModelCreate.email" mode-edit="modeEdit" input-type="'mail'" input-required="false"></input-box>
             </div>
-            <input-box variable="ContactsService.Model.email" holder="ContactsService.ModelCreate.email" mode-edit="modeEdit"> </input-box>
-        </div>
-        <div class="input">
-            <div class="input-label">
-                Birthday
+            <div class="input">
+                <div class="input-label">
+                    Birthday
+                </div>
+                <input-box variable="ContactsService.Model.birthday" holder="ContactsService.ModelCreate.birthday" mode-edit="modeEdit" input-required="false"> </input-box>
             </div>
-            <input-box variable="ContactsService.Model.birthday" holder="ContactsService.ModelCreate.birthday" mode-edit="modeEdit"> </input-box>
-        </div>
-        <div class="input">
-            <div class="input-label">
-                Address
+            <div class="input">
+                <div class="input-label">
+                    Address
+                </div>
+                <input-text-area variable="ContactsService.Model.address" holder="ContactsService.ModelCreate.address" mode-edit="modeEdit"> </input-text-area>
             </div>
-            <input-box variable="ContactsService.Model.address" holder="ContactsService.ModelCreate.address" mode-edit="modeEdit"> </input-text-area>
-        </div>
-        <div class="input" ng-if="!modeEdit">
-            <div class="input-label">
-                Photo
+            <div class="input" ng-if="!modeEdit">
+                <div class="input-label">
+                    Photo
+                </div>
+                <input class="input-photo" ng-model="photoPath" placeholder="{{ContactsService.ModelCreate.photo}}">
+                </input>
             </div>
-            <input class="input-box" ng-model="photoPath" placeholder="{{ContactsService.ModelCreate.photo}}">
-            </input>
-        </div>
-
+        </form>
     </div>
 </div>
