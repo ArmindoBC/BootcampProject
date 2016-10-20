@@ -32,8 +32,7 @@
     <script src="app/app.module.js"></script>
     <script src="app/controllers/home/home.controller.js"></script>
     <script src="app/controllers/header/header.controller.js"></script>
-    <script src="app/controllers/contact-list/contact-list.controller.js"></script>
-    <script src="app/controllers/contact-details/contact-details.controller.js"></script>
+    <script src="app/controllers/contact-show/contact-show.controller.js"></script>
     <script src="app/controllers/contact-edit-create/contact-edit-create.controller.js"></script>
     <script src="app/models/contact/contact.model.js"></script>
     <script src="app/services/contacts/contacts.service.js"></script>
@@ -76,21 +75,22 @@
                 </div>
             </div>
             <div class="header-icons-container">
-                <div class="icon active" ng-click="" ng-if="mode=='show'">
+                <div class="icon active" ng-click="" ng-if="ActiveContactService.mode=='show'">
                     <i class="material-icons google-icon-header">delete</i>
                 </div>
 
-                <div class="icon active" ng-click="setEditMode()" ng-if="mode=='show'">
+                <div class="icon active" ng-click="ActiveContactService.setEditMode()" ng-if="ActiveContactService.mode=='show'">
                     <!--ng-click="location.path("/contacts/edit")"-->
                     <i class="material-icons  google-icon-header">mode_edit</i>
                 </div>
 
-                <div class="icon active" ng-click="setShowMode()"ng-if="mode=='edit'|| mode=='create'"">
+                <div class="icon active" ng-click="ActiveContactService.setShowMode()"ng-if="ActiveContactService.mode=='edit'|| ActiveContactService.mode=='create'">
                     <div class="google-clear-div">
                     <i class="material-icons google-icon-header">clear</i>
                   </div>
                 </div>
-                <div class="icon active" ng-click="" ng-if="mode=='edit'||mode=='create'">
+                <!-- //Save Button: Not working still && ActiveContactService.setShowMode() -->
+                <div class="icon active" ng-click="ContactsService.Save() " ng-if="ActiveContactService.mode=='edit'||ActiveContactService.mode=='create'">
                     <!--ng-click="location.path("/contacts/edit")"-->
                     <i class="material-icons  google-icon-header">save</i>
                 </div>

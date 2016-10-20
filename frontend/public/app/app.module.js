@@ -9,8 +9,8 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: "app/controllers/home/home.controller.html"
         })
         .when("/details/:id?", {
-            controller: "ContactDetailsController",
-            templateUrl: "app/controllers/contact-details/contact-details.controller.html"
+            controller: "ContactShowController",
+            templateUrl: "app/controllers/contact-show/contact-show.controller.html"
         })
         .when("/edit/:id?", {
             controller: "ContactEditCreateController",

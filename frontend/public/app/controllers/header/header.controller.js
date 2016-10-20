@@ -2,23 +2,22 @@ app.controller('HeaderController', ['$scope', '$location', 'ContactsService', "A
 
     $scope.location = $location;
     $scope.IsLoading = false;
-    $scope.mode = ActiveContactService.Mode;
+    $scope.ActiveContactService = ActiveContactService;
+    $scope.ContactsService = ContactsService;
+    // var goToPath = '';
 
-    $scope.setEditMode = function() {
-
-        $scope.mode = "edit";
-        ActiveContactService.setEditMode();
-    }
-    $scope.setCreatetMode = function() {
-
-        $scope.mode = "create";
-        ActiveContactService.setCreateMode();
-    }
-
-    $scope.setShowMode = function() {
-        $scope.mode = "show";
-        ActiveContactService.setShowMode();
-    }
+    // $scope.setEditMode = function() {
+    //
+    //     ActiveContactService.mode = "edit";
+    //     goToPath = '/edit/' + ActiveContactService.ActiveContact.id;
+    //     $location.path(goToPath);
+    // }
+    //
+    // $scope.setShowMode = function() {
+    //     ActiveContactService.mode = "show";
+    //     goToPath = '/details/' + ActiveContactService.ActiveContact.id;
+    //     $location.path(goToPath);
+    // }
 
     $scope.OnCompleteGetAll = function() {
 
@@ -80,7 +79,8 @@ app.controller('HeaderController', ['$scope', '$location', 'ContactsService', "A
         $scope.IsLoading = false;
     }
 
-    //Start Function
+    //Start Function:-----------------------------------------------------------
+
     $scope.Start = function() {
         //load Persons
         $scope.allowDelete = false;
@@ -92,5 +92,6 @@ app.controller('HeaderController', ['$scope', '$location', 'ContactsService', "A
 
     };
     $scope.Start();
+
 
 }]);

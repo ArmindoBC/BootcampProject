@@ -1,9 +1,18 @@
-app.service('ActiveContactService', ['ContactsService', function(ContactsService) {
+app.service('ActiveContactService', ['$location', 'ContactsService', function($location, ContactsService) {
 
     this.ActiveContact;
-    this.Mode = "show";
+    this.mode = "show";
     var thisService = this;
 
+    this.setEditMode = function() {
+        this.mode = "edit";
+        $location.path('/edit/' + this.ActiveContact.id);
+    }
+
+    this.setShowMode = function() {
+        this.mode = "show";
+        $location.path('/details/' + this.ActiveContact.id);
+    }
 
     this.changeActiveContact = function(contactId, onComplete, onError) {
         ContactsService.GetById(contactId,
@@ -17,14 +26,4 @@ app.service('ActiveContactService', ['ContactsService', function(ContactsService
             });
     }
 
-    this.setEditMode = function() {
-        thisService.Mode = "edit";
-    }
-
-    this.setShowMode = function() {
-        thisService.Mode = "show";
-    }
-    this.setCreateMode = function() {
-        thisService.Mode = "create";
-    }
 }]);
