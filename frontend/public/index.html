@@ -4,6 +4,7 @@
 <head>
     <base href="/">
     <title>Contacts Manager - Deloitte Digital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <!--Vendor Stylesheets-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="assets/css/contact-form.directive.css">
     <link rel="stylesheet" href="assets/css/input-text-area.directive.css">
     <link rel="stylesheet" href="assets/css/input-box.directive.css">
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/main.css">
 
     <!--<link rel="stylesheet" href="assets/css/input-box.directive.css">-->
 
@@ -64,8 +65,11 @@
     <div ng-controller="HeaderController">
         <div class="header-container">
             <div class="header-title-container">
-                <div class="icon notactive">
+                <div ng-if "" class="icon notactive">
                     <i class="material-icons google-icon-search">arrow_back</i>
+                </div>
+                <div ng-if="" class="header-name-mobile">
+                    {{ActiveContactService.ActiveContact.name}}
                 </div>
                 <div class="header-title">
                     SMART
@@ -108,26 +112,40 @@
 
                     </div>
                 </div>
-                <div class="contacts-container">
-                    <div class="showbox" ng-if="IsLoading">
-                        <div class="loader">
-                            <svg class="circular" viewBox="25 25 50 50">
+
+            <div class="contacts-container">
+                <div class="showbox" ng-if="IsLoading">
+                    <div class="loader">
+                        <svg class="circular" viewBox="25 25 50 50">
                                 <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
                             </svg>
-                        </div>
                     </div>
-                    <div class="no-data-found-text" ng-if="noData">No contacts found</div>
-                    <contact-card ng-if="!IsLoading && !noData" contact-object="contact" contactid="contact.id" namecontact="contact.name" phonenumber="contact.phonenumber" ng-repeat="contact in ContactsList"> </contact-card>
                 </div>
+                <div class="no-data-found-text" ng-if="noData">No contacts found</div>
+                <contact-card ng-if="!IsLoading && !noData" contact-object="contact" contactid="contact.id" namecontact="contact.name" phonenumber="contact.phonenumber" ng-repeat="contact in ContactsList"> </contact-card>
             </div>
+        </div>
 
-            <div class="sub-container-2">
 
-                <div ng-view class="divNgView">
+        <div class="sub-container-2">
+            <div ng-view class="divNgView">
 
+            </div>
+        </div>
+
+        <div class="labelMobile">
+            <div class="header-icons-container">
+                <div class="icon">
+                    <i class="material-icons google-icon-header">delete</i>
+                </div>
+
+                <div class="icon">
+                    <!--ng-click="location.path("/contacts/edit")"-->
+                    <i class="material-icons  google-icon-header">mode_edit</i>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </body>
 

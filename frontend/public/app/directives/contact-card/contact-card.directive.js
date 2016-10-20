@@ -18,15 +18,6 @@ app.directive('contactCard', ["ContactsService", "ActiveContactService", functio
 
                 document.getElementById(ActiveContactService.ActiveContact.id).className = "contact-card-div-no-active";
 
-
-
-                if ($(".sub-container-2").css("display") == "none") {
-                    // your code here
-                    $(".sub-container").css("display", "none");
-                    $(".sub-container-2").css("display", "block");
-                }
-
-
                 /*$(window).resize(function(){
                     console.log($scope);
                     $(".sub-container").css("display", "block");
