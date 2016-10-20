@@ -1,8 +1,8 @@
 <div class="contact-form-container">
-    <input type="submit" value="Save" ng-click="Save()"> </input>
-    <input type="submit" value="Discard" ng-click="Save()"> </input>
+    <!-- <input type="submit" value="Save" ng-click="Save()"> </input>
+    <input type="submit" value="Discard" ng-click="Save()"> </input> -->
     <div class="form-header-container">
-        <div class="contact-image">
+        <div class="circle-image">
         </div>
         <div class="header">
             <div ng-if="ContactsService.Model.name == null ||  ContactsService.Model.name.trim() == ''">
@@ -37,19 +37,35 @@
                 <div class="input-label">
                     Birthday
                 </div>
-                <input-box variable="ContactsService.Model.birthday" holder="ContactsService.ModelCreate.birthday" mode-edit="modeEdit" input-required="false"> </input-box>
+                <div class="input-group">
+                    <input class="input-date" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                    <span class="input-group-btn">
+                    <button type="button" class="btn btn-default icon-button" ng-click="open1()">
+                      <i class="material-icon icon-input">date_range</i>
+                      </button>
+                  </span>
+                </div>
+
             </div>
-            <div class="input">
+            <div class="input input-address">
                 <div class="input-label">
                     Address
                 </div>
-                <input-text-area variable="ContactsService.Model.address" holder="ContactsService.ModelCreate.address" mode-edit="modeEdit"> </input-text-area>
+                <textarea class="input-text-area" ng-model="ContactsService.Model.address" placeholder="{{ ContactsService.ModelCreate.address}}" type="text">
+                </textarea>
             </div>
             <div class="input" ng-if="!modeEdit">
                 <div class="input-label">
                     Photo
                 </div>
-                <input class="input-photo" ng-model="photoPath" placeholder="{{ContactsService.ModelCreate.photo}}">
+                <div class="input-group">
+                    <input class="input-date" placeholder="{{ContactsService.ModelCreate.photo}}" />
+                    <span class="input-group-btn">
+                    <button type="button" class="btn btn-default icon-button" ng-click="open1()">
+                      <i class="material-icon icon-input">camera_alt</i>
+                      </button>
+                  </span>
+                </div>
                 </input>
             </div>
         </form>
