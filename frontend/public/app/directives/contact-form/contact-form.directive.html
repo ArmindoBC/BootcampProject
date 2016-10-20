@@ -9,7 +9,7 @@
                 Contact's name
             </div>
             <div ng-if="ContactsService.Model.name != null && ContactsService.Model.name.trim() != ''">
-                {{ ContactsService.Model.name }}
+                {{ ContactsService.Model.name | firstCharacterUppercase }}
             </div>
         </div>
     </div>
@@ -19,19 +19,20 @@
                 <div class="input-label">
                     Name
                 </div>
-                <input-box variable="ContactsService.Model.name" holder="ContactsService.ModelCreate.name" mode-edit="modeEdit" input-required="true"> </input-box>
+                <input class="input-box" ng-model="ContactsService.Model.name" placeholder="{{ ContactsService.ModelCreate.name }}" type="text" required>
+                </input>
             </div>
             <div class="input">
                 <div class="input-label">
                     Phone Number
                 </div>
-                <input-box variable="ContactsService.Model.phonenumber" holder="ContactsService.ModelCreate.phonenumber" mode-edit="modeEdit" input-required="false"> </input-box>
+                <input class="input-box" ng-model="ContactsService.Model.phonenumber" placeholder="{{ ContactsService.ModelCreate.phonenumber }}" type="text"> </input>
             </div>
             <div class="input">
                 <div class="input-label">
                     Email
                 </div>
-                <input-box variable="ContactsService.Model.email" holder="ContactsService.ModelCreate.email" mode-edit="modeEdit" input-type="'mail'" input-required="false"></input-box>
+                <input class="input-box" ng-model="ContactsService.Model.email" placeholder="{{ ContactsService.ModelCreate.email}}" type="text"></input>
             </div>
             <div class="input">
                 <div class="input-label">
@@ -59,14 +60,13 @@
                     Photo
                 </div>
                 <div class="input-group">
-                    <input class="input-date" placeholder="{{ContactsService.ModelCreate.photo}}" />
+                    <input class="input-photo" placeholder="{{ContactsService.ModelCreate.photo}}" />
                     <span class="input-group-btn">
                     <button type="button" class="btn btn-default icon-button" ng-click="open1()">
                       <i class="material-icon icon-input">camera_alt</i>
                       </button>
                   </span>
                 </div>
-                </input>
             </div>
         </form>
     </div>

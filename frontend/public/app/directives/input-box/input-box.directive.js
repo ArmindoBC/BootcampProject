@@ -12,6 +12,11 @@ app.directive('inputBox', ["ContactsService", function(ContactsService) {
         link: function($scope, element, attrs) {
             console.log($scope.variable);
             console.log($scope.holder);
+            $scope.$watch('$scope.variable', function(newValue, oldValue) {
+                console.log(newValue);
+                console.log(oldValue);
+            });
+
         }
     };
 }]);

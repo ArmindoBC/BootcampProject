@@ -24,6 +24,10 @@
     letter-spacing: 0.4px;
     color: #0c1128;
 }
+.contact-form-container{
+  min-height: 777.5px;
+}
+
 .input-container {
     padding-top: 32px;
     padding-left: 122px;
@@ -46,7 +50,7 @@
     font-stretch: normal;
     color: #24263f;
 }
-.input-container input-box input, .input-container .input-photo {
+.input-container .input-box, .input-container .input-photo {
     outline: none;
     height: 43px;
     padding-top: 9px;
@@ -73,7 +77,7 @@
     -moz-box-sizing: border-box;
     /* Firefox, other Gecko */
 }
-.input-group .input-date {
+.input-group .input-date, .input-group .input-photo {
     height: 43px;
     padding-top: 9px;
     /*Symmetric to top (10px -> 9px) (delt) */

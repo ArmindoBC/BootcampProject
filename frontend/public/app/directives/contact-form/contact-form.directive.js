@@ -6,6 +6,29 @@ app.directive('contactForm', ["ContactsService", function(ContactsService) {
         },
         templateUrl: 'app/directives/contact-form/contact-form.directive.html',
         link: function($scope, element, attrs) {
+
+
+            // Initialization functions: -----------------------------
+
+            // Pointing ContactsService to scope
+            $scope.ContactsService = ContactsService;
+
+            // Initializing model according to contact id
+            if ($scope.contactid != null) {
+                ContactsService.GetById($scope.contactid, function(model) {
+                    ContactsService.Model = model;
+                    console.log(ContactsService.Model);
+                }, function(error) {
+                    // console.log(error);
+                });
+                $scope.modeEdit = true;
+            } else {
+                ContactsService.Model = null;
+                $scope.modeEdit = false;
+            }
+
+            // DatePicker functions: --------------------------------
+
             $scope.today = function() {
                 $scope.dt = new Date();
             };
@@ -97,23 +120,7 @@ app.directive('contactForm', ["ContactsService", function(ContactsService) {
                 return '';
             }
 
-            $scope.ContactsService = ContactsService;
-            // (delt) console.log($scope.contactid !=null);
 
-            if ($scope.contactid != null) {
-                ContactsService.GetById($scope.contactid, function(model) {
-                    ContactsService.Model = model;
-                    console.log(ContactsService.Model);
-                }, function(error) {
-                    console.log(error);
-                });
-                $scope.modeEdit = true;
-                // (delt) console.log($scope.modeEdit);
-            } else {
-                ContactsService.Model = null;
-                // ContactsService.Model = ContactsService.ModelCreate;
-                $scope.modeEdit = false;
-            }
 
             $scope.SaveOnComplete = function() {
                 alert("Guardado!");
