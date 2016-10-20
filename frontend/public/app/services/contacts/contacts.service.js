@@ -1,17 +1,17 @@
-app.service('ContactsService', ['UtilsService', '$http', function(UtilsService, $http) {
+app.service('ContactsService', ['UtilsService', '$http', '$Upload', function(UtilsService, $http, Upload) {
 
     this.CollectionName = "contacts";
     this.AllItems;
     this.Model;
-    
+
     this.ModelCreate = {
-      header: "Your Name",
-      name: "Insert your name",
-      phonenumber: "Insert your mobile (+)",
-      email: "Insert your email",
-      birthday: "Select your birthday",
-      address: "Insert your address",
-      photo: "Select your photo path"
+        header: "Your Name",
+        name: "Insert your name",
+        phonenumber: "Insert your mobile (+)",
+        email: "Insert your email",
+        birthday: "Select your birthday",
+        address: "Insert your address",
+        photo: "Select your photo path"
     }
 
     this.GetAll = function(onComplete, onError) {
@@ -91,7 +91,7 @@ app.service('ContactsService', ['UtilsService', '$http', function(UtilsService, 
     }
 
     this.GetAutocomplete = function(string, onComplete, onError) {
-      var thisHandler = this;
+        var thisHandler = this;
 
         $http({
             method: 'GET',
@@ -107,6 +107,22 @@ app.service('ContactsService', ['UtilsService', '$http', function(UtilsService, 
             onError(response);
         });
     }
+
+    $scope.onFileSelect = function($files) {
+        //$files: an array of files selected, each file has name, size, and type.
+        console.log($files);
+            var $file = $files[0];
+            Upload.upload({
+                url: 'http://localhost:9003/contact',
+                file: $file,
+                progress: function(e) {}
+            }).then(function(data, status, headers, config) {
+                // file is uploaded successfully
+                console.log(data);
+            });
+    }
+
+
 
 
 
