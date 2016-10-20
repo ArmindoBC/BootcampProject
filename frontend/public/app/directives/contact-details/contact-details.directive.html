@@ -2,8 +2,11 @@
     <div class="form-header-container">
         <div class="contact-image">
         </div>
+
         <div class="header">
-            {{model.name | firstCharacterUppercase}}
+            <div>
+            {{contact.name | firstCharacterUppercase}}
+        </div>
         </div>
     </div>
     <div class="input-container">
@@ -12,7 +15,7 @@
                 Name
             </div>
             <div class="label-contact-details">
-                {{model.name | firstCharacterUppercase}}
+                {{contact.name | firstCharacterUppercase}}
             </div>
         </div>
         <div class="input">
@@ -20,7 +23,7 @@
                 Phone Number
             </div>
             <div class="label-contact-details">
-                {{model.phonenumber}}
+                {{contact.phonenumber}}
             </div>
         </div>
         <div class="input">
@@ -28,7 +31,7 @@
                 Email
             </div>
             <div class="label-contact-details">
-                {{model.email}}
+                {{contact.email}}
             </div>
         </div>
         <div class="input">
@@ -36,7 +39,7 @@
                 Birthdate
             </div>
             <div class="label-contact-details">
-                {{model.birthday | date:'MM/dd/yyyy' }} ({{model.birthday | getContactAge}} years)
+                {{contact.birthday | date:'MM/dd/yyyy' }} {{contact.birthday | getContactAge}}
             </div>
         </div>
         <div class="input">
@@ -44,9 +47,13 @@
                 Address
             </div>
             <div class="label-contact-details">
-                {{model.address}}
+                {{contact.address}}
             </div>
         </div>
     </div>
 </div>
-<contact-map contactid="'58074e10aa2b4f17789d8169'"></<contact-map>
+<div class="centerMap">
+    <div class="contactMap map">
+
+    </div>
+</div>

@@ -1,16 +1,15 @@
-<div class="contact-card-div" ng-click="showUser(contactid)">
+<div class="contact-card-div" ng-click="showUser(contactid)" id="{{contactid}}" ng-class="active">
 
     <div class="contact-card-items">
         <div class="contact-pic">
         </div>
-
         <div class="contact-content">
             <div class="contact-name">
-                {{namecontact | firstCharacterUppercase | showFirstLastName}}
+                {{contactObject.name | firstCharacterUppercase | showFirstLastName}}
             </div>
 
             <div class="contact-detail">
-                {{phonenumber}}
+                {{contactObject | choosePrimaryContact}}
             </div>
         </div>
     </div>

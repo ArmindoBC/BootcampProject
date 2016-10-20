@@ -1,4 +1,4 @@
-app.directive('contactMap', ["ContactsService", function(ContactsService) {
+app.directive('contactMap', ["ContactsService","ActiveContactService", function(ContactsService,ActiveContactService) {
 
     function initMap(addressMap, element) {
         var geocoder = new google.maps.Geocoder();
@@ -36,7 +36,8 @@ app.directive('contactMap', ["ContactsService", function(ContactsService) {
         templateUrl: 'app/directives/contact-map/contact-map.directive.html',
         link: function($scope, element, attrs) {
             //init card
-            ContactsService.GetById($scope.contactid, function(model) {
+            console.log(ActiveContactService.ActiveContact.id);
+            ContactsService.GetById(ActiveContactService.ActiveContact.id, function(model) {
                 $scope.model = model;
                 if($scope.model.address!="")
                     initMap(model.address, $(element).find('.map')[0]);

@@ -1,19 +1,18 @@
 app.service('ActiveContactService', ['ContactsService', function(ContactsService) {
 
-    this.ActiveContact = {value:null} ;
+    this.ActiveContact;
     var thisService = this;
-
-    this.changeActiveContact = function(contactId, onComplete){
-      ContactsService.GetById(contactId,
-         function(onSuccess)
-      {
-        thisService.ActiveContact.value =  onSuccess;
-        onComplete();
-      },
-       function(onError){
-        console.log(onError);
-      });
-
+    
+    this.changeActiveContact = function(contactId, onComplete, onError) {
+        ContactsService.GetById(contactId,
+            function(response) {
+                thisService.ActiveContact = response;
+                onComplete;
+            },
+            function(onError) {
+                console.log(onError);
+                onError(onError);
+            });
     }
 
- }]);
+}]);

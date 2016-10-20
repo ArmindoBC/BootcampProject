@@ -2,18 +2,25 @@
 <contactForm> </contactForm>-->
 <!--<contact-map contactid="'contact.id'"></<contact-map>-->
 <!--<contact-map contactid="'58074e10aa2b4f17789d8169'"></<contact-map>-->
-
-<div class="insideNgView" ng-if="InDetailsMode">
-    <!--<h2> edit or create the contact</h2>-->
-    <contact-form contactid="'5805df0f4a0f0419c09e5893'"></contact-edit>
-    <contact-upload contactid="'5805df0f4a0f0419c09e5893'"></<contact-upload>
-    <contact-map contactid="'5805df0f4a0f0419c09e5893'"></<contact-map>
-</div>
 <!-- example of usage of the service-->
-<!--  <h2> {{ActiveContact.value.name}}</h2>-->
-<div class="insideNgView" ng-if="!InDetailsMode">
+
+<!--<div ng-if="ActiveContactService.ActiveContact == null"> a carregar... </div>-->
+
+
+<div class="containerExample" ng-if="ActiveContactService.ActiveContact == null">
+    <div class="showbox">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+  <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+</svg>
+        </div>
+    </div>
+</div>
+
+<div class="insideNgView animated bounceIn" ng-if="ActiveContactService.ActiveContact != null">
     <!--<h2> details the contact</h2>-->
-    <!-- <contact-form contactid="'5805df0f4a0f0419c09e5893'"></contact-form> /* Id mongodb PC Meireles */ -->
+    <!-- <contact-details contact="ActiveContactService.ActiveContact"></contact-details> -->
+    <!-- <contact-form contactid="'5805df0f4a0f0419c09e5893'"></contact-form> Id mongodb PC Meireles-->
     <!-- <contact-details contactid="'58077491aa2b4f17789d816b'"></contact-edit> Id mongodb PC Azevedo -->
     <contact-form ></contact-form>
 

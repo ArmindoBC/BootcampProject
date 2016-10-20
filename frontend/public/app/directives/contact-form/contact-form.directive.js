@@ -24,29 +24,27 @@ app.directive('contactForm', ["ContactsService", function(ContactsService) {
             }
 
             $scope.SaveOnComplete = function() {
-          		alert("Guardado!");
-          		$scope.IsLoading = false;
-          		//Redirect to list
-          		// $location.path("/persons");
-          	}
+                alert("Guardado!");
+                $scope.IsLoading = false;
+                //Redirect to list
+                // $location.path("/persons");
+            }
 
-          	$scope.SaveOnError = function() {
-          		alert("Falhou!");
-          		$scope.IsLoading = false;
-          	}
+            $scope.SaveOnError = function() {
+                alert("Falhou!");
+                $scope.IsLoading = false;
+            }
 
             $scope.Save = function() {
-              //Update Item
-              $scope.IsLoading = true;
-              ContactsService.SaveItem($scope.ContactsService.Model, $scope.SaveOnComplete, $scope.SaveOnError);
+                //Update Item
+                $scope.IsLoading = true;
+                ContactsService.SaveItem($scope.ContactsService.Model, $scope.SaveOnComplete, $scope.SaveOnError);
 
-              //Redirect to list
-              // $location.path("/persons");
+                //Redirect to list
+                // $location.path("/persons");
             }
 
             //init card
-
-
         }
     };
 }]);

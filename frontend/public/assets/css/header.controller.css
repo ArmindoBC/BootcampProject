@@ -158,13 +158,24 @@
     text-align: left;
     color: #898888;
 }
+.no-data-found-text{
+    text-align: center;
+    font-family: OpenSans-Regular;
+    font-size: 20px;
+}
 .google-icon-search {
     color: #898888;
     font-size: 40px;
 }
+.delete-text {
+    cursor: pointer;
+    cursor:hand;
+    float: right;
+}
+
 .icon-search {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     height: 30px;
     width: 30px;
