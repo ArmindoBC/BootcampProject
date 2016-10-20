@@ -1,9 +1,10 @@
-app.controller('HeaderController', ['$scope', '$location', 'ContactsService', "ActiveContactService", function($scope, $location, ContactsService, ActiveContactService) {
+app.controller('HeaderController', ['$scope', '$routeParams','$location', 'ContactsService', "ActiveContactService", function($scope, $routeParams,$location, ContactsService, ActiveContactService) {
 
     $scope.location = $location;
     $scope.IsLoading = false;
     $scope.ActiveContactService = ActiveContactService;
     $scope.ContactsService = ContactsService;
+    $scope.param = $routeParams.id;
     // var goToPath = '';
 
     // $scope.setEditMode = function() {
@@ -77,6 +78,16 @@ app.controller('HeaderController', ['$scope', '$location', 'ContactsService', "A
     $scope.OnErrorGetAll = function(errorCode) {
         console.log(errorCode);
         $scope.IsLoading = false;
+    }
+
+    $scope.SaveItem =  function()
+    {
+      ContactsService.SaveItem($routeParams.id, function(){
+        alert("estoyy aqui");},
+        function(response){
+          alert(response);
+        }
+      );
     }
 
     //Start Function:-----------------------------------------------------------

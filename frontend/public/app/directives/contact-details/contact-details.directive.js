@@ -1,4 +1,4 @@
-app.directive('contactDetails', ["ContactsService", "ActiveContactService", function(ContactsService, ActiveContactService) {
+app.directive('contactDetails', ["ContactsService", "$routeParams", "ActiveContactService", function(ContactsService, ActiveContactService, $routeParams) {
     function initMap(addressMap, element) {
         var geocoder = new google.maps.Geocoder();
         var result;
@@ -34,6 +34,24 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", func
         templateUrl: 'app/directives/contact-details/contact-details.directive.html',
         link: function(scope, element, attrs) {
             //init card
+            // Pointing ContactsService to scope
+            scope.ContactsService = ContactsService;
+
+            if ($routeParams.id != null) {
+                ContactsService.GetById($routeParams.id, function(model) {
+                    ContactsService.Model = model;
+                    scope.ContactsService = ContactsService;
+
+                    console.log(ContactsService.Model);
+                }, function(error) {
+                    // console.log(error);
+                });
+                scope.modeEdit = true;
+            } else {
+                ContactsService.Model = null;
+                scope.modeEdit = false;
+            }
+
             console.log($(element).find('.circle-image')[0].style);
             if (scope.contact.picture != undefined) {
                 $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/" + scope.contact.picture + ")";
