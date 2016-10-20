@@ -20,7 +20,7 @@
     color: #f7f8f9;
 }
 .header-title-container .header-title-blue {
-    margin-left: -3px;
+    margin-left: -6px;
     text-transform: uppercase;
     height: 36px;
     font-family: 'OpenSans-Regular';
@@ -78,22 +78,26 @@
     border-radius: 10px;
 }
 .contacts-container::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0 0 6px #f2f2f2;
 }
 .contacts-container::-webkit-scrollbar-thumb {
     background-color: darkgrey;
-    outline: 1px solid slategrey;
+    outline: 1px solid rgba(0, 0, 0, 0.3);
 }
 .search-div {
     border-left: solid 6.4px #101632;
     top: 60px;
-    padding-left: 20px;
+    padding-left: 31px;
     height: 60px;
-    width: 399px;
+    width: 419px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     background-color: #FFF;
+    border-right: 3px solid #f2f2f2;
+
+
+
 }
 .search-div .search-input {
     padding-top: 15px;

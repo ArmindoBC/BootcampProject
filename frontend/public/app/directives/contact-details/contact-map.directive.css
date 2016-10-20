@@ -3,11 +3,16 @@
     max-width: 812px;
     height: 271px;
 }
-
-.centerMap{
-  padding-top:63px;
+.centerMap {
+    padding-top: 63px;
 }
-
-.conta{
-
+.circle-image {
+    width: 120px;
+    height: 120px;
+    background-color: #898888;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    position: absolute;
+    top: 42px;
+    left: -60px;
 }
