@@ -7,7 +7,6 @@ app.directive('contactForm', ["ContactsService", "$routeParams", function(Contac
         templateUrl: 'app/directives/contact-form/contact-form.directive.html',
         link: function($scope, element, attrs) {
 
-
             // Initialization functions: -----------------------------
 
             // Pointing ContactsService to scope
@@ -18,7 +17,11 @@ app.directive('contactForm', ["ContactsService", "$routeParams", function(Contac
                 ContactsService.GetById($routeParams.id, function(model) {
                     ContactsService.Model = model;
                     $scope.ContactsService = ContactsService;
-
+                    if ($scope.contact != null && $scope.contact.picture != undefined) {
+                        $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/" + $scope.contact.picture + ")";
+                    } else {
+                        $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
+                    }
                     console.log(ContactsService.Model);
                 }, function(error) {
                     // console.log(error);
@@ -28,14 +31,6 @@ app.directive('contactForm', ["ContactsService", "$routeParams", function(Contac
                 ContactsService.Model = null;
                 $scope.modeEdit = false;
 
-                var model = $parse(attrs.fileModel);
-                var modelSetter = model.assign;
-
-                element.bind('change', function() {
-                    $scope.$apply(function() {
-                        modelSetter($scope, element[0].files[0]);
-                    });
-                });
             }
 
             // DatePicker functions: --------------------------------
@@ -82,6 +77,7 @@ app.directive('contactForm', ["ContactsService", "$routeParams", function(Contac
             };
 
             $scope.open2 = function() {
+                document.getElementById('openPicture').click();
                 $scope.popup2.opened = true;
             };
 

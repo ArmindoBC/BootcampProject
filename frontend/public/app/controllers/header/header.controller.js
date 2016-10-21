@@ -48,14 +48,14 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
             $scope.ContactsList = ContactsService.AllItems;
             ActiveContactService.ActiveContact = ContactsService.AllItems[0];
             $scope.ActiveContact = ActiveContactService.ActiveContact;
-            $scope.contact= ActiveContactService.ActiveContact;
+            $scope.contact = ActiveContactService.ActiveContact;
 
             // setTimeout(function() {
-                if (ActiveContactService.ActiveContact.id != null &&
-                    document.getElementById(ActiveContactService.ActiveContact.id) != null) {
-                    document.getElementById(ActiveContactService.ActiveContact.id).className = "contact-card-div-active";
-                }
-                //load first active user on header controller scope
+            if (ActiveContactService.ActiveContact.id != null &&
+                document.getElementById(ActiveContactService.ActiveContact.id) != null) {
+                document.getElementById(ActiveContactService.ActiveContact.id).className = "contact-card-div-active";
+            }
+            //load first active user on header controller scope
 
             // }, 100);
             // ActiveContactService.setShowMode();
@@ -91,7 +91,7 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
     $scope.Delete = function() {
         //Update Item
         $scope.IsLoading = true;
-        ContactsService.RemoveById(ActiveContactService.ActiveContact, DeleteOnComplete , DeleteOnError);
+        ContactsService.RemoveById(ActiveContactService.ActiveContact, DeleteOnComplete, DeleteOnError);
     }
 
     //Save Function:------------------------------------------------------------------
@@ -112,11 +112,13 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
 
     $scope.Save = function() {
         //Update Item
+        console.log("FUNCTION SAVE");
+        console.log(ActiveContactService.ActiveContact);
         $scope.IsLoading = true;
-        if($routeParams.id==null){
-        ContactsService.CreateItem( SaveOnComplete , SaveOnError);
+        if ($routeParams.id == null) {
+            ContactsService.CreateItem(SaveOnComplete, SaveOnError);
         } else {
-        ContactsService.SaveItem(ActiveContactService.ActiveContact.id, SaveOnComplete , SaveOnError);
+            ContactsService.SaveItem(ActiveContactService.ActiveContact.id, SaveOnComplete, SaveOnError);
         }
     }
 
@@ -126,9 +128,9 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
         //load Persons
         $scope.allowDelete = false;
         $scope.IsLoading = true;
-      // setTimeout(function() {
-            ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);
-      //   }, 1000);
+        // setTimeout(function() {
+        ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);
+        //   }, 1000);
     };
     $scope.Start();
 

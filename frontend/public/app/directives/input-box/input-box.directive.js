@@ -16,7 +16,6 @@ app.directive('inputBox', ["ContactsService", function(ContactsService) {
                 console.log(newValue);
                 console.log(oldValue);
             });
-
         }
     };
 }]);
