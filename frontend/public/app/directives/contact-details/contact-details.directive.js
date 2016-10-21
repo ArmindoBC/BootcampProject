@@ -48,6 +48,9 @@ app.directive('contactDetails', ["ContactsService", "$routeParams", "ActiveConta
                     // console.log(error);
                 });
                 scope.modeEdit = true;
+                if (scope.contact.address != undefined) {
+                    initMap(scope.contact.address, $(element).find('.map')[0]);
+                }
             } else {
                 ContactsService.Model = null;
                 scope.modeEdit = false;
@@ -60,11 +63,9 @@ app.directive('contactDetails', ["ContactsService", "$routeParams", "ActiveConta
                 $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
             }
             //console.log($(element).find('.circle-image')[0].style);
-            if (scope.contact.address != undefined) {
-                initMap(scope.contact.address, $(element).find('.map')[0]);
-            } else {
-                $(element).find('.map')[0].style.display = 'none';
-            }
+            /* else {
+                $(element).find('.map')[0].style.hidden.visibility = 'hidden';
+            }*/
             scope.$applyAsync();
 
         }

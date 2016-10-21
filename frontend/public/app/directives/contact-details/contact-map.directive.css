@@ -1,7 +1,8 @@
 .contactMap {
     width: 100%;
     max-width: 812px;
-    height: 271px;
+    max-height: 271px;
+    height: 100%;
 }
 .centerMap {
     padding-top: 63px;

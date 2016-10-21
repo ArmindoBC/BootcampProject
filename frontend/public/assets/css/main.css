@@ -127,6 +127,7 @@
     }
     .imgTeste{
       width:100%;
+      object-fit: contain;
     }
     /*media queries*/
 
