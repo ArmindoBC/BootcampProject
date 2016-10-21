@@ -126,9 +126,9 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
         //load Persons
         $scope.allowDelete = false;
         $scope.IsLoading = true;
-        // setTimeout(function() {
+      // setTimeout(function() {
             ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);
-        // }, 1000);
+      //   }, 1000);
     };
     $scope.Start();
 

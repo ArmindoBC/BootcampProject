@@ -40,22 +40,25 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", "$ro
                 // Pointing ContactsService to $scope
                 $scope.ContactsService = ContactsService;
                 //added
-                console.log($scope.contact.id);
-                console.log("ENTREI");
-                    if ($scope.contact.id != null) {
-                        ContactsService.GetById($scope.contact.id, function(model) {
-                            ContactsService.Model = model;
-                            $scope.ContactsService = ContactsService;
 
-                            console.log(ContactsService.Model);
-                        }, function(error) {
-                            // console.log(error);
-                        });
-                        $scope.modeEdit = true;
-                    } else {
-                        ContactsService.Model = null;
-                        $scope.modeEdit = false;
-                    }
+                if ($routeParams.id != null) {
+                  setTimeout(function(){
+                    ContactsService.GetById($routeParams.id, function(model) {
+
+                        ContactsService.Model = model;
+                        $scope.ContactsService = ContactsService;
+                        console.log(ContactsService.Model);},100);
+                        if ($scope.contact.address != undefined) {
+                            initMap($scope.contact.address, $(element).find('.map')[0]);
+                        }
+                    }, function(error) {
+                        // console.log(error);
+                    });
+                    $scope.modeEdit = true;
+                } else {
+                    ContactsService.Model = ActiveContactService.ActiveContact;
+                    $scope.modeEdit = false;
+                }
 
                 console.log($(element).find('.circle-image')[0].style);
                 if ($scope.contact.picture != undefined) {
@@ -64,11 +67,7 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", "$ro
                     $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
                 }
                 console.log($(element).find('.circle-image')[0].style);
-                if ($scope.contact.address != undefined) {
-                    initMap($scope.contact.address, $(element).find('.map')[0]);
-                } else {
-                    $(element).find('.map')[0].style.display = 'none';
-                }
+
                 $scope.$applyAsync();
             }
             $scope.start();

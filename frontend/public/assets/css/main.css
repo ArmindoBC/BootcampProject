@@ -6,6 +6,7 @@
         height: 100%;
         width: 100%;
         overflow-y: hidden;
+        overflow-x: hidden;
         font-family: 'OpenSans-Regular';
     }
 
@@ -85,6 +86,8 @@
         padding-top: 35px;
         padding-bottom: 153px;
         width: 100%;
+        position: absolute;
+        left:240px;
     }
 
     .containerExample {
@@ -126,6 +129,10 @@
         letter-spacing: 0.3px;
         color: #ffffff;
         display: none;
+    }
+    .imgTeste{
+      width:100%;
+      object-fit: contain;
     }
     /*media queries*/
 

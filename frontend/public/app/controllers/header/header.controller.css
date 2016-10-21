@@ -4,7 +4,7 @@
     background-color: #222a4d;
     display: flex;
     position: fixed;
-    top:0;
+    top: 0;
     left: 0;
     justify-content: space-between;
 }
@@ -34,10 +34,11 @@
     letter-spacing: 0.3px;
     color: #4fe0f2;
 }
-.sub-container{
-    position: relative;
-    top:60px;
+.sub-container {
+    position: absolute;;
+    top: 60px;
     bottom: 0px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
 .header-icons-container {
     color: #f8f9fa;
@@ -75,7 +76,6 @@
     position: absolute;
     bottom: 0;
     width: 419px;
-    ;
     background-color: #ffffff;
     overflow-y: scroll;
     overflow-x: hidden;
