@@ -37,6 +37,7 @@
         background-color: rgba(0, 0, 0, 0.38);
         border-radius: 50%;
         object-fit: cover;
+        background-size: cover;
     }
     .contact-content {
         margin-left: 17px;

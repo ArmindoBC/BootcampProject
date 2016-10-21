@@ -22,7 +22,7 @@ app.directive('contactCard', ["ContactsService", '$location', "ActiveContactServ
                 //commented till here
                 document.getElementById(ActiveContactService.ActiveContact.id).className = "contact-card-div-no-active";
                 ActiveContactService.ActiveContact = null;
-                $location.path('/details/'+contactId);  
+                $location.path('/details/' + contactId);
                 ActiveContactService.changeActiveContact(contactId, function() {
                     //Completed
                     document.getElementById(contactId).className = "contact-card-div-active";

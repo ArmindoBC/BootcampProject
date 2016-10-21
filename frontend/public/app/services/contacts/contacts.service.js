@@ -63,7 +63,11 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
         $http({
             method: 'POST',
             url: 'http://localhost:9003/contact',
-            data: modelToSend
+            data: modelToSend,
+            transformRequest: angular.identity,
+            headers: {
+                'Content-Type': undefined
+            }
         }).then(function successCallback(response) {
             // this callback will be called asynchronously
             // when the response is available

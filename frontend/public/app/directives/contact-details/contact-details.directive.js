@@ -51,6 +51,12 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", "$ro
                         if ($scope.contact.address != undefined) {
                             initMap($scope.contact.address, $(element).find('.map')[0]);
                         }
+                        if ($scope.contact.picture != undefined) {
+                            $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/" + $scope.contact.picture + ")";
+                        } else {
+                            $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
+                        }
+                        console.log($scope.contact.picture);
                     }, function(error) {
                         // console.log(error);
                     });
@@ -59,14 +65,6 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", "$ro
                     ContactsService.Model = ActiveContactService.ActiveContact;
                     $scope.modeEdit = false;
                 }
-
-                console.log($(element).find('.circle-image')[0].style);
-                if ($scope.contact.picture != undefined) {
-                    $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/" + $scope.contact.picture + ")";
-                } else {
-                    $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
-                }
-                console.log($(element).find('.circle-image')[0].style);
 
                 $scope.$applyAsync();
             }

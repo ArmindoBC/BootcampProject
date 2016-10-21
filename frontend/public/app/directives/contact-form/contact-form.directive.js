@@ -1,4 +1,4 @@
-app.directive('contactForm', ["ContactsService","$routeParams", function(ContactsService,$routeParams) {
+app.directive('contactForm', ["ContactsService", "$routeParams", function(ContactsService, $routeParams) {
     return {
         restrict: 'E', //E = element, A = attribute, C = class, M = comment
         scope: {
@@ -12,7 +12,6 @@ app.directive('contactForm', ["ContactsService","$routeParams", function(Contact
 
             // Pointing ContactsService to scope
             $scope.ContactsService = ContactsService;
-
 
             // Initializing model according to contact id
             if ($routeParams.id != null) {
@@ -28,6 +27,15 @@ app.directive('contactForm', ["ContactsService","$routeParams", function(Contact
             } else {
                 ContactsService.Model = null;
                 $scope.modeEdit = false;
+
+                var model = $parse(attrs.fileModel);
+                var modelSetter = model.assign;
+
+                element.bind('change', function() {
+                    $scope.$apply(function() {
+                        modelSetter($scope, element[0].files[0]);
+                    });
+                });
             }
 
             // DatePicker functions: --------------------------------
