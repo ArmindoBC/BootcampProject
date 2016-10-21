@@ -6,6 +6,7 @@ app.directive('contactForm', ["ContactsService", "$routeParams", function(Contac
         },
         templateUrl: 'app/directives/contact-form/contact-form.directive.html',
         link: function($scope, element, attrs) {
+            $scope.isOnMobile = $('.isOnMobile').is(':visible');
 
             // Initialization functions: -----------------------------
 

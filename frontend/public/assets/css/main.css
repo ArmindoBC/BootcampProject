@@ -226,4 +226,7 @@
         {
           padding-right: 28px;
         }
+        .input .input-box, .input .input-text-area, .input .input-photo{
+          width:100%;
+        }
     }

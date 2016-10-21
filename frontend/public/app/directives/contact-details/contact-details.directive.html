@@ -1,9 +1,18 @@
 <div class="contact-form-container">
     <div class="form-header-container">
-      <div class="circle-image" ng-if="isOnMobile">
+      <div ng-if="isOnMobile">
+          <div ng-if="ContactsService.Model.picture" class="circle-image" style="background-image: url('{{ContactsService.Model.picture}}')">
+          </div>
+          <div ng-if="!ContactsService.Model.picture" class="circle-image" style="background-image: url('./assets/photos/avatar5.png')">
+          </div>
       </div>
+
         <div class="header">
-            <div class="circle-image" ng-if="!isOnMobile">
+            <div ng-if="!isOnMobile">
+                <div ng-if="ContactsService.Model.picture" class="circle-image" style="background-image: url('{{ContactsService.Model.picture}}')">
+                </div>
+                <div ng-if="!ContactsService.Model.picture" class="circle-image" style="background-image: url('./assets/photos/avatar5.png')">
+                </div>
             </div>
             <div class="activeMobile">
                 {{ContactsService.Model.name | firstCharacterUppercase}}
@@ -54,9 +63,9 @@
             </div>
         </div>
 
-            <div class="contactMap map">
+        <div class="contactMap map">
 
-            </div>
+        </div>
 
     </div>
 </div>
