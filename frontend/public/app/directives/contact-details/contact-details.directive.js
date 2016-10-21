@@ -5,8 +5,6 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", "$ro
         var result;
         var map;
         var maker;
-        console.log("ENTREI NO MAPA");
-        console.log("Morada:" + addressMap);
         geocoder.geocode({
             'address': addressMap
         }, function(results, status) {
@@ -36,45 +34,44 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", "$ro
         },
         templateUrl: 'app/directives/contact-details/contact-details.directive.html',
         link: function($scope, element, attrs) {
-            //init card
-
-            // Pointing ContactsService to scope
 
             //Start Function: --------------------------------------------------
             $scope.start = function() {
                 // Pointing ContactsService to $scope
                 $scope.ContactsService = ContactsService;
                 //added
-                if ($scope.contact.id != null) {
-                    ContactsService.GetById($scope.contact.id, function(model) {
+
+                if ($routeParams.id != null) {
+                  setTimeout(function(){
+                    ContactsService.GetById($routeParams.id, function(model) {
+
                         ContactsService.Model = model;
-                        $scope.ContactsService = ContactsService;
-
-
-                        if ($scope.contact.address != undefined) {
-                            console.log($scope.contact.address);
-
-                            initMap($scope.contact.address, $(element).find('.map')[0]);
-                        }
-                        console.log(ContactsService.Model);
+                        scope.ContactsService = ContactsService;
+                        console.log(ContactsService.Model);},100);
                     }, function(error) {
                         // console.log(error);
                     });
-                    $scope.modeEdit = true;
+                    scope.modeEdit = true;
                 } else {
                     ContactsService.Model = null;
-                    $scope.modeEdit = false;
+                    scope.modeEdit = false;
                 }
 
+                console.log($(element).find('.circle-image')[0].style);
                 if ($scope.contact.picture != undefined) {
                     $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/" + $scope.contact.picture + ")";
                 } else {
                     $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
                 }
+                console.log($(element).find('.circle-image')[0].style);
+                if ($scope.contact.address != undefined) {
+                    initMap($scope.contact.address, $(element).find('.map')[0]);
+                } else {
+                    $(element).find('.map')[0].style.display = 'none';
+                }
                 $scope.$applyAsync();
             }
             $scope.start();
-
 
 
 
