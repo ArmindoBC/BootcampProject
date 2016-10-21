@@ -129,6 +129,10 @@
         color: #ffffff;
         display: none;
     }
+    .imgTeste{
+      width:100%;
+      object-fit: contain;
+    }
     /*media queries*/
 
     @media screen and (max-width: 375px) {
