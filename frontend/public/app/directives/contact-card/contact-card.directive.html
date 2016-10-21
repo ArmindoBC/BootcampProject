@@ -1,7 +1,9 @@
 <div class="contact-card-div " ng-click="showUser(contactid)" id="{{contactid}}" ng-class="active">
 
     <div class="contact-card-items">
-        <div class="contact-pic">
+        <div ng-if="contactObject.picture" class="contact-pic" style="background-image: url('{{contactObject.picture}}')">
+        </div>
+        <div ng-if="!contactObject.picture" class="contact-pic" style="background-image: url('./assets/photos/avatar5.png')">
         </div>
         <div class="contact-content">
             <div class="contact-name">

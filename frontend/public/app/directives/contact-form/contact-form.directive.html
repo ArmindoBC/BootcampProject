@@ -11,7 +11,7 @@
             <div ng-if="ContactsService.Model.name != null && ContactsService.Model.name.trim() != ''" >
                 {{ ContactsService.Model.name | firstCharacterUppercase }}
             </div>
-            
+
         </div>
     </div>
     <div class="input-container">
@@ -49,7 +49,7 @@
                     Birthday
                 </div>
                 <div class="input-group">
-                    <input name="birthdayInput" class="input-date" type="date" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                    <input name="birthdayInput" class="input-date form-control" uib-datepicker-popup="{{format}}" ng-model="ContactsService.Model.birthday" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
                     />
                     <span class="input-group-btn">
                     <button type="button" class="btn btn-default icon-button" ng-click="open1()">
