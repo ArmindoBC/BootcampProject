@@ -12,11 +12,7 @@ app.directive('contactCard', ["ContactsService", '$location', "ActiveContactServ
             //Start Function: --------------------------------------------------
             $scope.start = function() {
 
-              if ($scope.contact != null && $scope.contact.picture != undefined) {
-                  $(element).find('.contact-pic')[0].style.backgroundImage = "url(" + ActiveContactService.ActiveContact.picture + ")";
-              } else {
-                  $(element).find('.contact-pic')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
-              }
+
             }
             $scope.start();
             //Controller Functions: --------------------------------------------
@@ -32,11 +28,6 @@ app.directive('contactCard', ["ContactsService", '$location', "ActiveContactServ
                     //Completed
                     $(element).find(".contact-card-div").addClass('contact-card-div-active');
 
-                    if ($scope.contact != null && $scope.contact.picture != undefined) {
-                        $(element).find('.contact-pic')[0].style.backgroundImage = "url(" + ActiveContactService.ActiveContact.picture + ")";
-                    } else {
-                        $(element).find('.contact-pic')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
-                    }
                     ActiveContactService.setShowMode();
                     //Loading is hidden when ActiveContact is different than null and that it's already done
 
