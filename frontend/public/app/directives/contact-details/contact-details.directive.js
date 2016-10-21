@@ -1,4 +1,5 @@
-app.directive('contactDetails', ["ContactsService", "$routeParams", "ActiveContactService", function(ContactsService, ActiveContactService, $routeParams) {
+app.directive('contactDetails', ["ContactsService", "ActiveContactService", "$routeParams", function(ContactsService, ActiveContactService, $routeParams) {
+    //Function Map initialize
     function initMap(addressMap, element) {
         var geocoder = new google.maps.Geocoder();
         var result;
@@ -33,38 +34,47 @@ app.directive('contactDetails', ["ContactsService", "$routeParams", "ActiveConta
         },
         templateUrl: 'app/directives/contact-details/contact-details.directive.html',
         link: function(scope, element, attrs) {
-            //init card
-            // Pointing ContactsService to scope
-            scope.ContactsService = ContactsService;
 
-            if ($routeParams.id != null) {
-                ContactsService.GetById($routeParams.id, function(model) {
-                    ContactsService.Model = model;
-                    scope.ContactsService = ContactsService;
+            //Start Function: --------------------------------------------------
+            scope.start = function() {
+              // Pointing ContactsService to scope
+                scope.ContactsService = ContactsService;
+                //added
+                scope.ContactsService.Model = ActiveContactService.ActiveContact;
 
-                    console.log(ContactsService.Model);
-                }, function(error) {
-                    // console.log(error);
-                });
-                scope.modeEdit = true;
-            } else {
-                ContactsService.Model = null;
-                scope.modeEdit = false;
-            }
+                // if ($routeParams.id != null) {
+                //     ContactsService.GetById($routeParams.id, function(model) {
+                //         ContactsService.Model = model;
+                //         scope.ContactsService = ContactsService;
+                //
+                //         console.log(ContactsService.Model);
+                //     }, function(error) {
+                //         // console.log(error);
+                //     });
+                    // scope.modeEdit = true;
+                // } else {
+                //     ContactsService.Model = null;
+                //     scope.modeEdit = false;
+                // }
 
-            console.log($(element).find('.circle-image')[0].style);
-            if (scope.contact.picture != undefined) {
-                $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/" + scope.contact.picture + ")";
-            } else {
-                $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
+                console.log($(element).find('.circle-image')[0].style);
+                if (scope.contact.picture != undefined) {
+                    $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/" + scope.contact.picture + ")";
+                } else {
+                    $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
+                }
+                console.log($(element).find('.circle-image')[0].style);
+                if (scope.contact.address != undefined) {
+                    initMap(scope.contact.address, $(element).find('.map')[0]);
+                } else {
+                    $(element).find('.map')[0].style.display = 'none';
+                }
+                scope.$applyAsync();
             }
-            console.log($(element).find('.circle-image')[0].style);
-            if (scope.contact.address != undefined) {
-                initMap(scope.contact.address, $(element).find('.map')[0]);
-            } else {
-                $(element).find('.map')[0].style.display = 'none';
-            }
-            scope.$applyAsync();
+            scope.start();
+
+
+
 
         }
     };

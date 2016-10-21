@@ -20,17 +20,22 @@ app.directive('contactCard', [ "ContactsService", "ActiveContactService", functi
             $scope.showUser = function(contactId) {
                 document.getElementById(ActiveContactService.ActiveContact.id).className = "contact-card-div-no-active";
 
-                // if ($(".sub-container-2").css("display") == "none") {
-                //     // your code here
-                //     $(".sub-container").css("display", "none");
-                //     $(".sub-container-2").css("display", "block");
-                // }
+                // this part was commented
 
-                /*$(window).resize(function(){
+                if ($(".sub-container-2").css("display") == "none") {
+                    // your code here
+                    $(".sub-container").css("display", "none");
+                    $(".sub-container-2").css("display", "block");
+                }
+
+                $(window).resize(function(){
                     console.log($scope);
                     $(".sub-container").css("display", "block");
 
-                });*/
+                });
+
+                //commented till here
+
                 ActiveContactService.ActiveContact = null;
                 ActiveContactService.changeActiveContact(contactId, function() {
                     //Completed

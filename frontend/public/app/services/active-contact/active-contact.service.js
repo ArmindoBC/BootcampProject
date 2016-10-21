@@ -1,17 +1,36 @@
-app.service('ActiveContactService', ['$location', 'ContactsService', function($location, ContactsService) {
+app.service('ActiveContactService', ['$location', '$route', 'ContactsService', function($location, $route, ContactsService) {
 
     this.ActiveContact;
     this.mode = "show";
     var thisService = this;
 
-    this.setEditMode = function() {
-        this.mode = "edit";
-        $location.path('/edit/' + this.ActiveContact.id);
+    this.DiscardChanges = function(){
+      alert('Your changes were discarded');
+      this.setShowMode();
     }
 
-    this.setShowMode = function() {
+    this.setCreateMode= function(){
+      alert('Create a new Contact');
+      this.mode = "edit";
+      $location.path('/edit/');
+      $route.reload();
+    }
+
+    this.setEditMode = function() {
+        alert('Please Edit Current Contact');
+        this.mode = "edit";
+        $location.path('/edit/' + this.ActiveContact.id);
+        $route.reload();
+    }
+
+    this.setShowMode = function(id) {
         this.mode = "show";
-        $location.path('/details/' + this.ActiveContact.id);
+        // $location.path('/');
+        if(id==null){
+          id = this.ActiveContact.id;
+        }
+        $location.path('/details/' + id);
+        $route.reload();
     }
 
     this.changeActiveContact = function(contactId, onComplete, onError) {

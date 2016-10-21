@@ -155,11 +155,11 @@ class ContactController extends BaseController {
                 validate: {
                     payload: {
                         name: joi.string().required().description("Name of the contact person"),
-                        phonenumber: joi.phone.e164().optional().description("The contact's phone number"),
-                        email: joi.string().email().optional().description("The contact's email"),
-                        address: joi.string().optional().description("The contact's address"),
-                        birthday: joi.date().iso().optional().max('now').description("The contact's birthday"),
-                        picture: joi.string().optional().description("The contact's picture"),
+                        phonenumber: joi.phone.e164().optional().allow('').description("The contact's phone number"),
+                        email: joi.string().email().optional().allow('').description("The contact's email"),
+                        address: joi.string().optional().allow('').description("The contact's address"),
+                        birthday: joi.date().iso().optional().max('now').allow('').description("The contact's birthday"),
+                        picture: joi.string().optional().allow('').description("The contact's picture"),
                     },
                     /*headers: joi.object({
                         'authorization': joi.string().required()

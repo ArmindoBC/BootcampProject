@@ -71,6 +71,8 @@
         width: 813px;
         height: 100%;
         background-color: #FFF;
+        /*consider addition, fixed height or height depending on available inputs?*/
+        /*min-height: 777.5px*/
     }
 
     .main-container {
