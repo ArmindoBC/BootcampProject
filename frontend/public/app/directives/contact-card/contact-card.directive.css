@@ -37,7 +37,6 @@
         background-color: rgba(0, 0, 0, 0.38);
         border-radius: 50%;
         object-fit: cover;
-        transform: translate(-50%, -50%);
     }
     .contact-content {
         margin-left: 17px;
