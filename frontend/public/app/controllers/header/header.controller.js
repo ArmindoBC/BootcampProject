@@ -5,6 +5,31 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
     $scope.ActiveContactService = ActiveContactService;
     $scope.ContactsService = ContactsService;
     $scope.param = $routeParams.id;
+    $scope.isOnShowMobile =  false;
+    //is on mobile flag
+    $scope.isOnMobile = $('.isOnMobile').is(':visible');
+
+    //go back functionm
+    $scope.goBack = function(){
+
+      $('.header-title').show();
+      $('.labelMobile').hide();
+      $('.header-name-mobile').hide();
+      $('.sub-container-2').hide();
+      $('.sub-container').show();
+
+
+    }
+    $scope.setMode =  function()
+    {
+      if($scope.isOnMobile)
+      {
+
+        $('.sub-container').hide();
+        $('.labelMobile').show();
+          $('.sub-container-2').show();
+      }
+    }
 
     //Functions:-------------------------------------------------------
 
@@ -44,11 +69,15 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
     $scope.OnCompleteGetAll = function() {
         //update active user on active service
         if (ContactsService.AllItems.length != 0) {
+          $('.header-name-mobile').hide();
+
             $scope.noData = false;
             $scope.ContactsList = ContactsService.AllItems;
             ActiveContactService.ActiveContact = ContactsService.AllItems[0];
             $scope.ActiveContact = ActiveContactService.ActiveContact;
             $scope.contact = ActiveContactService.ActiveContact;
+            ContactsService.Model = ActiveContactService.ActiveContact;
+
 
             // setTimeout(function() {
             if (ActiveContactService.ActiveContact.id != null &&
@@ -91,6 +120,7 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
     $scope.Delete = function() {
         //Update Item
         $scope.IsLoading = true;
+
         ContactsService.RemoveById(ActiveContactService.ActiveContact, DeleteOnComplete, DeleteOnError);
     }
 
@@ -111,6 +141,14 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
     }
 
     $scope.Save = function() {
+        if($scope.isOnMobile)
+        {
+          $('.header-title').hide();
+          $('.labelMobile').show();
+          $('.header-name-mobile').show();
+          $('.header').hide();
+
+        }
         //Update Item
         console.log("FUNCTION SAVE");
         console.log(ActiveContactService.ActiveContact);

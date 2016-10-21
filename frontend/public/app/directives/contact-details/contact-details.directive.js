@@ -35,6 +35,8 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", "$ro
         templateUrl: 'app/directives/contact-details/contact-details.directive.html',
         link: function($scope, element, attrs) {
 
+            $scope.isOnMobile = $('.isOnMobile').is(':visible');
+
             //Start Function: --------------------------------------------------
             $scope.start = function() {
                 // Pointing ContactsService to $scope

@@ -5,13 +5,19 @@ app.directive('contactCard', ["ContactsService", '$location', "ActiveContactServ
             namecontact: "=",
             phonenumber: "=",
             contactid: "=",
-            contactObject: "="
+            contactObject: "=",
+            isMobile: "="
         },
         templateUrl: 'app/directives/contact-card/contact-card.directive.html',
         link: function($scope, element, attrs) {
             //Start Function: --------------------------------------------------
             $scope.start = function() {
 
+                if ($scope.contact != null && $scope.contact.picture != undefined) {
+                    $(element).find('.contact-pic')[0].style.backgroundImage = "url(./assets/photos/" + ActiveContactService.ActiveContact.picture + ")";
+                } else {
+                    $(element).find('.contact-pic')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
+                }
 
             }
             $scope.start();
@@ -19,11 +25,12 @@ app.directive('contactCard', ["ContactsService", '$location', "ActiveContactServ
 
             //Function for ng-click in contact-card. Redirecting contact-details to new user
 
-            $scope.showUser = function(contactId) {
-              $('#'+ ActiveContactService.ActiveContact.id).removeClass('contact-card-div-active');
-            console.log(  $('#'+ contactId));
+            $scope.showUserDesktop = function(contactId) {
+                //get the last active contact element and set disable mode
+                $('#' + ActiveContactService.ActiveContact.id).removeClass('contact-card-div-active');
                 //commented till here
                 ActiveContactService.ActiveContact = null;
+
                 ActiveContactService.changeActiveContact(contactId, function() {
                     //Completed
                     $(element).find(".contact-card-div").addClass('contact-card-div-active');
@@ -35,9 +42,45 @@ app.directive('contactCard', ["ContactsService", '$location', "ActiveContactServ
                 }, function(error) {
                     console.log(error);
                 });
-
-                //get the last active contact element and set disable mode
             }
+
+            $scope.showUserMobile = function(contactId) {
+              ActiveContactService.ActiveContact = null;
+
+              ActiveContactService.changeActiveContact(contactId, function() {
+                  //Completed
+                  if ($scope.contact != null && $scope.contact.picture != undefined) {
+                      $(element).find('.contact-pic')[0].style.backgroundImage = "url(./assets/photos/" + ActiveContactService.ActiveContact.picture + ")";
+                  } else {
+                      $(element).find('.contact-pic')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
+                  }
+                  $('.sub-container-2').show();
+                  $('.labelMobile').show();
+                  $('.header-name-mobile').show();
+
+                  $('.header-title').hide();
+                  $('.sub-container').hide();
+                  ActiveContactService.setShowMode();
+                  //Loading is hidden when ActiveContact is different than null and that it's already done
+
+              }, function(error) {
+                  console.log(error);
+              });
+            }
+
+
+            $scope.showUser = function(contactId) {
+
+                if ($scope.isMobile) {
+                  $scope.showUserMobile(contactId);
+                }
+                else {
+                    $scope.showUserDesktop(contactId);
+                }
+
+
+            }
+
         }
     };
 }]);

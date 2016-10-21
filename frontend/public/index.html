@@ -82,7 +82,7 @@
                         </div>
                     </div>
                     <div class="no-data-found-text" ng-if="noData">No contacts found</div>
-                    <contact-card ng-if="!IsLoading && !noData" contact-object="contact" contactid="contact.id" namecontact="contact.name" phonenumber="contact.phonenumber" ng-repeat="contact in ContactsList"> </contact-card>
+                    <contact-card ng-if="!IsLoading && !noData" contact-object="contact" is-mobile="isOnMobile" contactid="contact.id" namecontact="contact.name" phonenumber="contact.phonenumber" ng-repeat="contact in ContactsList"> </contact-card>
                 </div>
             </div>
 
@@ -94,22 +94,17 @@
             </div>
             <div class="header-container">
                 <div class="header-title-container">
-                    <div ng-if "" class="icon notactive">
-                        <i class="material-icons google-icon-search">arrow_back</i>
-                    </div>
-                    <div ng-if="" class="header-name-mobile">
-                        {{ActiveContactService.ActiveContact.name}}
+
+                    <div class="header-name-mobile">
+
+                        <i class="material-icons" ng-click="goBack()">arrow_back</i>
+
+                        <span class="name-title"> {{ActiveContactService.ActiveContact.name}}</span>
                     </div>
                     <div class="header-title" ng-click="ActiveContactService.setShowMode()">
                         SMART
                         <span class="header-title-blue">CONTACTS</span>
-                        <!-- all the icon that are necessary to our application
-                    <i class="material-icons">search</i>
-                    <i class="material-icons">save</i>
-                    <i class="material-icons">date_range</i>
-                    <i class="material-icons">camera_alt</i>
-                    <i class="material-icons">arrow_back</i>
-                     end -->
+
                     </div>
                 </div>
                 <div class="header-icons-container">
@@ -129,7 +124,7 @@
                     <div class="icon active" ng-click="Save()" ng-if="ActiveContactService.mode=='edit'||ActiveContactService.mode=='create'">
                         <i class="material-icons  google-icon-header">save</i>
                     </div>
-                    <div class="icon" ng-click="ActiveContactService.setCreateMode()">
+                    <div class="icon" ng-click="ActiveContactService.setCreateMode();setMode()">
                         <i class="material-icons  google-icon-header">add</i>
                     </div>
 
@@ -137,15 +132,28 @@
             </div>
 
             <div class="labelMobile">
-                <div class="header-icons-container">
+                <div class="header-icons-container" confirmed-click="Delete()" ng-confirm-click="Do you want to delete this contact?" ng-if="ActiveContactService.mode=='show'">
                     <div class="icon">
-                        <i class="material-icons google-icon-header">delete</i>
+                        <i class="material-icons google-icon-header" >delete</i>
                     </div>
-
-                    <div class="icon">
+                  </div>
+                    <div class="header-icons-container" ng-click="ActiveContactService.setEditMode();setMode()" ng-if="ActiveContactService.mode=='show'">
                         <i class="material-icons  google-icon-header">mode_edit</i>
                     </div>
-                </div>
+
+                    <div class="header-icons-container mobile-label-icons" ng-click="Save()" ng-if="ActiveContactService.mode=='edit'||ActiveContactService.mode=='create'">
+                        <i class="material-icons  google-icon-header">save</i>
+                    </div>
+
+                    <div class="header-icons-container mobile-label-icons" confirmed-click="ActiveContactService.DiscardChanges()" ng-confirm-click="Do you want to discard your changes?"  ng-if="ActiveContactService.mode=='edit'|| ActiveContactService.mode=='create'">
+                        <div class="google-clear-div">
+                            <i class="material-icons google-icon-header">clear</i>
+                        </div>
+                    </div>
+
+
+            </div>
+            <div class="isOnMobile">
             </div>
 
         </div>
