@@ -1,9 +1,9 @@
-app.service('ContactsService', ['UtilsService', '$http', function(UtilsService, $http) {
+app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsService) {
 
     this.CollectionName = "contacts";
     this.AllItems;
     this.Model = new Contact();
-    var thisService =  this;
+    var thisService = this;
 
 
     this.ModelCreate = {
@@ -35,7 +35,7 @@ app.service('ContactsService', ['UtilsService', '$http', function(UtilsService, 
         });
     }
 
-    this.SaveItem = function(id,onComplete, onError) {
+    this.SaveItem = function(id, onComplete, onError) {
         var modelToSend = thisService.Model;
         delete modelToSend.id;
         console.log(id);
@@ -47,6 +47,26 @@ app.service('ContactsService', ['UtilsService', '$http', function(UtilsService, 
             // this callback will be called asynchronously
             // when the response is available
 
+            onComplete();
+        }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            console.log(response);
+            onError(response);
+        });
+    }
+
+    this.CreateItem = function(onComplete, onError) {
+        var modelToSend = thisService.Model;
+        delete modelToSend.id;
+        console.log(modelToSend)
+        $http({
+            method: 'POST',
+            url: 'http://localhost:9003/contact',
+            data: modelToSend
+        }).then(function successCallback(response) {
+            // this callback will be called asynchronously
+            // when the response is available
             onComplete();
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
@@ -110,7 +130,7 @@ app.service('ContactsService', ['UtilsService', '$http', function(UtilsService, 
         });
     }
 
-this.onFileSelect = function($files) {
+    this.onFileSelect = function($files) {
         // //$files: an array of files selected, each file has name, size, and type.
         // console.log($files);
         //     var $file = $files[0];
@@ -123,9 +143,5 @@ this.onFileSelect = function($files) {
         //         console.log(data);
         //     });
     }
-
-
-
-
 
 }]);

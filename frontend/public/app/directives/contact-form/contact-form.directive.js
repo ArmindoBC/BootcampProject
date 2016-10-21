@@ -50,9 +50,9 @@ app.directive('contactForm', ["ContactsService","$routeParams", function(Contact
             $scope.dateOptions = {
                 dateDisabled: disabled,
                 formatYear: 'yy',
-                maxDate: new Date(2020, 5, 22),
-                minDate: new Date(),
-                startingDay: 1
+                maxDate: new Date(),
+                minDate: new Date(1900, 1, 1),
+                startingDay: -1
             };
 
             // Disable weekend selection
@@ -119,30 +119,7 @@ app.directive('contactForm', ["ContactsService","$routeParams", function(Contact
                         }
                     }
                 }
-
                 return '';
-            }
-
-
-
-            $scope.SaveOnComplete = function() {
-                alert("Guardado!");
-                $scope.IsLoading = false;
-                //Redirect to list
-                // $location.path("/persons");
-            }
-
-            $scope.SaveOnError = function() {
-                alert("Falhou!");
-                $scope.IsLoading = false;
-            }
-
-            $scope.Save = function() {
-                //Update Item
-                $scope.IsLoading = true;
-                // ContactsService.SaveItem($scope.ContactsService.Model, $scope.SaveOnComplete, $scope.SaveOnError);
-                //Redirect to list
-                // $location.path("/persons");
             }
 
             //init card

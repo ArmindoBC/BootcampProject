@@ -1,16 +1,10 @@
 app.controller('ContactShowController', ['$scope', '$routeParams', 'ActiveContactService', function($scope, $routeParams, ActiveContactService) {
     $scope.IsLoading = false;
-    console.log($routeParams);
 
     //Start Function: -----------------------------------
     $scope.Start = function() {
         ActiveContactService.mode = "show";
-        if ($routeParams != null) {
-
-            $scope.routeParams = $routeParams;
-            
-        } else {
-        }
+        $scope.ActiveContactService = ActiveContactService;
     }
     $scope.Start();
 

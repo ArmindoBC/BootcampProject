@@ -4,13 +4,12 @@
     <div class="form-header-container">
         <div class="circle-image">
         </div>
-
         <div class="header">
-            <div ng-if="ContactsService.Model.name == null ||  ContactsService.Model.name.trim() == ''">
+            <div ng-if="ContactsService.Model.name == null || ContactsService.Model.name.trim() == ''">
                 Contact's name
             </div>
             <div ng-if="ContactsService.Model.name != null && ContactsService.Model.name.trim() != ''">
-                {{ ContactsService.name | firstCharacterUppercase }}
+                {{ ContactsService.Model.name | firstCharacterUppercase }}
             </div>
         </div>
     </div>

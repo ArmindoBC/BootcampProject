@@ -4,7 +4,7 @@
             <div class="circle-image">
             </div>
             <div class="activeMobile">
-                {{contact.name | firstCharacterUppercase}}
+                {{ContactsService.Model.name | firstCharacterUppercase}}
             </div>
         </div>
     </div>
@@ -14,7 +14,7 @@
                 Name
             </div>
             <div class="label-contact-details">
-                {{contact.name | firstCharacterUppercase}}
+                {{ContactsService.Model.name | firstCharacterUppercase}}
             </div>
         </div>
         <div ng-if="contact.phonenumber!=null" class="input">
@@ -22,7 +22,7 @@
                 Phone Number
             </div>
             <div class="label-contact-details">
-                {{contact.phonenumber}}
+                {{ContactsService.Model.phonenumber}}
             </div>
         </div>
         <div ng-if="contact.email!=null" class="input">
@@ -30,7 +30,7 @@
                 Email
             </div>
             <div class="label-contact-details">
-                {{contact.email}}
+                {{ContactsService.Model.email}}
             </div>
         </div>
         <div ng-if="contact.birthday!=null" class="input">
@@ -38,7 +38,7 @@
                 Birthdate
             </div>
             <div class="label-contact-details">
-                {{contact.birthday | date:'MM/dd/yyyy' }} {{contact.birthday | getContactAge}}
+                {{ContactsService.Model.birthday | date:'MM/dd/yyyy' }} {{ContactsService.Model.birthday | getContactAge}}
             </div>
         </div>
         <div ng-if="contact.address!=null" class="input">
@@ -46,11 +46,11 @@
                 Address
             </div>
             <div class="label-contact-details">
-                {{contact.address}}
+                {{ContactsService.Model.address}}
             </div>
         </div>
-    </div>
-    <div class="map">
+        <div class="map">
 
+        </div>
     </div>
 </div>
