@@ -76,10 +76,8 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
             ActiveContactService.ActiveContact = ContactsService.AllItems[0];
             $scope.ActiveContact = ActiveContactService.ActiveContact;
             $scope.contact = ActiveContactService.ActiveContact;
-<<<<<<< HEAD
             ContactsService.Model = ActiveContactService.ActiveContact;
-=======
->>>>>>> b1c6f2dd66b378ef6f45822841280f3cb524371a
+
 
             // setTimeout(function() {
             if (ActiveContactService.ActiveContact.id != null &&
