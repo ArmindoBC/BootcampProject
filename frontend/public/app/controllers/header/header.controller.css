@@ -11,6 +11,8 @@
 .header-title-container {
     padding-top: 13px;
     padding-left: 28px;
+    cursor: pointer;
+    cursor: hand;
 }
 .header-title-container .header-title {
     text-transform: uppercase;
