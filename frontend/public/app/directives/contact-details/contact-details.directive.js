@@ -56,7 +56,7 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", "$ro
                     });
                     $scope.modeEdit = true;
                 } else {
-                    ContactsService.Model = null;
+                    ContactsService.Model = ActiveContactService.ActiveContact;
                     $scope.modeEdit = false;
                 }
 
