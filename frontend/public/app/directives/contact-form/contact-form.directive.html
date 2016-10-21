@@ -2,16 +2,17 @@
     <!-- <input type="submit" value="Save" ng-click="Save()"> </input>
     <input type="submit" value="Discard" ng-click="Save()"> </input> -->
     <div class="form-header-container">
-        <div class="circle-image">
-        </div>
+
         <div class="header">
+          <div class="circle-image">
+          </div>
             <div ng-if="ContactsService.Model.name == null || ContactsService.Model.name.trim() == ''">
                 Contact's name
             </div>
             <div ng-if="ContactsService.Model.name != null && ContactsService.Model.name.trim() != ''" >
                 {{ ContactsService.Model.name | firstCharacterUppercase }}
             </div>
-            
+
         </div>
     </div>
     <div class="input-container">
@@ -61,14 +62,14 @@
                 <textarea class="input-text-area" ng-model="ContactsService.Model.address" placeholder="{{ ContactsService.ModelCreate.address}}" type="text">
                 </textarea>
             </div>
-            <div class="input" ng-if="!modeEdit">
+            <div class="input">
                 <div class="input-label">
                     Photo
                 </div>
                 <div class="input-group">
-                    <input class="input-photo" placeholder="{{ContactsService.ModelCreate.photo}}" type="file" ngf-select="onFileSelect($files)" multiple/>
+                    <input class="input-photo" id="openPicture" ng-model="ContactsService.Model.picture" placeholder="{{ContactsService.ModelCreate.picture}}" type="text" ngf-select="onFileSelect($picture)" multiple/>
                     <span class="input-group-btn">
-                    <button type="button" class="btn btn-default icon-button" ng-click="open1()">
+                    <button type="button" class="btn btn-default icon-button" ng-click="open2()">
                       <i class="material-icon icon-input">camera_alt</i>
                       </button>
                   </span>
