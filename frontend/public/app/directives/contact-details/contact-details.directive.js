@@ -46,15 +46,15 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", "$ro
                     ContactsService.GetById($routeParams.id, function(model) {
 
                         ContactsService.Model = model;
-                        scope.ContactsService = ContactsService;
+                        $scope.ContactsService = ContactsService;
                         console.log(ContactsService.Model);},100);
                     }, function(error) {
                         // console.log(error);
                     });
-                    scope.modeEdit = true;
+                    $scope.modeEdit = true;
                 } else {
                     ContactsService.Model = null;
-                    scope.modeEdit = false;
+                    $scope.modeEdit = false;
                 }
 
                 console.log($(element).find('.circle-image')[0].style);
