@@ -42,20 +42,21 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", "$ro
                 //added
                 scope.ContactsService.Model = ActiveContactService.ActiveContact;
 
-                // if ($routeParams.id != null) {
-                //     ContactsService.GetById($routeParams.id, function(model) {
-                //         ContactsService.Model = model;
-                //         scope.ContactsService = ContactsService;
-                //
-                //         console.log(ContactsService.Model);
-                //     }, function(error) {
-                //         // console.log(error);
-                //     });
-                    // scope.modeEdit = true;
-                // } else {
-                //     ContactsService.Model = null;
-                //     scope.modeEdit = false;
-                // }
+                if ($routeParams.id != null) {
+                  setTimeout(function(){
+                    ContactsService.GetById($routeParams.id, function(model) {
+
+                        ContactsService.Model = model;
+                        scope.ContactsService = ContactsService;
+                        console.log(ContactsService.Model);},100);
+                    }, function(error) {
+                        // console.log(error);
+                    });
+                    scope.modeEdit = true;
+                } else {
+                    ContactsService.Model = null;
+                    scope.modeEdit = false;
+                }
 
                 console.log($(element).find('.circle-image')[0].style);
                 if (scope.contact.picture != undefined) {

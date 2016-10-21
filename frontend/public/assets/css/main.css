@@ -85,6 +85,8 @@
         padding-top: 35px;
         padding-bottom: 153px;
         width: 100%;
+        position: absolute;
+        left:240px;
     }
 
     .containerExample {
