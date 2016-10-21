@@ -14,7 +14,8 @@
     .contact-card-div:hover {
         background-color: #f2f2f2;
     }
-    .contact-card-div-active {
+    .contact-card-div-active
+    {
         background-color: #f2f2f2 !important;
         cursor: pointer;
         cursor: hand;

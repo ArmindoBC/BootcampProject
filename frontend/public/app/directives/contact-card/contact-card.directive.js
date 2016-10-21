@@ -17,18 +17,21 @@ app.directive('contactCard', ["ContactsService", '$location', "ActiveContactServ
             //Controller Functions: --------------------------------------------
 
             //Function for ng-click in contact-card. Redirecting contact-details to new user
-            $scope.showUser = function(contactId) {
 
+            $scope.showUser = function(contactId) {
+              $('#'+ ActiveContactService.ActiveContact.id).removeClass('contact-card-div-active');
+            console.log(  $('#'+ contactId));
                 //commented till here
-                document.getElementById(ActiveContactService.ActiveContact.id).className = "contact-card-div-no-active";
                 ActiveContactService.ActiveContact = null;
-                $location.path('/details/'+contactId);  
                 ActiveContactService.changeActiveContact(contactId, function() {
                     //Completed
-                    document.getElementById(contactId).className = "contact-card-div-active";
+                    $(element).find(".contact-card-div").addClass('contact-card-div-active');
+
 
                     ActiveContactService.setShowMode();
                     //Loading is hidden when ActiveContact is different than null and that it's already done
+
+                    $location.path('/details/' + contactId);
                 }, function(error) {
                     console.log(error);
                 });

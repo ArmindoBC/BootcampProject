@@ -38,7 +38,7 @@ app.service('ActiveContactService', ['$location', '$route', 'ContactsService', f
         ContactsService.GetById(contactId,
             function(response) {
                 thisService.ActiveContact = response;
-                onComplete;
+                onComplete();
             },
             function(onError) {
                 console.log(onError);
