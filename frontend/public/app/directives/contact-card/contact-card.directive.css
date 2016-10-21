@@ -14,7 +14,8 @@
     .contact-card-div:hover {
         background-color: #f2f2f2;
     }
-    .contact-card-div-active {
+    .contact-card-div-active
+    {
         background-color: #f2f2f2 !important;
         cursor: pointer;
         cursor: hand;
@@ -37,6 +38,7 @@
         background-color: rgba(0, 0, 0, 0.38);
         border-radius: 50%;
         object-fit: cover;
+        background-size: cover;
     }
     .contact-content {
         margin-left: 17px;
