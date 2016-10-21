@@ -4,6 +4,7 @@ app.controller('HomeController', ['$scope', '$routeParams', 'ContactsService', '
     $scope.Start = function() {
         $scope.ActiveContactService = ActiveContactService;
         $scope.IsLoading = false;
+        console.log(ActiveContactService.ActiveContact);
     }
     $scope.Start();
 
