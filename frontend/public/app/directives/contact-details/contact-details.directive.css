@@ -21,4 +21,5 @@
     object-fit: cover;
     background-size: cover;
     centerAndFill();
+    background-size: cover;
 }

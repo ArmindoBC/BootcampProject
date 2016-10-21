@@ -42,29 +42,36 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", "$ro
                 //added
 
                 if ($routeParams.id != null) {
-                  setTimeout(function(){
-                    ContactsService.GetById($routeParams.id, function(model) {
+                    setTimeout(function() {
+                        ContactsService.GetById($routeParams.id, function(model) {
 
-                        ContactsService.Model = model;
-                        $scope.ContactsService = ContactsService;
-                        console.log(ContactsService.Model);},100);
-                        if ($scope.contact.address != undefined) {
-                            initMap($scope.contact.address, $(element).find('.map')[0]);
-                        }
-                        if ($scope.contact.picture != undefined) {
-                            $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/" + $scope.contact.picture + ")";
-                        } else {
-                            $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
-                        }
-                        console.log($scope.contact.picture);
-                    }, function(error) {
-                        // console.log(error);
-                    });
+                            ContactsService.Model = model;
+                            $scope.ContactsService = ContactsService;
+                            console.log(ContactsService.Model);
+
+                            if ($scope.contact.address != undefined) {
+                                initMap($scope.contact.address, $(element).find('.map')[0]);
+                            }
+                        }, function(error) {
+                            console.log(error);
+                        });
+                    }, 100);
                     $scope.modeEdit = true;
                 } else {
                     ContactsService.Model = ActiveContactService.ActiveContact;
                     $scope.modeEdit = false;
+                    if (ActiveContactService.ActiveContact.address != undefined) {
+                        initMap(ActiveContactService.ActiveContact.address, $(element).find('.map')[0]);
+                    }
                 }
+
+                // console.log($(element).find('.circle-image')[0].style);
+                if ($scope.contact != null && $scope.contact.picture != undefined) {
+                    $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/" + $scope.contact.picture + ")";
+                } else {
+                    $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
+                }
+                // console.log($(element).find('.circle-image')[0].style);
 
                 $scope.$applyAsync();
             }

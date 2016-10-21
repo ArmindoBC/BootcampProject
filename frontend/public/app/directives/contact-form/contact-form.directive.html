@@ -8,31 +8,37 @@
             <div ng-if="ContactsService.Model.name == null || ContactsService.Model.name.trim() == ''">
                 Contact's name
             </div>
-            <div ng-if="ContactsService.Model.name != null && ContactsService.Model.name.trim() != ''">
+            <div ng-if="ContactsService.Model.name != null && ContactsService.Model.name.trim() != ''" >
                 {{ ContactsService.Model.name | firstCharacterUppercase }}
             </div>
+            
         </div>
     </div>
     <div class="input-container">
-        <form name="form-input">
+        <form name="form-input" class="form-input">
+
             <div class="input">
                 <div class="input-label">
                     Name
                 </div>
-                <input class="input-box" ng-model="ContactsService.Model.name" placeholder="{{ ContactsService.ModelCreate.name }}" type="text" required>
+                <input name="name-input" class="input-box" ng-model="ContactsService.Model.name" placeholder="{{ ContactsService.ModelCreate.name }}" type="text" ng-pattern="" required>
+                <div ng-show="form-input.name-input.$error.required" class="input-error" > Name required </div>
+                <div ng-show="form-input.name-input.$error.pattern" class="input-error" > Name invalid </div>
                 </input>
             </div>
             <div class="input">
                 <div class="input-label">
                     Phone Number
                 </div>
-                <input class="input-box" ng-model="ContactsService.Model.phonenumber" placeholder="{{ ContactsService.ModelCreate.phonenumber }}" type="text"> </input>
+                <input name="phone-input" class="input-box" ng-model="ContactsService.Model.phonenumber" placeholder="{{ form-input.name-input.$error.required }}" type="text" ng-pattern="" > </input>
+                <p ng-show="form-input.phone-input.$error.pattern" class="error-block" > Invalid Phone Number. Example: +XXX XXXXXXXX</p>
             </div>
             <div class="input">
                 <div class="input-label">
                     Email
                 </div>
-                <input class="input-box" ng-model="ContactsService.Model.email" placeholder="{{ ContactsService.ModelCreate.email}}" type="text"></input>
+                <input name="email-input" class="input-box" ng-model="ContactsService.Model.email" placeholder="{{ ContactsService.ModelCreate.email}}" type="text" ng-pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/"></input>
+                <p ng-show="form-input.phone-input.$error.pattern" class="error-block" > Invalid Email. </p>
             </div>
             <div class="input">
                 <div class="input-label">
@@ -69,5 +75,16 @@
                 </div>
             </div>
         </form>
-    </div>
+
+
+        <!-- <p>Try writing an E-mail address in the input field:</p>
+
+        <!-- <form name="myForm">
+            <input type="text" name="myInput" ng-model="ContactsService.Model.email" ng-required="true">
+        </form>
+
+        <p>The input's valid state is:</p>
+
+        <p ng-show="myForm.myInput.$error.required"><h1>{{myForm.myInput.$error.required}}</h1></p> -->
+    <!-- </div> -->
 </div>

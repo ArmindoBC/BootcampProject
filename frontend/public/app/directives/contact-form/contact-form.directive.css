@@ -56,6 +56,10 @@
     margin-bottom: 12px;
 }
 
+.form-input input.ng-invalid.ng-dirty{
+  border: solid 2px rgb(227, 27, 20);
+}
+
 .input-container .input>* {
     /*border: 1px solid black; (delt)*/
 }
@@ -67,6 +71,7 @@
     font-stretch: normal;
     color: #24263f;
 }
+
 
 .input-container .input-box, .input-container .input-photo {
     outline: none;

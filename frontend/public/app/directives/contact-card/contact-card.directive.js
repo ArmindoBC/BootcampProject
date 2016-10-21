@@ -12,23 +12,35 @@ app.directive('contactCard', ["ContactsService", '$location', "ActiveContactServ
             //Start Function: --------------------------------------------------
             $scope.start = function() {
 
+              if ($scope.contact != null && $scope.contact.picture != undefined) {
+                  $(element).find('.contact-pic')[0].style.backgroundImage = "url(./assets/photos/" + ActiveContactService.ActiveContact.picture + ")";
+              } else {
+                  $(element).find('.contact-pic')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
+              }
             }
             $scope.start();
             //Controller Functions: --------------------------------------------
 
             //Function for ng-click in contact-card. Redirecting contact-details to new user
-            $scope.showUser = function(contactId) {
 
+            $scope.showUser = function(contactId) {
+              $('#'+ ActiveContactService.ActiveContact.id).removeClass('contact-card-div-active');
+            console.log(  $('#'+ contactId));
                 //commented till here
-                document.getElementById(ActiveContactService.ActiveContact.id).className = "contact-card-div-no-active";
                 ActiveContactService.ActiveContact = null;
-                $location.path('/details/' + contactId);
                 ActiveContactService.changeActiveContact(contactId, function() {
                     //Completed
-                    document.getElementById(contactId).className = "contact-card-div-active";
+                    $(element).find(".contact-card-div").addClass('contact-card-div-active');
 
+                    if ($scope.contact != null && $scope.contact.picture != undefined) {
+                        $(element).find('.contact-pic')[0].style.backgroundImage = "url(./assets/photos/" + ActiveContactService.ActiveContact.picture + ")";
+                    } else {
+                        $(element).find('.contact-pic')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
+                    }
                     ActiveContactService.setShowMode();
                     //Loading is hidden when ActiveContact is different than null and that it's already done
+
+                    $location.path('/details/' + contactId);
                 }, function(error) {
                     console.log(error);
                 });
