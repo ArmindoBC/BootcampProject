@@ -118,7 +118,7 @@ class ContactController extends BaseController {
                         email: joi.string().email().description("Filter contact by email"),
                         phonenumber: joi.phone.e164().description("Filter by contact's phone number"),
                         address: joi.string().description("Filter by the contact's address"),
-                        birthday: joi.date().max('now').description("Filter by the contact's birthday")
+                        birthday: joi.date().iso().max('now').description("Filter by the contact's birthday")
                     },
                     /*headers: joi.object({
                         'authorization': joi.string().required()
@@ -158,7 +158,7 @@ class ContactController extends BaseController {
                         phonenumber: joi.phone.e164().optional().allow('').description("The contact's phone number"),
                         email: joi.string().email().optional().allow('').description("The contact's email"),
                         address: joi.string().optional().allow('').description("The contact's address"),
-                        birthday: joi.date().optional().max('now').allow('').description("The contact's birthday"),
+                        birthday: joi.date().iso().optional().max('now').allow('').description("The contact's birthday"),
                         picture: joi.string().optional().allow('').description("The contact's picture"),
                     },
                     /*headers: joi.object({
@@ -201,7 +201,8 @@ class ContactController extends BaseController {
                             phonenumber: joi.phone.e164().optional().description("The contact's phone number"),
                             email: joi.string().email().optional().description("The contact's email"),
                             address: joi.string().optional().description("The contact's address"),
-                            birthday: joi.date().max('now').optional().description("The contact's birthday")
+                            birthday: joi.date().iso().max('now').optional().description("The contact's birthday"),
+                            picture: joi.string().optional().allow('').description("The contact's picture")
                         },
                         /*headers: joi.object({
                             'authorization': joi.string().required()
@@ -242,7 +243,8 @@ class ContactController extends BaseController {
                             phonenumber: joi.phone.e164().optional().description("The contact's phone number"),
                             email: joi.string().email().optional().description("The contact's email"),
                             address: joi.string().optional().description("The contact's address"),
-                            birthday: joi.date().max('now').optional().description("The contact's birthday")
+                            birthday: joi.date().iso().max('now').optional().description("The contact's birthday"),
+                            picture: joi.string().optional().allow('').description("The contact's picture"),
                         },
                         /*headers: joi.object({
                             'authorization': joi.string().required()
