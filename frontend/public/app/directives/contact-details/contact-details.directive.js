@@ -33,14 +33,13 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", "$ro
             contact: "=",
         },
         templateUrl: 'app/directives/contact-details/contact-details.directive.html',
-        link: function(scope, element, attrs) {
+        link: function($scope, element, attrs) {
 
             //Start Function: --------------------------------------------------
-            scope.start = function() {
-              // Pointing ContactsService to scope
-                scope.ContactsService = ContactsService;
+            $scope.start = function() {
+                // Pointing ContactsService to $scope
+                $scope.ContactsService = ContactsService;
                 //added
-                scope.ContactsService.Model = ActiveContactService.ActiveContact;
 
                 if ($routeParams.id != null) {
                   setTimeout(function(){
@@ -59,20 +58,20 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", "$ro
                 }
 
                 console.log($(element).find('.circle-image')[0].style);
-                if (scope.contact.picture != undefined) {
-                    $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/" + scope.contact.picture + ")";
+                if ($scope.contact.picture != undefined) {
+                    $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/" + $scope.contact.picture + ")";
                 } else {
                     $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
                 }
                 console.log($(element).find('.circle-image')[0].style);
-                if (scope.contact.address != undefined) {
-                    initMap(scope.contact.address, $(element).find('.map')[0]);
+                if ($scope.contact.address != undefined) {
+                    initMap($scope.contact.address, $(element).find('.map')[0]);
                 } else {
                     $(element).find('.map')[0].style.display = 'none';
                 }
-                scope.$applyAsync();
+                $scope.$applyAsync();
             }
-            scope.start();
+            $scope.start();
 
 
 
