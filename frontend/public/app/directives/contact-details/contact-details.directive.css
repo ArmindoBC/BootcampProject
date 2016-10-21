@@ -20,4 +20,5 @@
     left: -181px;
     object-fit: cover;
     centerAndFill();
+    background-size: cover;
 }
