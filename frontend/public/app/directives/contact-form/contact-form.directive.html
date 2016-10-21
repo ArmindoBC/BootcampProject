@@ -11,7 +11,7 @@
             <div ng-if="ContactsService.Model.name != null && ContactsService.Model.name.trim() != ''" >
                 {{ ContactsService.Model.name | firstCharacterUppercase }}
             </div>
-            
+
         </div>
     </div>
     <div class="input-container">
@@ -66,7 +66,7 @@
                     Photo
                 </div>
                 <div class="input-group">
-                    <input class="input-photo" placeholder="{{ContactsService.ModelCreate.photo}}" type="file" ngf-select="onFileSelect($files)" multiple/>
+                    <input class="input-photo" placeholder="{{ContactsService.ModelCreate.photo}}" type="text" ngf-select="onFileSelect($files)" multiple/>
                     <span class="input-group-btn">
                     <button type="button" class="btn btn-default icon-button" ng-click="open1()">
                       <i class="material-icon icon-input">camera_alt</i>

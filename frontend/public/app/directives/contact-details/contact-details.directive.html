@@ -1,7 +1,9 @@
 <div class="contact-form-container">
     <div class="form-header-container">
+      <div class="circle-image" ng-if="isOnMobile">
+      </div>
         <div class="header">
-            <div class="circle-image">
+            <div class="circle-image" ng-if="!isOnMobile">
             </div>
             <div class="activeMobile">
                 {{ContactsService.Model.name | firstCharacterUppercase}}
@@ -25,7 +27,7 @@
                 {{ContactsService.Model.phonenumber}}
             </div>
 
-            
+
         </div>
         <div ng-if="contact.email!=null" class="input">
             <div class="input-label">
@@ -55,6 +57,6 @@
             <div class="contactMap map">
 
             </div>
-        
+
     </div>
 </div>

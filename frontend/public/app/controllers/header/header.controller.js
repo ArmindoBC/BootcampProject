@@ -5,6 +5,31 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
     $scope.ActiveContactService = ActiveContactService;
     $scope.ContactsService = ContactsService;
     $scope.param = $routeParams.id;
+    $scope.isOnShowMobile =  false;
+    //is on mobile flag
+    $scope.isOnMobile = $('.isOnMobile').is(':visible');
+
+    //go back functionm
+    $scope.goBack = function(){
+
+      $('.header-title').show();
+      $('.labelMobile').hide();
+      $('.header-name-mobile').hide();
+      $('.sub-container-2').hide();
+      $('.sub-container').show();
+
+
+    }
+    $scope.setMode =  function()
+    {
+      if($scope.isOnMobile)
+      {
+
+        $('.sub-container').hide();
+        $('.labelMobile').show();
+          $('.sub-container-2').show();
+      }
+    }
 
     //Functions:-------------------------------------------------------
 
@@ -44,18 +69,21 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
     $scope.OnCompleteGetAll = function() {
         //update active user on active service
         if (ContactsService.AllItems.length != 0) {
+          $('.header-name-mobile').hide();
+
             $scope.noData = false;
             $scope.ContactsList = ContactsService.AllItems;
             ActiveContactService.ActiveContact = ContactsService.AllItems[0];
             $scope.ActiveContact = ActiveContactService.ActiveContact;
-            $scope.contact= ActiveContactService.ActiveContact;
+            $scope.contact = ActiveContactService.ActiveContact;
+            ContactsService.Model = ActiveContactService.ActiveContact;
 
             // setTimeout(function() {
-                if (ActiveContactService.ActiveContact.id != null &&
-                    document.getElementById(ActiveContactService.ActiveContact.id) != null) {
-                    document.getElementById(ActiveContactService.ActiveContact.id).className = "contact-card-div-active";
-                }
-                //load first active user on header controller scope
+            if (ActiveContactService.ActiveContact.id != null &&
+                document.getElementById(ActiveContactService.ActiveContact.id) != null) {
+                document.getElementById(ActiveContactService.ActiveContact.id).className = "contact-card-div-active";
+            }
+            //load first active user on header controller scope
 
             // }, 100);
             // ActiveContactService.setShowMode();
@@ -91,7 +119,8 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
     $scope.Delete = function() {
         //Update Item
         $scope.IsLoading = true;
-        ContactsService.RemoveById(ActiveContactService.ActiveContact, DeleteOnComplete , DeleteOnError);
+
+        ContactsService.RemoveById(ActiveContactService.ActiveContact, DeleteOnComplete, DeleteOnError);
     }
 
     //Save Function:------------------------------------------------------------------
@@ -111,12 +140,20 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
     }
 
     $scope.Save = function() {
+        if($scope.isOnMobile)
+        {
+          $('.header-title').hide();
+          $('.labelMobile').show();
+          $('.header-name-mobile').show();
+          $('.header').hide();
+
+        }
         //Update Item
         $scope.IsLoading = true;
-        if($routeParams.id==null){
-        ContactsService.CreateItem( SaveOnComplete , SaveOnError);
+        if ($routeParams.id == null) {
+            ContactsService.CreateItem(SaveOnComplete, SaveOnError);
         } else {
-        ContactsService.SaveItem(ActiveContactService.ActiveContact.id, SaveOnComplete , SaveOnError);
+            ContactsService.SaveItem(ActiveContactService.ActiveContact.id, SaveOnComplete, SaveOnError);
         }
     }
 
@@ -126,9 +163,9 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
         //load Persons
         $scope.allowDelete = false;
         $scope.IsLoading = true;
-      // setTimeout(function() {
-            ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);
-      //   }, 1000);
+        // setTimeout(function() {
+        ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);
+        //   }, 1000);
     };
     $scope.Start();
 

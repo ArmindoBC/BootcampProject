@@ -7,7 +7,7 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
     this.basePath='http://localhost';
 
     if(window.location.hostname.indexOf('localhost') != -1){
-      this.basePath = 'http://10.123.202.117'
+      this.basePath = 'http://localhost';
     }
 
 
