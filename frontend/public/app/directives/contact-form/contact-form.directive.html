@@ -22,7 +22,7 @@
                     Name
                 </div>
                 <div>
-                    <input name="nameInput" class="input-box" ng-model="ContactsService.Model.name" placeholder="{{ ContactsService.ModelCreate.name }}" type="text" ng-pattern="/^[a-zA-Z\s]+$/" required />
+                    <input name="nameInput" class="input-box" ng-model="ContactsService.Model.name" placeholder="{{ ContactsService.ModelCreate.name }}" type="text" ng-pattern="/^[a-zA-ZéúíóáÉÚÍÓÁèùìòàÈÙÌÒÀõãñÕÃÑêûîôâÊÛÎÔÂëÿüïöäËYÜÏÖÄ\s\'\-]+$/" required />
                     <div ng-show="formInput.nameInput.$error.required && formInput.nameInput.$dirty" class="input-error"> Name required. </div>
                     <div ng-show="formInput.nameInput.$error.pattern && formInput.nameInput.$dirty" class="input-error"> Name invalid. </div>
                 </div>

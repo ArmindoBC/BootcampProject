@@ -4,16 +4,22 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
     this.AllItems;
     this.Model = new Contact();
     var thisService = this;
+    this.basePath = "http://localhost";
+
+    if(window.location.hostname.indexOf('localhost')!=-1){
+      this.basePath = "http://10.123.202.117";
+    }
+
 
 
     this.ModelCreate = {
-        header: "Your Name",
-        name: "Insert your name",
-        phonenumber: "Insert your mobile (+)",
-        email: "Insert your email",
-        birthday: "Select your birthday",
-        address: "Insert your address",
-        photo: "Select your photo path"
+        header: "Contact Name",
+        name: "Please insert your name",
+        phonenumber: "Please insert your mobile ",
+        email: "Please insert your email",
+        birthday: "Please select your birthday date",
+        address: "Please insert your address",
+        photo: "Please insert a link to your photo"
     }
 
     this.GetAll = function(onComplete, onError) {
@@ -21,7 +27,7 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
         var thisHandler = this;
         $http({
             method: 'GET',
-            url: 'http://localhost:9003/contact',
+            url: this.basePath +':9003/contact',
         }).then(function successCallback(response) {
             // this callback will be called asynchronously
             // when the response is available
@@ -41,7 +47,7 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
         console.log(id);
         $http({
             method: 'PATCH',
-            url: 'http://localhost:9003/contact/' + id,
+            url: this.basePath +':9003/contact' + id,
             data: modelToSend
         }).then(function successCallback(response) {
             // this callback will be called asynchronously
@@ -62,7 +68,7 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
         console.log(modelToSend)
         $http({
             method: 'POST',
-            url: 'http://localhost:9003/contact',
+            url: this.basePath +':9003/contact',
             data: modelToSend
         }).then(function successCallback(response) {
             // this callback will be called asynchronously
@@ -84,7 +90,7 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
         }
         $http({
             method: 'DELETE',
-            url: 'http://localhost:9003/contact' + path,
+            url: this.basePath +':9003/contact' + path,
             data: item
         }).then(function successCallback(response) {
             // this callback will be called asynchronously
@@ -100,7 +106,7 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
     this.GetById = function(id, onComplete, onError) {
         $http({
             method: 'GET',
-            url: 'http://localhost:9003/contact/' + id
+            url: this.basePath +':9003/contact/' + id
         }).then(function successCallback(response) {
             // this callback will be called asynchronously
             // when the response is available
@@ -117,7 +123,7 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
 
         $http({
             method: 'GET',
-            url: 'http://localhost:9003/contact/autocomplete/' + string
+            url: this.basePath +':9003/contact/autocomplete/' + string
         }).then(function successCallback(response) {
             // this callback will be called asynchronously
             // when the response is available
