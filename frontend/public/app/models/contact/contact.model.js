@@ -6,4 +6,5 @@ var Contact = function () {
     this.phonenumber;
     this.address;
     this.birthday;
+    this.picture;
 };

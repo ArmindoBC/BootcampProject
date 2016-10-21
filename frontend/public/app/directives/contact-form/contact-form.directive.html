@@ -2,9 +2,10 @@
     <!-- <input type="submit" value="Save" ng-click="Save()"> </input>
     <input type="submit" value="Discard" ng-click="Save()"> </input> -->
     <div class="form-header-container">
-        <div class="circle-image">
-        </div>
+
         <div class="header">
+          <div class="circle-image">
+          </div>
             <div ng-if="ContactsService.Model.name == null || ContactsService.Model.name.trim() == ''">
                 Contact's name
             </div>
@@ -15,42 +16,48 @@
         </div>
     </div>
     <div class="input-container">
-        <form name="form-input" class="form-input">
-
+        <form name="formInput" class="form-input">
             <div class="input">
                 <div class="input-label">
                     Name
                 </div>
-                <input name="name-input" class="input-box" ng-model="ContactsService.Model.name" placeholder="{{ ContactsService.ModelCreate.name }}" type="text" ng-pattern="" required>
-                <div ng-show="form-input.name-input.$error.required" class="input-error" > Name required </div>
-                <div ng-show="form-input.name-input.$error.pattern" class="input-error" > Name invalid </div>
-                </input>
+                <div>
+                    <input name="nameInput" class="input-box" ng-model="ContactsService.Model.name" placeholder="{{ ContactsService.ModelCreate.name }}" type="text" ng-pattern="/^[a-zA-Z\s]+$/" required />
+                    <div ng-show="formInput.nameInput.$error.required && formInput.nameInput.$dirty" class="input-error"> Name required. </div>
+                    <div ng-show="formInput.nameInput.$error.pattern && formInput.nameInput.$dirty" class="input-error"> Name invalid. </div>
+                </div>
             </div>
             <div class="input">
                 <div class="input-label">
                     Phone Number
                 </div>
-                <input name="phone-input" class="input-box" ng-model="ContactsService.Model.phonenumber" placeholder="{{ form-input.name-input.$error.required }}" type="text" ng-pattern="" > </input>
-                <p ng-show="form-input.phone-input.$error.pattern" class="error-block" > Invalid Phone Number. Example: +XXX XXXXXXXX</p>
+                <div>
+                    <input name="phoneInput" class="input-box" ng-model="ContactsService.Model.phonenumber" placeholder="{{ ContactsService.ModelCreate.phonenumber }}" type="text" ng-pattern="/([+][0-9]+\w{6,12})/" />
+                    <div ng-show="formInput.phoneInput.$error.pattern && formInput.phoneInput.$dirty" class="input-error"> Phone invalid (+123456789012). </div>
+                </div>
             </div>
             <div class="input">
                 <div class="input-label">
                     Email
                 </div>
-                <input name="email-input" class="input-box" ng-model="ContactsService.Model.email" placeholder="{{ ContactsService.ModelCreate.email}}" type="text" ng-pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/"></input>
-                <p ng-show="form-input.phone-input.$error.pattern" class="error-block" > Invalid Email. </p>
+                <div>
+                    <input name="emailInput" class="input-box" ng-model="ContactsService.Model.email" placeholder="{{ ContactsService.ModelCreate.email}}" type="email" />
+                    <div ng-show="formInput.emailInput.$error.invalid && formInput.emailInput.$dirty " class="input-error"> Email invalid. </div>
+                </div>
             </div>
             <div class="input">
                 <div class="input-label">
                     Birthday
                 </div>
                 <div class="input-group">
-                    <input class="input-date" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                    <input name="birthdayInput" class="input-date form-control" uib-datepicker-popup="{{format}}" ng-model="ContactsService.Model.birthday" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                    />
                     <span class="input-group-btn">
                     <button type="button" class="btn btn-default icon-button" ng-click="open1()">
                       <i class="material-icon icon-input">date_range</i>
                       </button>
                   </span>
+                    <div ng-show="formInput.dateInput.$error.invalid && formInput.dateInput.$dirty" class="input-error"> Email invalid. </div>
                 </div>
 
             </div>
@@ -58,17 +65,22 @@
                 <div class="input-label">
                     Address
                 </div>
-                <textarea class="input-text-area" ng-model="ContactsService.Model.address" placeholder="{{ ContactsService.ModelCreate.address}}" type="text">
+                <div>
+                    <textarea name="addressInput" class="input-text-area" ng-model="ContactsService.Model.address" placeholder="{{ ContactsService.ModelCreate.address}}" type="text" >
                 </textarea>
+                <div ng-show="formInput.addressInput.$error.pattern && formInput.addressInput.$dirty" class="input-error"> Address invalid. </div>
+
+                </div>
             </div>
-            <div class="input" ng-if="!modeEdit">
+            <div class="input">
                 <div class="input-label">
                     Photo
                 </div>
                 <div class="input-group">
-                    <input class="input-photo" placeholder="{{ContactsService.ModelCreate.photo}}" type="text" ngf-select="onFileSelect($files)" multiple/>
+
+                    <input class="input-photo" id="openPicture" ng-model="ContactsService.Model.picture" placeholder="{{ContactsService.ModelCreate.picture}}" type="text" ngf-select="onFileSelect($picture)" multiple/>
                     <span class="input-group-btn">
-                    <button type="button" class="btn btn-default icon-button" ng-click="open1()">
+                    <button type="button" class="btn btn-default icon-button" ng-click="open2()">
                       <i class="material-icon icon-input">camera_alt</i>
                       </button>
                   </span>
@@ -86,5 +98,5 @@
         <p>The input's valid state is:</p>
 
         <p ng-show="myForm.myInput.$error.required"><h1>{{myForm.myInput.$error.required}}</h1></p> -->
-    <!-- </div> -->
-</div>
+        <!-- </div> -->
+    </div>

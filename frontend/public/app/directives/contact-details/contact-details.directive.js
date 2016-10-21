@@ -69,7 +69,8 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", "$ro
 
                 // console.log($(element).find('.circle-image')[0].style);
                 if ($scope.contact != null && $scope.contact.picture != undefined) {
-                    $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/" + $scope.contact.picture + ")";
+                    if($scope.contact.picture)
+                    $(element).find('.circle-image')[0].style.backgroundImage = "url("+$scope.contact.picture +")";
                 } else {
                     $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
                 }

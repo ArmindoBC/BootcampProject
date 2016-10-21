@@ -76,7 +76,10 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
             ActiveContactService.ActiveContact = ContactsService.AllItems[0];
             $scope.ActiveContact = ActiveContactService.ActiveContact;
             $scope.contact = ActiveContactService.ActiveContact;
+<<<<<<< HEAD
             ContactsService.Model = ActiveContactService.ActiveContact;
+=======
+>>>>>>> b1c6f2dd66b378ef6f45822841280f3cb524371a
 
             // setTimeout(function() {
             if (ActiveContactService.ActiveContact.id != null &&
@@ -149,6 +152,8 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
 
         }
         //Update Item
+        console.log("FUNCTION SAVE");
+        console.log(ActiveContactService.ActiveContact);
         $scope.IsLoading = true;
         if ($routeParams.id == null) {
             ContactsService.CreateItem(SaveOnComplete, SaveOnError);

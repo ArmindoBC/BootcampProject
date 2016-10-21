@@ -1,4 +1,4 @@
-app.directive('contactForm', ["ContactsService","$routeParams", function(ContactsService,$routeParams) {
+app.directive('contactForm', ["ContactsService", "$routeParams", function(ContactsService, $routeParams) {
     return {
         restrict: 'E', //E = element, A = attribute, C = class, M = comment
         scope: {
@@ -7,19 +7,21 @@ app.directive('contactForm', ["ContactsService","$routeParams", function(Contact
         templateUrl: 'app/directives/contact-form/contact-form.directive.html',
         link: function($scope, element, attrs) {
 
-
             // Initialization functions: -----------------------------
 
             // Pointing ContactsService to scope
             $scope.ContactsService = ContactsService;
-
 
             // Initializing model according to contact id
             if ($routeParams.id != null) {
                 ContactsService.GetById($routeParams.id, function(model) {
                     ContactsService.Model = model;
                     $scope.ContactsService = ContactsService;
-
+                    if ($scope.contact != null && $scope.contact.picture != undefined) {
+                        $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/" + $scope.contact.picture + ")";
+                    } else {
+                        $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
+                    }
                     console.log(ContactsService.Model);
                 }, function(error) {
                     // console.log(error);
@@ -28,6 +30,7 @@ app.directive('contactForm', ["ContactsService","$routeParams", function(Contact
             } else {
                 ContactsService.Model = null;
                 $scope.modeEdit = false;
+
             }
 
             // DatePicker functions: --------------------------------
@@ -74,6 +77,7 @@ app.directive('contactForm', ["ContactsService","$routeParams", function(Contact
             };
 
             $scope.open2 = function() {
+                document.getElementById('openPicture').click();
                 $scope.popup2.opened = true;
             };
 
