@@ -38,7 +38,7 @@
                 Birthdate
             </div>
             <div class="label-contact-details">
-                {{ContactsService.Model.birthday | date:'MM/dd/yyyy' }} {{contact.birthday | getContactAge}}
+                {{ContactsService.Model.birthday | date:'MM/dd/yyyy' }} {{ContactsService.Model.birthday | getContactAge}}
             </div>
         </div>
         <div ng-if="contact.address!=null" class="input">

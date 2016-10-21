@@ -33,45 +33,45 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", "$ro
             contact: "=",
         },
         templateUrl: 'app/directives/contact-details/contact-details.directive.html',
-        link: function(scope, element, attrs) {
+        link: function($scope, element, attrs) {
 
             //Start Function: --------------------------------------------------
-            scope.start = function() {
-              // Pointing ContactsService to scope
-                scope.ContactsService = ContactsService;
+            $scope.start = function() {
+                // Pointing ContactsService to $scope
+                $scope.ContactsService = ContactsService;
                 //added
-                scope.ContactsService.Model = ActiveContactService.ActiveContact;
+                console.log($scope.contact.id);
+                console.log("ENTREI");
+                    if ($scope.contact.id != null) {
+                        ContactsService.GetById($scope.contact.id, function(model) {
+                            ContactsService.Model = model;
+                            $scope.ContactsService = ContactsService;
 
-                // if ($routeParams.id != null) {
-                //     ContactsService.GetById($routeParams.id, function(model) {
-                //         ContactsService.Model = model;
-                //         scope.ContactsService = ContactsService;
-                //
-                //         console.log(ContactsService.Model);
-                //     }, function(error) {
-                //         // console.log(error);
-                //     });
-                    // scope.modeEdit = true;
-                // } else {
-                //     ContactsService.Model = null;
-                //     scope.modeEdit = false;
-                // }
+                            console.log(ContactsService.Model);
+                        }, function(error) {
+                            // console.log(error);
+                        });
+                        $scope.modeEdit = true;
+                    } else {
+                        ContactsService.Model = null;
+                        $scope.modeEdit = false;
+                    }
 
                 console.log($(element).find('.circle-image')[0].style);
-                if (scope.contact.picture != undefined) {
-                    $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/" + scope.contact.picture + ")";
+                if ($scope.contact.picture != undefined) {
+                    $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/" + $scope.contact.picture + ")";
                 } else {
                     $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
                 }
                 console.log($(element).find('.circle-image')[0].style);
-                if (scope.contact.address != undefined) {
-                    initMap(scope.contact.address, $(element).find('.map')[0]);
+                if ($scope.contact.address != undefined) {
+                    initMap($scope.contact.address, $(element).find('.map')[0]);
                 } else {
                     $(element).find('.map')[0].style.display = 'none';
                 }
-                scope.$applyAsync();
+                $scope.$applyAsync();
             }
-            scope.start();
+            $scope.start();
 
 
 

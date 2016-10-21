@@ -4,16 +4,16 @@ app.service('ActiveContactService', ['$location', '$route', 'ContactsService', f
     this.mode = "show";
     var thisService = this;
 
-    this.DiscardChanges = function(){
-      alert('Your changes were discarded');
-      this.setShowMode();
+    this.DiscardChanges = function() {
+        alert('Your changes were discarded');
+        this.setShowMode();
     }
 
-    this.setCreateMode= function(){
-      alert('Create a new Contact');
-      this.mode = "edit";
-      $location.path('/edit/');
-      $route.reload();
+    this.setCreateMode = function() {
+        alert('Create a new Contact');
+        this.mode = "edit";
+        $location.path('/edit/');
+        $route.reload();
     }
 
     this.setEditMode = function() {
@@ -26,10 +26,11 @@ app.service('ActiveContactService', ['$location', '$route', 'ContactsService', f
     this.setShowMode = function(id) {
         this.mode = "show";
         // $location.path('/');
-        if(id==null){
-          id = this.ActiveContact.id;
+        if (id == null) {
+            $location.path('/')
+        } else {
+            $location.path('/details/' + id);
         }
-        $location.path('/details/' + id);
         $route.reload();
     }
 
