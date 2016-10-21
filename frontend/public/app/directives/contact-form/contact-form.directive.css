@@ -99,6 +99,7 @@
     /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;
     /* Firefox, other Gecko */
+    border-radius: 2px;
 }
 
 .input-group .input-date, .input-group .input-photo {
@@ -126,6 +127,13 @@
     /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;
     /* Firefox, other Gecko */
+    border-radius: 2px;
+}
+
+.input-error{
+  padding-top: 2px;
+  padding-left: 21px;
+  color: rgb(227, 27, 20);
 }
 
 .input-group {
