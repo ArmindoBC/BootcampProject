@@ -14,10 +14,10 @@ app.filter('getContactAge', function() {
         return 0;
     }
     return function(birthdate) {
-        if (!isNaN(parseInt(birthdate))){
+        if (!isNaN(parseInt(birthdate))) {
             var age = calculateAge(birthdate);
             if (age == 0)
-                return monthDiff(birthdate, new Date()) + ' months';
+                return "(" + monthDiff(birthdate, new Date()) + ' months)';
             var result = "(" + age + " years)";
             return result;
         }

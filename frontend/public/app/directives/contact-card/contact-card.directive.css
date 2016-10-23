@@ -11,20 +11,23 @@
         cursor: pointer;
         cursor: hand;
     }
+
     .contact-card-div:hover {
         background-color: #f2f2f2;
     }
-    .contact-card-div-active
-    {
+
+    .contact-card-div-active {
         background-color: #f2f2f2 !important;
         cursor: pointer;
         cursor: hand;
     }
+
     .contact-card-div-no-active {
-      background-color: #FFF  !important;
-      cursor: pointer;
-      cursor: hand;
+        background-color: #FFF !important;
+        cursor: pointer;
+        cursor: hand;
     }
+
     .contact-card-items {
         display: flex;
         height: 72px;
@@ -32,6 +35,7 @@
         justify-content: flex-start;
         align-items: center;
     }
+
     .contact-pic {
         width: 40px;
         height: 40px;
@@ -40,9 +44,11 @@
         object-fit: cover;
         background-size: cover;
     }
+
     .contact-content {
         margin-left: 17px;
     }
+
     .contact-name {
         height: 24px;
         font-family: OpenSans-Regular;
@@ -54,6 +60,7 @@
         text-align: left;
         color: rgba(0, 0, 0, 0.87);
     }
+
     .contact-detail {
         height: 20px;
         font-family: OpenSans-Regular;

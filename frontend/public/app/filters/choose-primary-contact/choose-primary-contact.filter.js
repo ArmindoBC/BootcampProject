@@ -1,6 +1,6 @@
 app.filter('choosePrimaryContact', function() {
     return function(input, scope) {
-        if (input.phonenumber != null ) {
+        if (input.phonenumber != null) {
             return input.phonenumber;
         } else {
             if (input.email != null) {

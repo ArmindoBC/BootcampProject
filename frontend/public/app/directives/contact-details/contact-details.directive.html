@@ -1,11 +1,11 @@
 <div class="contact-form-container">
     <div class="form-header-container">
-      <div ng-if="isOnMobile">
-          <div ng-if="ContactsService.Model.picture" class="circle-image" style="background-image: url('{{ContactsService.Model.picture}}')">
-          </div>
-          <div ng-if="!ContactsService.Model.picture" class="circle-image" style="background-image: url('./assets/photos/avatar5.png')">
-          </div>
-      </div>
+        <div ng-if="isOnMobile">
+            <div ng-if="ContactsService.Model.picture" class="circle-image" style="background-image: url('{{ContactsService.Model.picture}}')">
+            </div>
+            <div ng-if="!ContactsService.Model.picture" class="circle-image" style="background-image: url('./assets/photos/avatar5.png')">
+            </div>
+        </div>
 
         <div class="header">
             <div ng-if="!isOnMobile">
@@ -28,17 +28,15 @@
                 {{ContactsService.Model.name | firstCharacterUppercase}}
             </div>
         </div>
-        <div ng-if="contact.phonenumber!=null" class="input">
+        <div ng-if="ContactsService.Model.phonenumber!=null" class="input">
             <div class="input-label">
                 Phone Number
             </div>
             <div class="label-contact-details">
                 {{ContactsService.Model.phonenumber}}
             </div>
-
-
         </div>
-        <div ng-if="contact.email!=null" class="input">
+        <div ng-if="ContactsService.Model.email!=null" class="input">
             <div class="input-label">
                 Email
             </div>
@@ -46,7 +44,7 @@
                 {{ContactsService.Model.email}}
             </div>
         </div>
-        <div ng-if="contact.birthday!=null" class="input">
+        <div ng-if="ContactsService.Model.birthday!=null" class="input">
             <div class="input-label">
                 Birthdate
             </div>
@@ -54,7 +52,7 @@
                 {{ContactsService.Model.birthday | date:'MM/dd/yyyy' }} {{ContactsService.Model.birthday | getContactAge}}
             </div>
         </div>
-        <div ng-if="contact.address!=null" class="input">
+        <div ng-if="ContactsService.Model.address!=null" class="input">
             <div class="input-label">
                 Address
             </div>
@@ -62,10 +60,9 @@
                 {{ContactsService.Model.address}}
             </div>
         </div>
-
-        <div class="contactMap map">
-
+        <div ng-if="ContactsService.Model.address!=null || ContactsService.Model.address!=undefined">
+            <div class="contactMap map">
+            </div>
         </div>
-
     </div>
 </div>

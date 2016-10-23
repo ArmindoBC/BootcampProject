@@ -1,24 +1,23 @@
 // out: ../css/contact-form.directive.css, sourcemap: true, compress: false
 
-
-.input-box(){
-  padding-top: 9px;
-  /*Symmetric to top (10px -> 9px) (delt) */
-  padding-bottom: 9px;
-  padding-left: 21px;
-  /* Symmetric to left (delt)*/
-  padding-right: 21px;
-  width: 399px;
-  font-size: 18px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: 0.2px;
-  color: #717171;
-  /*border-radius: 2px;*/
-  background-color: #ffffff;
-  box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.5);
-  border: solid 1px #979797;
+.input-box() {
+    padding-top: 9px;
+    /*Symmetric to top (10px -> 9px) (delt) */
+    padding-bottom: 9px;
+    padding-left: 21px;
+    /* Symmetric to left (delt)*/
+    padding-right: 21px;
+    width: 399px;
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: 0.2px;
+    color: #717171;
+    /*border-radius: 2px;*/
+    background-color: #ffffff;
+    box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+    border: solid 1px #979797;
 }
 
 form-icons {
@@ -38,11 +37,11 @@ form-icons {
     border-bottom: solid 5px #4fe0f2;
 }
 
-.form-header-container>* {
+.form-header-container > * {
     display: block;
 }
 
-.form-header-container .header>* {
+.form-header-container .header > * {
     font-size: 36px;
     font-weight: normal;
     font-style: normal;
@@ -66,9 +65,8 @@ form-icons {
     margin-bottom: 10px;
 }
 
-.input-container .input>* {
+.input-container .input > * {
     /*border: 1px solid black; (delt)*/
-
 }
 
 .input-container .input .input-label {
@@ -79,8 +77,10 @@ form-icons {
     color: #24263f;
 }
 
-.input-container input-box input, .input-container input-text-area textarea, .input-container .input-photo {
-  .input-box();
+.input-container .input-photo,
+.input-container input-box input,
+.input-container input-text-area textarea {
+    .input-box();
 }
 
 .label-contact-details {

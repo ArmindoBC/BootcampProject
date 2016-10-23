@@ -18,6 +18,4 @@ app.controller('ContactShowController', ['$scope', '$routeParams', 'ActiveContac
             console.log(errorCode);
             $scope.IsLoading = false;
         }
-
-
 }]);

@@ -13,6 +13,14 @@ app.directive('contactCard', ["ContactsService", '$location', "ActiveContactServ
             //Start Function: --------------------------------------------------
             $scope.start = function() {
 
+                /*if (($(".sub-container-2").css("display") == "none") || ($(".sub-container").css("display") == "none")) {
+                    // your code here
+                    if()
+                    $(".sub-container").css("display", "none");
+                    $(".sub-container-2").css("display", "block");
+
+
+                }*/
 
 
             }
@@ -41,38 +49,30 @@ app.directive('contactCard', ["ContactsService", '$location', "ActiveContactServ
             }
 
             $scope.showUserMobile = function(contactId) {
-              ActiveContactService.ActiveContact = null;
+                ActiveContactService.ActiveContact = null;
 
-              ActiveContactService.changeActiveContact(contactId, function() {
-                  //Completed
-              
-                  $('.sub-container-2').show();
-                  $('.labelMobile').show();
-                  $('.header-name-mobile').show();
+                ActiveContactService.changeActiveContact(contactId, function() {
+                    //Completed
+                    $('.sub-container-2').show();
+                    $('.labelMobile').show();
+                    $('.header-name-mobile').show();
+                    $('.header-title').hide();
+                    $('.sub-container').hide();
+                    ActiveContactService.setShowMode();
 
-                  $('.header-title').hide();
-                  $('.sub-container').hide();
-                  ActiveContactService.setShowMode();
-                  //Loading is hidden when ActiveContact is different than null and that it's already done
-
-              }, function(error) {
-                  console.log(error);
-              });
+                    //Loading is hidden when ActiveContact is different than null and that it's already done
+                }, function(error) {
+                    console.log(error);
+                });
             }
-
 
             $scope.showUser = function(contactId) {
-
                 if ($scope.isMobile) {
-                  $scope.showUserMobile(contactId);
-                }
-                else {
+                    $scope.showUserMobile(contactId);
+                } else {
                     $scope.showUserDesktop(contactId);
                 }
-
-
             }
-
         }
     };
 }]);

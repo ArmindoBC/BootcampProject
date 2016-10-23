@@ -7,31 +7,22 @@ app.directive('contactForm', ["ContactsService", "$routeParams", function(Contac
         templateUrl: 'app/directives/contact-form/contact-form.directive.html',
         link: function($scope, element, attrs) {
             $scope.isOnMobile = $('.isOnMobile').is(':visible');
-
             // Initialization functions: -----------------------------
 
             // Pointing ContactsService to scope
             $scope.ContactsService = ContactsService;
-
             // Initializing model according to contact id
             if ($routeParams.id != null) {
                 ContactsService.GetById($routeParams.id, function(model) {
                     ContactsService.Model = model;
                     $scope.ContactsService = ContactsService;
-                    if ($scope.contact != null && $scope.contact.picture != undefined) {
-                        $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/" + $scope.contact.picture + ")";
-                    } else {
-                        $(element).find('.circle-image')[0].style.backgroundImage = "url(./assets/photos/avatar5.png)";
-                    }
-                    console.log(ContactsService.Model);
                 }, function(error) {
-                    // console.log(error);
+                    console.log(error);
                 });
                 $scope.modeEdit = true;
             } else {
                 ContactsService.Model = null;
                 $scope.modeEdit = false;
-
             }
 
             // DatePicker functions: --------------------------------
@@ -115,7 +106,6 @@ app.directive('contactForm', ["ContactsService", "$routeParams", function(Contac
                     mode = data.mode;
                 if (mode === 'day') {
                     var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
                     for (var i = 0; i < $scope.events.length; i++) {
                         var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
 
@@ -126,8 +116,6 @@ app.directive('contactForm', ["ContactsService", "$routeParams", function(Contac
                 }
                 return '';
             }
-
-            //init card
         }
     };
 }]);

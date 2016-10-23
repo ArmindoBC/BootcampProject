@@ -8,19 +8,25 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", "$ro
         geocoder.geocode({
             'address': addressMap
         }, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
+            if (status === google.maps.GeocoderStatus.OK) {
                 var loc = results[0].geometry.location;
-                result = new google.maps.LatLng(loc.lat(), loc.lng());
-                map = new google.maps.Map(element, {
-                    center: result,
-                    zoom: 16
-                });
-                marker = new google.maps.Marker({
-                    position: result,
-                    map: map,
-                    title: 'Home'
-                });
-                return result;
+                if (loc) {
+                    result = new google.maps.LatLng(loc.lat(), loc.lng());
+                    if (result) {
+                        if (element) {
+                            map = new google.maps.Map(element, {
+                                center: result,
+                                zoom: 16
+                            });
+                            marker = new google.maps.Marker({
+                                position: result,
+                                map: map,
+                                title: 'Home'
+                            });
+                            return result;
+                        }
+                    }
+                }
             } else {
                 result = "Unable to find address: " + status;
             }
@@ -34,25 +40,22 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", "$ro
         },
         templateUrl: 'app/directives/contact-details/contact-details.directive.html',
         link: function($scope, element, attrs) {
-
             $scope.isOnMobile = $('.isOnMobile').is(':visible');
-
             //Start Function: --------------------------------------------------
             $scope.start = function() {
                 // Pointing ContactsService to $scope
                 $scope.ContactsService = ContactsService;
                 //added
-
                 if ($routeParams.id != null) {
                     setTimeout(function() {
                         ContactsService.GetById($routeParams.id, function(model) {
-
                             ContactsService.Model = model;
                             $scope.ContactsService = ContactsService;
-                            console.log(ContactsService.Model);
-
-                            if ($scope.contact.address != undefined && $scope.contact.address !=null) {
+                            if (ContactsService.Model.address != undefined && ContactsService.Model.address != null) {
                                 initMap($scope.contact.address, $(element).find('.map')[0]);
+                                $(element).find('.contact-form-container')[0].style.minHeight = "700px";
+                            } else {
+                                $(element).find('.contact-form-container')[0].style.minHeight = "100%";
                             }
                         }, function(error) {
                             console.log(error);
@@ -62,21 +65,16 @@ app.directive('contactDetails', ["ContactsService", "ActiveContactService", "$ro
                 } else {
                     ContactsService.Model = ActiveContactService.ActiveContact;
                     $scope.modeEdit = false;
-                    if (ActiveContactService.ActiveContact.address != undefined) {
+                    if (ActiveContactService.ActiveContact.address != undefined && ActiveContactService.ActiveContact.address != null) {
                         initMap(ActiveContactService.ActiveContact.address, $(element).find('.map')[0]);
+                        $(element).find('.contact-form-container')[0].style.minHeight = "700px";
+                    } else {
+                        $(element).find('.contact-form-container')[0].style.minHeight = "100%";
                     }
                 }
-
-
-                // console.log($(element).find('.circle-image')[0].style);
-
                 $scope.$applyAsync();
             }
             $scope.start();
-
-
-
-
         }
     };
 }]);

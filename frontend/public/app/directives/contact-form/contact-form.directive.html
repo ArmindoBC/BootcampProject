@@ -1,29 +1,25 @@
 <div class="contact-form-container">
-    <!-- <input type="submit" value="Save" ng-click="Save()"> </input>
-    <input type="submit" value="Discard" ng-click="Save()"> </input> -->
     <div class="form-header-container">
-      <div ng-if="isOnMobile">
-          <div ng-if="ContactsService.Model.picture" class="circle-image" style="background-image: url('{{ContactsService.Model.picture}}')">
-          </div>
-          <div ng-if="!ContactsService.Model.picture" class="circle-image" style="background-image: url('./assets/photos/avatar5.png')">
-          </div>
-      </div>
-
+        <div ng-if="isOnMobile">
+            <div ng-if="ContactsService.Model.picture" class="circle-image" style="background-image: url('{{ContactsService.Model.picture}}')">
+            </div>
+            <div ng-if="!ContactsService.Model.picture" class="circle-image" style="background-image: url('./assets/photos/avatar5.png')">
+            </div>
+        </div>
         <div class="header">
-          <div ng-if="!isOnMobile">
-              <div ng-if="ContactsService.Model.picture" class="circle-image" style="background-image: url('{{ContactsService.Model.picture}}')">
-              </div>
-              <div ng-if="!ContactsService.Model.picture" class="circle-image" style="background-image: url('./assets/photos/avatar5.png')">
-              </div>
-          </div>
+            <div ng-if="!isOnMobile">
+                <div ng-if="ContactsService.Model.picture" class="circle-image" style="background-image: url('{{ContactsService.Model.picture}}')">
+                </div>
+                <div ng-if="!ContactsService.Model.picture" class="circle-image" style="background-image: url('./assets/photos/avatar5.png')">
+                </div>
+            </div>
 
             <div ng-if="ContactsService.Model.name == null || ContactsService.Model.name.trim() == ''">
                 Contact's name
             </div>
-            <div ng-if="ContactsService.Model.name != null && ContactsService.Model.name.trim() != ''" >
+            <div ng-if="ContactsService.Model.name != null && ContactsService.Model.name.trim() != ''">
                 {{ ContactsService.Model.name | firstCharacterUppercase }}
             </div>
-
         </div>
     </div>
     <div class="input-container">
@@ -52,8 +48,8 @@
                     Email
                 </div>
                 <div>
-                    <input name="emailInput" class="input-box" ng-model="ContactsService.Model.email" placeholder="{{ ContactsService.ModelCreate.email}}" type="email" />
-                    <div ng-show="formInput.emailInput.$error.invalid && formInput.emailInput.$dirty " class="input-error"> Email invalid. </div>
+                    <input name="emailInput" class="input-box" ng-model="ContactsService.Model.email" placeholder="{{ ContactsService.ModelCreate.email }}" type="email" />
+                    <div ng-show="formInput.emailInput.$error.invalid && formInput.emailInput.$dirty" class="input-error"> Email invalid. </div>
                 </div>
             </div>
             <div class="input">
@@ -68,19 +64,17 @@
                       <i class="material-icon icon-input">date_range</i>
                       </button>
                   </span>
-                    <div ng-show="formInput.dateInput.$error.invalid && formInput.dateInput.$dirty" class="input-error"> Email invalid. </div>
+                    <div ng-show="formInput.dateInput.$error.invalid && formInput.dateInput.$dirty" class="input-error"> Birthday invalid. </div>
                 </div>
-
             </div>
             <div class="input input-address">
                 <div class="input-label">
                     Address
                 </div>
                 <div>
-                    <textarea name="addressInput" class="input-text-area" ng-model="ContactsService.Model.address" placeholder="{{ ContactsService.ModelCreate.address}}" type="text" >
+                    <textarea name="addressInput" class="input-text-area" ng-model="ContactsService.Model.address" placeholder="{{ ContactsService.ModelCreate.address}}" type="text">
                 </textarea>
-                <div ng-show="formInput.addressInput.$error.pattern && formInput.addressInput.$dirty" class="input-error"> Address invalid. </div>
-
+                    <div ng-show="formInput.addressInput.$error.pattern && formInput.addressInput.$dirty" class="input-error"> Address invalid. </div>
                 </div>
             </div>
             <div class="input">
@@ -88,7 +82,6 @@
                     Photo
                 </div>
                 <div class="input-group">
-
                     <input class="input-photo" id="openPicture" ng-model="ContactsService.Model.picture" placeholder="{{ContactsService.ModelCreate.picture}}" type="text" ngf-select="onFileSelect($picture)" multiple/>
                     <span class="input-group-btn">
                     <button type="button" class="btn btn-default icon-button" ng-click="open2()">
@@ -98,16 +91,5 @@
                 </div>
             </div>
         </form>
-
-
-        <!-- <p>Try writing an E-mail address in the input field:</p>
-
-        <!-- <form name="myForm">
-            <input type="text" name="myInput" ng-model="ContactsService.Model.email" ng-required="true">
-        </form>
-
-        <p>The input's valid state is:</p>
-
-        <p ng-show="myForm.myInput.$error.required"><h1>{{myForm.myInput.$error.required}}</h1></p> -->
-        <!-- </div> -->
     </div>
+</div>

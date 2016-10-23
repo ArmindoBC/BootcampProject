@@ -10,30 +10,29 @@ class BaseController {
     /**
      * Base controller, contains all functions to the API
      */
-    constructor() {
-    }
+    constructor() {}
 
     BaseGetItemHandler(collectionName, id) {
         var collection = DatabaseService.GetCollection(collectionName);
 
-        return collection.findOne({_id: DatabaseService.BuildObjectId(id)})
+        return collection.findOne({
+                _id: DatabaseService.BuildObjectId(id)
+            })
             .then((doc) => {
-
-
                 return this.BuildGetItemMessage(doc);
-
             });
-
     }
     BaseGetItemsAutocompleteHandler(collectionName, string) {
         var collection = DatabaseService.GetCollection(collectionName);
 
         //build regex to search the substring in the collection names
-        var regexValue = "^"+ string ;
+        var regexValue = "^" + string;
         var searchRegex = new RegExp(regexValue, 'i');
 
         //construct the object to search the substring
-        var query =  {name: searchRegex };
+        var query = {
+            name: searchRegex
+        };
 
         return collection.find(query).toArray()
             .then((doc) => {
@@ -55,7 +54,9 @@ class BaseController {
 
     BasePostHandler(collectionName, payload) {
         var ParsedData = this.ParseQueryByDatabaseDictionary(payload);
-        return DatabaseService.GetCollection(collectionName).insert(ParsedData, {w: 1})
+        return DatabaseService.GetCollection(collectionName).insert(ParsedData, {
+                w: 1
+            })
             .then((doc) => {
                 return this.BuildPostItemMessage(doc.ops[0]);
             })
@@ -65,9 +66,10 @@ class BaseController {
     BasePutHandler(collectionName, id, payload) {
         var ParsedData = this.ParseQueryByDatabaseDictionary(payload);
 
-        DatabaseService.GetCollection(collectionName).update(
-            {_id: DatabaseService.BuildObjectId(id)},
-            ParsedData)
+        DatabaseService.GetCollection(collectionName).update({
+                    _id: DatabaseService.BuildObjectId(id)
+                },
+                ParsedData)
             .then((doc) => {
                 return this.BuildPutItemMessage(doc, ParsedData);
             });
@@ -76,22 +78,24 @@ class BaseController {
     BasePatchHandler(collectionName, id, payload) {
         var ParsedData = this.ParseQueryByDatabaseDictionary(payload);
 
-        return DatabaseService.GetCollection(collectionName).findAndModify(
-            {_id: DatabaseService.BuildObjectId(id)},
-            {}, //sort properties
-            {
-                $set: ParsedData //update properties
-            }, {
-                new: true, // return new doc if one is upserted
-                upsert: false // insert the document if it does not exist
-            })
+        return DatabaseService.GetCollection(collectionName).findAndModify({
+                    _id: DatabaseService.BuildObjectId(id)
+                }, {}, //sort properties
+                {
+                    $set: ParsedData //update properties
+                }, {
+                    new: true, // return new doc if one is upserted
+                    upsert: false // insert the document if it does not exist
+                })
             .then((doc) => {
                 return this.BuildPatchItemMessage(doc, ParsedData);
             });
     }
 
     BaseDeleteHandler(collectionName, id) {
-        return DatabaseService.GetCollection(collectionName).remove({_id: DatabaseService.BuildObjectId(id)})
+        return DatabaseService.GetCollection(collectionName).remove({
+                _id: DatabaseService.BuildObjectId(id)
+            })
             .then((doc) => {
                 return this.BuildDeleteItemMessage(doc);
             });
@@ -115,7 +119,7 @@ class BaseController {
         });
     }
 
-//------PARSEDATA-------------------------------------------------------------
+    //------PARSEDATA-------------------------------------------------------------
 
     ParseQueryByDatabaseDictionary(query) {
         var result = {};
@@ -141,8 +145,7 @@ class BaseController {
             } catch (e) {
                 throw e;
             }
-        }
-        ;
+        };
 
         var new_key = DatabaseDictionary[fieldName];
         var InKey = "$in";
@@ -157,7 +160,7 @@ class BaseController {
         return str.indexOf(suffix, str.length - suffix.length) !== -1;
     }
 
-//------MESSAGES--------------------------------------------------------------
+    //------MESSAGES--------------------------------------------------------------
     BuildGetItemMessage(doc) {
         var message;
 
@@ -227,7 +230,7 @@ class BaseController {
             message: "Patch Item message built successfully"
         });
         if (doc.value === null) {
-            throw  Boom.notFound();
+            throw Boom.notFound();
         } else if (doc.ok === 1) {
             message = this.ParseDocumentByClientDictionary(doc.value);
         } else {
@@ -322,8 +325,8 @@ class BaseController {
         }
     }
 
-    static  Authorize(groups) { //groups is an array of group identifiers that user session token owner must belong
-        return function (req, reply) {
+    static Authorize(groups) { //groups is an array of group identifiers that user session token owner must belong
+        return function(req, reply) {
             if (!req.headers.authorization) {
                 return reply(Boom.forbidden("You don't have permission."));
             }

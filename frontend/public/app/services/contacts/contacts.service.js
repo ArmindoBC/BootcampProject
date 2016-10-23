@@ -6,17 +6,14 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
     var thisService = this;
     this.basePath = "http://localhost";
 
+    //connect to a remote server
+    /*
+    this.basePath = "http://localhost";
     if(window.location.hostname.indexOf('localhost')!=-1){
       this.basePath = "http://10.123.202.117";
-    }
+    }*/
 
-
-    this.basePath='http://localhost';
-
-    if(window.location.hostname.indexOf('localhost') != -1){
-      this.basePath = 'http://localhost';
-    }
-
+    //Model to fill in the placeholder content of angular inputs in html directives
     this.ModelCreate = {
         header: "Contact Name",
         name: "Please insert your name",
@@ -27,12 +24,13 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
         photo: "Please insert a link to your photo"
     }
 
+    //get all contacts from server
     this.GetAll = function(onComplete, onError) {
         //Request to the Server
         var thisHandler = this;
         $http({
             method: 'GET',
-            url: this.basePath +':9003/contact',
+            url: this.basePath + ':9003/contact',
         }).then(function successCallback(response) {
             // this callback will be called asynchronously
             // when the response is available
@@ -46,13 +44,14 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
         });
     }
 
+    //save changes made in a contact
     this.SaveItem = function(id, onComplete, onError) {
         var modelToSend = thisService.Model;
+        console.log(modelToSend);
         delete modelToSend.id;
-        console.log(id);
         $http({
             method: 'PATCH',
-            url: this.basePath +':9003/contact' + id,
+            url: this.basePath + ':9003/contact/' + id,
             data: modelToSend
         }).then(function successCallback(response) {
             // this callback will be called asynchronously
@@ -67,13 +66,14 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
         });
     }
 
+    //create a contact
     this.CreateItem = function(onComplete, onError) {
         var modelToSend = thisService.Model;
         delete modelToSend.id;
         console.log(modelToSend)
         $http({
             method: 'POST',
-            url: this.basePath +':9003/contact',
+            url: this.basePath + ':9003/contact',
             data: modelToSend
         }).then(function successCallback(response) {
             // this callback will be called asynchronously
@@ -87,6 +87,7 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
         });
     }
 
+    //remove a contact by id
     this.RemoveById = function(item, onComplete, onError) {
         var path = "";
         //Check if it Exists
@@ -95,7 +96,7 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
         }
         $http({
             method: 'DELETE',
-            url: this.basePath +':9003/contact' + path,
+            url: this.basePath + ':9003/contact' + path,
             data: item
         }).then(function successCallback(response) {
             // this callback will be called asynchronously
@@ -108,10 +109,11 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
         });
     }
 
+    //get a contact by id
     this.GetById = function(id, onComplete, onError) {
         $http({
             method: 'GET',
-            url: this.basePath +':9003/contact/' + id
+            url: this.basePath + ':9003/contact/' + id
         }).then(function successCallback(response) {
             // this callback will be called asynchronously
             // when the response is available
@@ -123,12 +125,13 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
         });
     }
 
+    //search contact with autocomplete
     this.GetAutocomplete = function(string, onComplete, onError) {
         var thisHandler = this;
 
         $http({
             method: 'GET',
-            url: this.basePath +':9003/contact/autocomplete/' + string
+            url: this.basePath + ':9003/contact/autocomplete/' + string
         }).then(function successCallback(response) {
             // this callback will be called asynchronously
             // when the response is available
@@ -141,18 +144,19 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
         });
     }
 
-    this.onFileSelect = function($files) {
-        // //$files: an array of files selected, each file has name, size, and type.
-        // console.log($files);
-        //     var $file = $files[0];
-        //     Upload.upload({
-        //         url: 'http://localhost:9003/contact',
-        //         file: $file,
-        //         progress: function(e) {}
-        //     }).then(function(data, status, headers, config) {
-        //         // file is uploaded successfully
-        //         console.log(data);
-        //     });
-    }
+    //Upload a file to the server
+    //this.onFileSelect = function($files) {
+    // //$files: an array of files selected, each file has name, size, and type.
+    // console.log($files);
+    //     var $file = $files[0];
+    //     Upload.upload({
+    //         url: 'http://localhost:9003/contact',
+    //         file: $file,
+    //         progress: function(e) {}
+    //     }).then(function(data, status, headers, config) {
+    //         // file is uploaded successfully
+    //         console.log(data);
+    //     });
+    //}
 
 }]);

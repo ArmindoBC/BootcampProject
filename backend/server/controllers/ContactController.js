@@ -45,10 +45,7 @@ class ContactController extends BaseController {
                     validate: {
                         params: {
                             id: joi.string().hex().required().description("Filter contact by id "),
-                        },
-                        /*headers: joi.object({
-                            'authorization': joi.string().required()
-                        }).unknown()*/
+                        }
                     }
                 }
             };
@@ -78,11 +75,8 @@ class ContactController extends BaseController {
                 },
                 validate: {
                     params: {
-                        string: joi.string().required().description("Filte contact by substring of the name "),
-                    },
-                    /*headers: joi.object({
-                        'authorization': joi.string().required()
-                    }).unknown()*/
+                        string: joi.string().required().description("Filter contact by substring of the name "),
+                    }
                 }
             }
         };
@@ -99,9 +93,6 @@ class ContactController extends BaseController {
                 description: 'Get contacts',
                 notes: 'Returns the Contacts meeting the provided parameters. In case there are no search parameters, all Contacts will be returned',
                 tags: ['api'],
-                /*pre: [{
-                    method: BaseController.Authorize(['general'])
-                }],*/
                 handler: (request, reply) => {
                     return this.BaseGetHandler(this.GetCollectionName(), request.query)
                         .then((item) => {
@@ -119,10 +110,7 @@ class ContactController extends BaseController {
                         phonenumber: joi.phone.e164().description("Filter by contact's phone number"),
                         address: joi.string().description("Filter by the contact's address"),
                         birthday: joi.date().iso().max('now').description("Filter by the contact's birthday")
-                    },
-                    /*headers: joi.object({
-                        'authorization': joi.string().required()
-                    }).unknown()*/
+                    }
                 }
             }
         };
@@ -139,9 +127,6 @@ class ContactController extends BaseController {
                 description: 'Create a contact ',
                 notes: 'Create a new contact and returns it.',
                 tags: ['api'],
-                /*pre: [{
-                    method: BaseController.Authorize(['general'])
-                }],*/
                 handler: (request, reply) => {
                     return this.BasePostHandler(this.GetCollectionName(), request.payload)
                         .then((item) => {
@@ -160,10 +145,7 @@ class ContactController extends BaseController {
                         address: joi.string().optional().allow('').description("The contact's address"),
                         birthday: joi.date().iso().optional().max('now').allow('').description("The contact's birthday"),
                         picture: joi.string().optional().allow('').description("The contact's picture"),
-                    },
-                    /*headers: joi.object({
-                        'authorization': joi.string().required()
-                    }).unknown()*/
+                    }
                 }
             }
         };
@@ -180,9 +162,6 @@ class ContactController extends BaseController {
                     description: 'Patch contact item',
                     notes: 'Updates the contact item that has the id provided. If the update is sucessful then the contact item data will be returned',
                     tags: ['api'],
-                    /*pre: [{
-                        method: BaseController.Authorize(['general'])
-                    }],*/
                     handler: (request, reply) => {
                         return this.BasePatchHandler(this.GetCollectionName(), request.params.id, request.payload)
                             .then((item) => {
@@ -203,10 +182,7 @@ class ContactController extends BaseController {
                             address: joi.string().optional().description("The contact's address"),
                             birthday: joi.date().iso().max('now').optional().description("The contact's birthday"),
                             picture: joi.string().optional().allow('').description("The contact's picture")
-                        },
-                        /*headers: joi.object({
-                            'authorization': joi.string().required()
-                        }).unknown()*/
+                        }
                     }
                 }
             };
@@ -222,9 +198,6 @@ class ContactController extends BaseController {
                     description: 'Put contact item in the database',
                     notes: 'Updates the contact item that has the id provided. If the update is sucessful then the contact item data will be returned',
                     tags: ['api'],
-                    /*pre: [{
-                        method: BaseController.Authorize(['general'])
-                    }],*/
                     handler: (request, reply) => {
                         return this.BasePutHandler(this.GetCollectionName(), request.params.id, request.payload)
                             .then((item) => {
@@ -245,10 +218,7 @@ class ContactController extends BaseController {
                             address: joi.string().optional().description("The contact's address"),
                             birthday: joi.date().iso().max('now').optional().description("The contact's birthday"),
                             picture: joi.string().optional().allow('').description("The contact's picture"),
-                        },
-                        /*headers: joi.object({
-                            'authorization': joi.string().required()
-                        }).unknown()*/
+                        }
                     }
                 }
             };
@@ -264,9 +234,6 @@ class ContactController extends BaseController {
                 description: 'delete contact item',
                 notes: 'Deletes the contact item that has the id provided.',
                 tags: ['api'],
-                /*pre: [{
-                    method: BaseController.Authorize(['general'])
-                }],*/
                 handler: (request, reply) => {
                     return this.BaseDeleteHandler(this.GetCollectionName(), request.params.id)
                         .then(() => {
@@ -279,10 +246,7 @@ class ContactController extends BaseController {
                 validate: {
                     params: {
                         id: joi.string().hex().required().description("Delete contact by id "),
-                    },
-                    /*headers: joi.object({
-                        'authorization': joi.string().required()
-                    }).unknown()*/
+                    }
                 }
             }
         };

@@ -5,34 +5,27 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
     $scope.ActiveContactService = ActiveContactService;
     $scope.ContactsService = ContactsService;
     $scope.param = $routeParams.id;
-    $scope.isOnShowMobile =  false;
+    $scope.isOnShowMobile = false;
     //is on mobile flag
     $scope.isOnMobile = $('.isOnMobile').is(':visible');
 
     //go back functionm
-    $scope.goBack = function(){
-
-      $('.header-title').show();
-      $('.labelMobile').hide();
-      $('.header-name-mobile').hide();
-      $('.sub-container-2').hide();
-      $('.sub-container').show();
-
-
+    $scope.goBack = function() {
+        $('.header-title').show();
+        $('.labelMobile').hide();
+        $('.header-name-mobile').hide();
+        $('.sub-container-2').hide();
+        $('.sub-container').show();
     }
-    $scope.setMode =  function()
-    {
-      if($scope.isOnMobile)
-      {
-
-        $('.sub-container').hide();
-        $('.labelMobile').show();
-          $('.sub-container-2').show();
-      }
+    $scope.setMode = function() {
+        if ($scope.isOnMobile) {
+            $('.sub-container').hide();
+            $('.labelMobile').show();
+            $('.sub-container-2').show();
+        }
     }
 
     //Functions:-------------------------------------------------------
-
     $scope.inputSearch = function() {
         $scope.allowDelete = true;
         var textToSearch = $scope.inputText;
@@ -51,7 +44,6 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
 
             }, 1000);
         }
-
     }
     $scope.deleteText = function() {
         $scope.noData = false;
@@ -65,11 +57,10 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
     }
 
     //GetAll Callback Functions:------------------------------------------------------
-
     $scope.OnCompleteGetAll = function() {
         //update active user on active service
         if (ContactsService.AllItems.length != 0) {
-          $('.header-name-mobile').hide();
+            $('.header-name-mobile').hide();
 
             $scope.noData = false;
             $scope.ContactsList = ContactsService.AllItems;
@@ -78,16 +69,11 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
             $scope.contact = ActiveContactService.ActiveContact;
             ContactsService.Model = ActiveContactService.ActiveContact;
 
-
-            // setTimeout(function() {
             if (ActiveContactService.ActiveContact.id != null &&
                 document.getElementById(ActiveContactService.ActiveContact.id) != null) {
                 document.getElementById(ActiveContactService.ActiveContact.id).className = "contact-card-div-active";
             }
             //load first active user on header controller scope
-
-            // }, 100);
-            // ActiveContactService.setShowMode();
         } else {
             $scope.noData = true;
         }
@@ -101,9 +87,7 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
         $scope.IsLoading = false;
     }
 
-
     //Delete Function:------------------------------------------------------------------
-
     var DeleteOnComplete = function() {
         alert("The contact was successfully removed!");
         $scope.IsLoading = false;
@@ -120,7 +104,6 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
     $scope.Delete = function() {
         //Update Item
         $scope.IsLoading = true;
-
         ContactsService.RemoveById(ActiveContactService.ActiveContact, DeleteOnComplete, DeleteOnError);
     }
 
@@ -141,17 +124,13 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
     }
 
     $scope.Save = function() {
-        if($scope.isOnMobile)
-        {
-          $('.header-title').hide();
-          $('.labelMobile').show();
-          $('.header-name-mobile').show();
-          $('.header').hide();
-
+        if ($scope.isOnMobile) {
+            $('.header-title').hide();
+            $('.labelMobile').show();
+            $('.header-name-mobile').show();
+            $('.header').hide();
         }
         //Update Item
-        console.log("FUNCTION SAVE");
-        console.log(ActiveContactService.ActiveContact);
         $scope.IsLoading = true;
         if ($routeParams.id == null) {
             ContactsService.CreateItem(SaveOnComplete, SaveOnError);
@@ -166,11 +145,7 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
         //load Persons
         $scope.allowDelete = false;
         $scope.IsLoading = true;
-        // setTimeout(function() {
         ContactsService.GetAll($scope.OnCompleteGetAll, $scope.OnErrorGetAll);
-        //   }, 1000);
     };
     $scope.Start();
-
-
 }]);

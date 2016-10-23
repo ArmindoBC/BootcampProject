@@ -12,9 +12,9 @@ app.controller('HomeController', ['$scope', '$routeParams', 'ContactsService', '
 
     //OnComplete callback
     $scope.OnCompleteGetAll = function() {
-        $scope.ContactsList = ContactsService.AllItems;
-        $scope.IsLoading = false;
-    }
+            $scope.ContactsList = ContactsService.AllItems;
+            $scope.IsLoading = false;
+        }
     //OnError callback
     $scope.OnErrorGetAll = function(errorCode) {
         console.log(errorCode);
