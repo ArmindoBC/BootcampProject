@@ -69,8 +69,7 @@ app.controller('HeaderController', ['$scope', '$routeParams', '$location', 'Cont
             $scope.contact = ActiveContactService.ActiveContact;
             ContactsService.Model = ActiveContactService.ActiveContact;
 
-            if (ActiveContactService.ActiveContact.id != null &&
-                document.getElementById(ActiveContactService.ActiveContact.id) != null) {
+            if (ActiveContactService.ActiveContact.id != null && document.getElementById(ActiveContactService.ActiveContact.id) != null) {
                 document.getElementById(ActiveContactService.ActiveContact.id).className = "contact-card-div-active";
             }
             //load first active user on header controller scope

@@ -7,7 +7,6 @@ app.service('ActiveContactService', ['$location', '$route', 'ContactsService', f
     this.DiscardChanges = function() {
         alert('Your changes were discarded');
         this.setShowMode();
-
     }
 
     this.setCreateMode = function() {
@@ -22,7 +21,6 @@ app.service('ActiveContactService', ['$location', '$route', 'ContactsService', f
         this.mode = "edit";
         $location.path('/edit/' + this.ActiveContact.id);
         $route.reload();
-        
     }
 
     this.setShowMode = function(id) {

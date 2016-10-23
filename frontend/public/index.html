@@ -87,7 +87,7 @@
                 <div class="header-title-container">
                     <div class="header-name-mobile">
                         <i class="material-icons" ng-click="goBack()">arrow_back</i>
-                        <span class="name-title"> {{ActiveContactService.ActiveContact.name | showFirstLastName}}</span>
+                        <span class="name-title"> {{ActiveContactService.ActiveContact.name | firstCharacterUppercase | showFirstLastName}}</span>
                     </div>
                     <div class="header-title" ng-click="ActiveContactService.setShowMode()">
                         SMART

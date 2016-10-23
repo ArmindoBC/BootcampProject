@@ -139,7 +139,7 @@
         width: 100%;
         object-fit: contain;
     }
-    
+
     /*media queries for responsive mobile*/
 
     @media screen and (max-width: 375px) {
@@ -210,6 +210,7 @@
         .header-name-mobile {
             display: flex;
             align-items: center;
+            width: 100%;
         }
         .input {
             display: flex;

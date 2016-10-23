@@ -47,7 +47,6 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
     //save changes made in a contact
     this.SaveItem = function(id, onComplete, onError) {
         var modelToSend = thisService.Model;
-        console.log(modelToSend);
         delete modelToSend.id;
         $http({
             method: 'PATCH',
@@ -70,7 +69,6 @@ app.service('ContactsService', ['$http', 'UtilsService', function($http, UtilsSe
     this.CreateItem = function(onComplete, onError) {
         var modelToSend = thisService.Model;
         delete modelToSend.id;
-        console.log(modelToSend)
         $http({
             method: 'POST',
             url: this.basePath + ':9003/contact',
